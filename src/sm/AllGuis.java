@@ -38,18 +38,6 @@ public class AllGuis {
 		gui.setItem(31, shop.create(), opt);
 		opt.remove(Options.RUNNABLE);
 		
-		ItemCreatorAPI warps = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		warps.setDisplayName("&6&lW&f&larps");
-		opt.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				ATGUI(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		gui.setItem(30, warps.create(), opt);
-		
-		opt.remove(Options.RUNNABLE);
-		
 		ItemCreatorAPI AT = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		AT.setDisplayName("&6&lA&f&ldmin&6&lT&f&leam");
 		opt.put(Options.RUNNABLE, new Runnable() {
@@ -173,7 +161,7 @@ public class AllGuis {
 				helperteam.helpert(p);
 			}
 		});
-		atgui.setItem(12, helpert.create(), ops);
+		atgui.setItem(24, helpert.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI buildert = TheAPI.getItemCreatorAPI(Material.GOLDEN_HELMET);
