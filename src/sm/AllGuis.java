@@ -3,9 +3,7 @@ package sm;
 
 import java.util.HashMap;
 
-import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
@@ -17,7 +15,6 @@ import me.Straiker123.ItemCreatorAPI;
 import me.Straiker123.TheAPI;
 import me.Straiker123.TheAPI.SudoType;
 
-@SuppressWarnings("deprecation")
 public class AllGuis {
 
 	main l = main.instance;
@@ -153,217 +150,41 @@ public class AllGuis {
 		GUICreatorAPI atgui = TheAPI.getGUICreatorAPI(p);
 		atgui.setSize(54);
 		atgui.setTitle("&6&lA&f&lDMIN &6&lT&f&lEAM");
-        String hoff = "&7(&4&lOFFLINE&7)";
-        String whoff = "&cnull";
-        String houska = "&7(&4&lOFFLINE&7)";
-        String whouska = "&cnull";
-        String rajce = "&7(&4&lOFFLINE&7)";
-        String wrajce = "&cnull";
-        String kitiny = "&7(&4&lOFFLINE&7)";
-        String wkit = "&cnull";
-        String trimic = "&7(&4&lOFFLINE&7)";
-        String wtrimi = "&cnull";
-        String babys = "&7(&4&lOFFLINE&7)";
-        String wbaby = "&cnull";
-        String bob = "&7(&4&lOFFLINE&7)";
-        String wbob = "&cnull";
-        String seal = "&7(&4&lOFFLINE&7)";
-        String wseal = "&cnull";
-        String endi = "&7(&4&lOFFLINE&7)";
-        String wendi = "&cnull";
-       
-        
-        	for (Player ssp: Bukkit.getOnlinePlayers()) {	
-	        	if(ssp.getName().equals("Hoff")) {
-	        		hoff = "&7(&2&lONLINE&7)";
-	        		whoff = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("Houska02")) {
-	        		houska = "&7(&2&lONLINE&7)";
-	        		whouska = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("_ItsRajsko_")) {
-	        		rajce = "&7(&2&lONLINE&7)";
-	        		wrajce = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("Kethanee")) {
-	        		kitiny = "&7(&2&lONLINE&7)";
-	        		wkit = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("Tramicful")) {
-	        		trimic = "&7(&2&lONLINE&7)";
-	        		wtrimi = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("BaySirak")) {
-	        		babys = "&7(&2&lONLINE&7)";
-	        		wbaby = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("Saelo")) {
-	        		seal = "&7(&2&lONLINE&7)";
-	        		wseal = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("BobaFett")) {
-	        		bob = "&7(&2&lONLINE&7)";
-	        		wbob = ssp.getWorld().getName();
-	        	}
-	        	if(ssp.getName().equals("EndivMan594")) {
-	        		endi = "&7(&2&lONLINE&7)";
-	        		wendi = ssp.getWorld().getName();
-	        	}
-        	}
-        	HashMap<Options, Object> ops = new HashMap<Options, Object>();
-            ops.put(Options.CANT_BE_TAKEN, true);
-		ItemCreatorAPI m = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		m.setSkullType(SkullType.PLAYER);
-		m.setOwner("Hoff");
-		m.addLore("&aPozice: &3Majitel");
-		m.addLore("&aStatus: " + hoff);
-		m.addLore("&aSvět: &7" + whoff);
-		m.setDisplayName("&e&lHoff");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči Hoff").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Hoff ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
+		
+        ItemCreatorAPI vedeni = TheAPI.getItemCreatorAPI(Material.DIAMOND_HELMET);
+        vedeni.setDisplayName("&c&lVedení serveru");
+        HashMap<Options, Object> ops = new HashMap<Options, Object>();
+          ops.put(Options.CANT_BE_TAKEN, true);
+          ops.put(Options.RUNNABLE, new Runnable() {
+        	  public void run() {
+				
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				vedenit.vedeni(p);
 			}
 		});
-		atgui.setItem(4, m.create(), ops);
+		atgui.setItem(20, vedeni.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI dev = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		dev.setSkullType(SkullType.PLAYER);
-		dev.setOwner("Houska02");
-		dev.addLore("&aPozice: &bDeveloper");
-		dev.addLore("&aStatus: " + houska);
-		dev.addLore("&aSvět: &7" + whouska);
-		dev.setDisplayName("&e&lHouska02");
+		ItemCreatorAPI helpert = TheAPI.getItemCreatorAPI(Material.IRON_HELMET);
+		helpert.setDisplayName("&5&lHelper Tým");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči Houska02").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Houska02 ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				helperteam.helpert(p);
 			}
 		});
-		atgui.setItem(22, dev.create(), ops);
+		atgui.setItem(12, helpert.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI a = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		a.setSkullType(SkullType.PLAYER);
-		a.setOwner("BobaFett");
-		a.addLore("&aPozice: &4Admin");
-		a.addLore("&aStatus: " + bob);
-		a.addLore("&aSvět: &7" + wbob);
-		a.setDisplayName("&e&lBobaFett");
+		ItemCreatorAPI buildert = TheAPI.getItemCreatorAPI(Material.GOLDEN_HELMET);
+		buildert.setDisplayName("&2&lBuilder Tým");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči BobaFett").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg BobaFett").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				builderteam.buildert(p);
 			}
 		});
-		atgui.setItem(12, a.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI trimi = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		trimi.setSkullType(SkullType.PLAYER);
-		trimi.setOwner("Tramicful");
-		trimi.addLore("&aPozice: &2Hl. Builder");
-		trimi.addLore("&aStatus: " + trimic);
-		trimi.addLore("&aSvět: &7" + wtrimi);
-		trimi.setDisplayName("&e&lTramicful");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči Tramicful").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Tramicful ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
-			}
-		});
-		atgui.setItem(14, trimi.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI kitini = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		kitini.setSkullType(SkullType.PLAYER);
-		kitini.setOwner("Kethanee");
-		kitini.addLore("&aPozice: &2Builderka");
-		kitini.addLore("&aStatus: " + kitiny);
-		kitini.addLore("&aSvět: &7" + wkit);
-		kitini.setDisplayName("&e&lKethanee");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráčce Kethanee").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Kethanee ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
-			}
-		});
-		atgui.setItem(24, kitini.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI rajsko = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		rajsko.setSkullType(SkullType.PLAYER);
-		rajsko.setOwner("_ItsRajsko_");
-		rajsko.addLore("&aPozice: &5Helper");
-		rajsko.addLore("&aStatus: " + rajce);
-		rajsko.addLore("&aSvět: &7" + wrajce);
-		rajsko.setDisplayName("&e&l_ItsRajsko_");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči _ItsRajsko_").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg _ItsRajsko_ ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
-			}
-		});
-		atgui.setItem(20, rajsko.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI baby = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		baby.setSkullType(SkullType.PLAYER);
-		baby.setOwner("BaySirak");
-		baby.addLore("&aPozice: &5Helper");
-		baby.addLore("&aStatus: " + babys);
-		baby.addLore("&aSvět: &7" + wbaby);
-		baby.setDisplayName("&e&lBaySirak");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg BaySirak ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
-			}
-		});
-		atgui.setItem(28, baby.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI endiv = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		endiv.setSkullType(SkullType.PLAYER);
-		endiv.setOwner("EndivMan594");
-		endiv.addLore("&aPozice: &5Helper");
-		endiv.addLore("&aStatus: " + endi);
-		endiv.addLore("&aSvět: &7" + wendi);
-		endiv.setDisplayName("&e&lEndivMan594");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči EndivMan594").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg EndivMan594 ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
-			}
-		});
-		atgui.setItem(29, endiv.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		ItemCreatorAPI saelo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		saelo.setSkullType(SkullType.PLAYER);
-		saelo.setOwner("Saelo");
-		saelo.addLore("&aPozice: &6Eventer");
-		saelo.addLore("&aStatus: " + seal);
-		saelo.addLore("&aSvět: &7" + wseal);
-		saelo.setDisplayName("&e&lSaelo");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči Saelo").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Saelo ").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-				atgui.close();
-			}
-		});
-		atgui.setItem(34, saelo.create(), ops);
+		atgui.setItem(22, buildert.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI okrajAT = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
@@ -395,7 +216,6 @@ public class AllGuis {
 		
 		atgui.open();
      }
-	
 	
 	public static void Rules(Player p) {
 	GUICreatorAPI rules = TheAPI.getGUICreatorAPI(p);
@@ -462,8 +282,7 @@ public class AllGuis {
 	rules.open();
 	
 	}
-	//najdi git složku :D
-	//teda ještě ne 
+
 	public static void navody(Player p) {
 		GUICreatorAPI navody = TheAPI.getGUICreatorAPI(p);
 		navody.setSize(54);
