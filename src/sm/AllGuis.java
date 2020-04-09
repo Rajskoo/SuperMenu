@@ -7,13 +7,15 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import AT.builderteam;
+import AT.helperteam;
+import AT.vedenit;
 import me.Straiker123.GUICreatorAPI;
 import me.Straiker123.GUICreatorAPI.Options;
 import me.Straiker123.HoverMessage;
 import me.Straiker123.HoverMessage.ClickAction;
 import me.Straiker123.ItemCreatorAPI;
 import me.Straiker123.TheAPI;
-import me.Straiker123.TheAPI.SudoType;
 
 public class AllGuis {
 
@@ -86,15 +88,15 @@ public class AllGuis {
 		
 		opt.remove(Options.RUNNABLE);
 		
-		ItemCreatorAPI navody = TheAPI.getItemCreatorAPI(Material.BLUE_STAINED_GLASS);
+		ItemCreatorAPI tutorial = TheAPI.getItemCreatorAPI(Material.BLUE_STAINED_GLASS);
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				navody(p);
+				navody.navody.navod(p);
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});
-		navody.setDisplayName("&6&lN&f&lávody");
-		gui.setItem(22, navody.create(), opt);
+		tutorial.setDisplayName("&6&lN&f&lávody");
+		gui.setItem(22, tutorial.create(), opt);
 		
 		opt.remove(Options.RUNNABLE);
 		ItemCreatorAPI vip = TheAPI.getItemCreatorAPI(Material.IRON_BLOCK);
@@ -270,97 +272,6 @@ public class AllGuis {
 	rules.open();
 	
 	}
-
-	public static void navody(Player p) {
-		GUICreatorAPI navody = TheAPI.getGUICreatorAPI(p);
-		navody.setSize(54);
-		navody.setTitle("&6&lP&f&lRAVIDLA");
-		HashMap<Options, Object> ops = new HashMap<Options, Object>();
-	    ops.put(Options.CANT_BE_TAKEN, true);
-	    
-	    ItemCreatorAPI reska = TheAPI.getItemCreatorAPI(Material.STICK);
-	    reska.setDisplayName("&6&lR&f&leska");
-	    reska.addLore("&c&lPár příkazů pro jednoduché residence.");
-	    reska.addLore("&3/res auto &8- &6Vytvoří novou residenci.");
-	    reska.addLore("&3/res padd &8- &6Povolí hráči residenci.");
-	    reska.addLore("&3/res pdel &8- &6Odebere hráči práva do residenci.");
-	    reska.addLore("&3/res tp <res> &8- &6Teleportuje Vás na residenci.");
-	    reska.addLore("&3/res set <flag> &8- &6Nastaví práva pro všechny.");
-	    reska.addLore("&6U nás se delá reska &9Drevěnou Tyčkou.");
-	    navody.setItem(20, reska.create(), ops);
-	    
-	    ItemCreatorAPI reskanavod = TheAPI.getItemCreatorAPI(Material.OAK_WOOD);
-	    reskanavod.setDisplayName("&6&lJ&f&lak &6&lv&f&lytvořit &6&lr&f&les?");
-	    reskanavod.addLore("&41.) &bPrvní musíte tyčkou vybrat 2 různé body.");
-	    reskanavod.addLore("&42.) &bPoté napište příkaz /res create <meno_resky>.");
-	    reskanavod.addLore("&43.) &bA máte hotovo, užívejte hru :)");
-	    reskanavod.addLore("&cHráč může mít 3 resky s velikostí 80x80.");
-	    navody.setItem(29, reskanavod.create(), ops);
-	    
-	    ItemCreatorAPI minihry = TheAPI.getItemCreatorAPI(Material.TOTEM_OF_UNDYING);
-	    minihry.setDisplayName("&6&lM&f&lini&6&lh&f&lry");
-	    minihry.addLore("&6&lN&f&la serveru máme tyto minihry:");
-	    minihry.addLore("&9&lMOB ARENA");
-	    minihry.addLore("&8- &6/ma leave &fpro odpojení z minihry.");
-	    minihry.addLore("&8- &6/ma join &fpro připojení do minihry.");
-	    minihry.addLore("&9&lPARKOUR");
-	    minihry.addLore("&8- &6/pa leave &fpro odpojení z minihry.");
-	    minihry.addLore("&8- &6/pa join &fpro připojení do minihry.");
-	    minihry.addLore("&9&lTnTRun");
-	    minihry.addLore("&8- &6/tntrun leave &fpro odpojení z minihry.");
-	    minihry.addLore("&8- &6/tntrun join &fpro připojení do minihry.");
-	    minihry.addLore("&9&lPaintBall");
-	    minihry.addLore("&8- &6/pa leave &fpro odpojení z minihry.");
-	    minihry.addLore("&8- &6/pa join &fpro připojení do minihry.");
-	    navody.setItem(22, minihry.create(), ops);
-	    
-	    ItemCreatorAPI minihryport = TheAPI.getItemCreatorAPI(Material.BELL);
-	    ops.put(Options.RUNNABLE, new Runnable() {
-	    	public void run() {
-	    		TheAPI.sudoConsole(SudoType.COMMAND, "warp MiniGames "+p.getName());
-	    		TheAPI.sendTitle(p, "&6&lM&f&loneyak.cz", "&9Byl si teleportován na MiniHry.");
-	    		navody.close();
-	    	}
-	    });
-	    minihryport.setDisplayName("&6&lP&f&lro &6&lp&f&lort &6&ln&f&la &6&lm&f&lini&6&lh&f&lry:");
-	    minihryport.addLore("&7(&c&lKlikni&7)");
-	    navody.setItem(31, minihryport.create(), ops);
-	    
-	    ops.remove(Options.RUNNABLE);
-	    ItemCreatorAPI homes = TheAPI.getItemCreatorAPI(Material.PAINTING);
-	    homes.setDisplayName("&6&lH&f&lome");
-	    homes.addLore("&3/sethome <home> &8- &6Vytvoří domov na dané pozici.");
-	    homes.addLore("&3/delhome <home> &8- &6Vymaže domov.");
-	    homes.addLore("&3/home <home> &8- &6Teleportuje hráče na jeho domov.");
-	    homes.addLore("&cHráč může mít 2 domovy.");
-	    navody.setItem(24, homes.create(), ops);
-	    
-	    ops.remove(Options.RUNNABLE);
-	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
-		navody.setItem(0, okraj.create(), ops);
-		navody.setItem(1, okraj.create(), ops);
-		navody.setItem(7, okraj.create(), ops);
-		navody.setItem(8, okraj.create(), ops);
-		navody.setItem(17, okraj.create(), ops);
-		navody.setItem(44, okraj.create(), ops);
-		navody.setItem(53, okraj.create(), ops);
-		navody.setItem(52, okraj.create(), ops);
-		navody.setItem(46, okraj.create(), ops);
-		navody.setItem(45, okraj.create(), ops);
-		navody.setItem(36, okraj.create(), ops);
-		navody.setItem(9, okraj.create(), ops);
-		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
-		back.setDisplayName("&4&lBack");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				main(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-			}
-		});
-		navody.setItem(49, back.create(), ops);
-		
-		navody.open();
-	}
 	
 	public static void vip(Player p) {
 		GUICreatorAPI vip = TheAPI.getGUICreatorAPI(p);
@@ -375,7 +286,7 @@ public class AllGuis {
 		vp.addLore("&3Klikni pro výhody.");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				VIP(p);
+				VIP.vip.VIP(p);
 			}
 		});
 		vip.setItem(20, vp.create(), ops);
@@ -386,7 +297,7 @@ public class AllGuis {
 		sprvp.addLore("&3Klikni pro výhody.");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				SuperVIP(p);
+				VIP.supervip.SuperVIP(p);
 			}
 		});
 		vip.setItem(22, sprvp.create(), ops);
@@ -397,7 +308,7 @@ public class AllGuis {
 		sponzor.addLore("&3Klikni pro výhody.");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				Sponzor(p);
+				VIP.sponzor.Sponzor(p);
 			}
 		});
 		vip.setItem(24, sponzor.create(), ops);
@@ -439,193 +350,6 @@ public class AllGuis {
 		vip.setItem(49, back.create(), ops);
 		
 		vip.open();
-	}
-	
-	public static void VIP(Player p) {
-		GUICreatorAPI vp = TheAPI.getGUICreatorAPI(p);
-		vp.setSize(54);
-		vp.setTitle("&a&lVIP");
-		HashMap<Options, Object> ops = new HashMap<Options, Object>();
-	    ops.put(Options.CANT_BE_TAKEN, true);
-	    
-	    ItemCreatorAPI czk = TheAPI.getItemCreatorAPI(Material.LIME_STAINED_GLASS);
-	    czk.setDisplayName("&a&lVIP pro Česko:");
-	    czk.addLore("&6&lC&f&lena: &350kč");
-	    czk.addLore("&6&lS&f&lM&6&lS Tvar: &3FAKAHEDA V31534 50 VIP NICK");
-	    czk.addLore("&6&lNa &f&lčíslo: &390733.");
-	    czk.addLore("&aVIP je na &631 dní.");
-	    czk.addLore("&cMísto 'NICK' napište své herní jméno.");
-	    vp.setItem(20, czk.create(), ops);
-	    
-	    ItemCreatorAPI svk = TheAPI.getItemCreatorAPI(Material.GREEN_STAINED_GLASS);
-	    svk.setDisplayName("&a&lVIP pro Slovensko:");
-	    svk.addLore("&6&lC&f&lena: &32€");
-	    svk.addLore("&6&lS&f&lM&6&lS Tvar: &3FAKAHEDA V31534 2 VIP NICK");
-	    svk.addLore("&6&lNa &f&lčíslo: &38866.");
-	    svk.addLore("&aVIP je na &631 dní.");
-	    svk.addLore("&cMísto 'NICK' napište své herní jméno.");
-	    vp.setItem(29, svk.create(), ops);
-	    
-	    ItemCreatorAPI vyhody = TheAPI.getItemCreatorAPI(Material.DIAMOND);
-	    vyhody.setDisplayName("&a&lVIP Výhody:");
-	    vyhody.addLore("&9&l• &ePrefix v Chatu a TABu &aVIP");
-	    vyhody.addLore("&9&l• &ePri koupě dostanete &62500$");
-	    vyhody.addLore("&9&l• &eMožnost teleportovat se na inýho hráče &7(&6/tp&7).");
-	    vyhody.addLore("&9&l• &eMožnost nasadit si na hlavu jakýkoliv předmět &7(&6/hat&7).");
-	    vyhody.addLore("&9&l• &eVIP residence (5 residencí o velikosti 150x150).");
-	    vyhody.addLore("&9&l• &eTeleportace na místo smrti/posledního warpu &7(&6/back&7).");
-	    vyhody.addLore("&9&l• &6/kit VIP &e(Enchantované železný nástroje).");
-	    vyhody.addLore("&9&l• &eAntiAFK kick, (AFK kick na vás nebude působit).");
-	    vyhody.addLore("&9&l• &eMožnost psát barevné zprávy na cedulky nebo do chatu.)");
-	    vp.setItem(23, vyhody.create(), ops);
-	    
-	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
-		vp.setItem(0, okraj.create(), ops);
-		vp.setItem(1, okraj.create(), ops);
-		vp.setItem(7, okraj.create(), ops);
-		vp.setItem(8, okraj.create(), ops);
-		vp.setItem(17, okraj.create(), ops);
-		vp.setItem(44, okraj.create(), ops);
-		vp.setItem(53, okraj.create(), ops);
-		vp.setItem(52, okraj.create(), ops);
-		vp.setItem(46, okraj.create(), ops);
-		vp.setItem(45, okraj.create(), ops);
-		vp.setItem(36, okraj.create(), ops);
-		vp.setItem(9, okraj.create(), ops);
-		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
-		back.setDisplayName("&4&lBack");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				vip(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-			}
-		});
-		vp.setItem(49, back.create(), ops);
-		
-		vp.open();
-	}
-	
-	public static void SuperVIP(Player p) {
-		GUICreatorAPI sprvp = TheAPI.getGUICreatorAPI(p);
-		sprvp.setSize(54);
-		sprvp.setTitle("&a&lVIP");
-		HashMap<Options, Object> ops = new HashMap<Options, Object>();
-	    ops.put(Options.CANT_BE_TAKEN, true);
-	    
-	    ItemCreatorAPI czk = TheAPI.getItemCreatorAPI(Material.ORANGE_STAINED_GLASS);
-	    czk.setDisplayName("&6&lSuper&a&lVIP pro Česko:");
-	    czk.addLore("&6&lC&f&lena: &399kč");
-	    czk.addLore("&6&lS&f&lM&6&lS Tvar: &3FAKAHEDA V31534 99 SUPERVIP NICK");
-	    czk.addLore("&6&lNa &f&lčíslo: &390733.");
-	    czk.addLore("&6Super&aVIP je na &631 dní.");
-	    czk.addLore("&cMísto 'NICK' napište své herní jméno.");
-	    sprvp.setItem(20, czk.create(), ops);
-	    
-	    ItemCreatorAPI svk = TheAPI.getItemCreatorAPI(Material.RED_STAINED_GLASS);
-	    svk.setDisplayName("&6&lSuper&a&lVIP pro Slovensko:");
-	    svk.addLore("&6&lC&f&lena: &34€");
-	    svk.addLore("&6&lS&f&lM&6&lS Tvar: &3FAKAHEDA V31534 4 SUPERVIP NICK");
-	    svk.addLore("&6&lNa &f&lčíslo: &38866.");
-	    svk.addLore("&6Super&aVIP je na &631 dní.");
-	    svk.addLore("&cMísto 'NICK' napište své herní jméno.");
-	    sprvp.setItem(29, svk.create(), ops);
-	    
-	    ItemCreatorAPI vyhody = TheAPI.getItemCreatorAPI(Material.DIAMOND);
-	    vyhody.setDisplayName("&a&lVIP Výhody:");
-	    vyhody.addLore("&9&l• &ePrefix v Chatu a TABu &6S&aVIP");
-	    vyhody.addLore("&9&l• &ePri koupě dostanete &65000$");
-	    vyhody.addLore("&9&l• &eStejná práva jako &aVIP.");
-	    vyhody.addLore("&9&l• &eMožnost měnit počasí &7(&6/sun, /rain, /thunder&7).");
-	    vyhody.addLore("&9&l• &eSuperVIP residence (6 residencí o velikosti 200x200).");
-	    vyhody.addLore("&9&l• &eMožnost měnit den a noc &7(&6/day, /night&7).");
-	    vyhody.addLore("&9&l• &6/kit VIP &e(Enchantované železný nástroje).");
-	    vyhody.addLore("&9&l• &eVirtuální crafting table &7(&6/craft&7).");
-	    vyhody.addLore("&9&l• &eOkamžité vyléčení &7(&6/heal, /feed&7).");
-	    sprvp.setItem(23, vyhody.create(), ops);
-	    
-	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
-		sprvp.setItem(0, okraj.create(), ops);
-		sprvp.setItem(1, okraj.create(), ops);
-		sprvp.setItem(7, okraj.create(), ops);
-		sprvp.setItem(8, okraj.create(), ops);
-		sprvp.setItem(17, okraj.create(), ops);
-		sprvp.setItem(44, okraj.create(), ops);
-		sprvp.setItem(53, okraj.create(), ops);
-		sprvp.setItem(52, okraj.create(), ops);
-		sprvp.setItem(46, okraj.create(), ops);
-		sprvp.setItem(45, okraj.create(), ops);
-		sprvp.setItem(36, okraj.create(), ops);
-		sprvp.setItem(9, okraj.create(), ops);
-		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
-		back.setDisplayName("&4&lBack");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				vip(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-			}
-		});
-		sprvp.setItem(49, back.create(), ops);
-		
-		sprvp.open();
-	}
-	
-	public static void Sponzor(Player p) {
-		GUICreatorAPI spzr = TheAPI.getGUICreatorAPI(p);
-		spzr.setSize(54);
-		spzr.setTitle("&b&lSponzor");
-		HashMap<Options, Object> ops = new HashMap<Options, Object>();
-	    ops.put(Options.CANT_BE_TAKEN, true);
-	    
-	    ItemCreatorAPI czk = TheAPI.getItemCreatorAPI(Material.ORANGE_STAINED_GLASS);
-	    czk.setDisplayName("&b&lSponzor pro Česko:");
-	    czk.addLore("&6&lC&f&lena: &3500kč");
-	    czk.addLore("&6&lP&f&lladba možná pouze přes &6&lPayPal.");
-	    czk.addLore("&bSponzor je navždy.");
-	    spzr.setItem(20, czk.create(), ops);
-	    
-	    ItemCreatorAPI svk = TheAPI.getItemCreatorAPI(Material.RED_STAINED_GLASS);
-	    svk.setDisplayName("&b&lSponzor pro Slovensko:");
-	    svk.addLore("&6&lC&f&lena: &320€");
-	    svk.addLore("&6&lP&f&lladba možná pouze přes &6&lPayPal.");
-	    svk.addLore("&bSponzor je navždy.");
-	    spzr.setItem(29, svk.create(), ops);
-	    
-	    ItemCreatorAPI vyhody = TheAPI.getItemCreatorAPI(Material.DIAMOND);
-	    vyhody.setDisplayName("&b&lSponor Výhody:");
-	    vyhody.addLore("&9&l• &ePrefix v Chatu a TABu &bSponzor");
-	    vyhody.addLore("&9&l• &ePri koupě dostanete &625,000$");
-	    vyhody.addLore("&9&l• &eStejná práva jako &aVIP a &6Super&aVIP.");
-	    vyhody.addLore("&9&l• &eSponzorské residence (20 residencí o velikosti 350x350).");
-	    vyhody.addLore("&9&l• &eNezničitelné nástroje, vlastní názvy a lore &7(&6/item&7).");
-	    vyhody.addLore("&9&l• &6/kit Sponzor &e(Enchantované diamantové nástroje).");
-	    vyhody.addLore("&9&l• &eMožnost měnit hrení mód mezi Survival, Spectator, Adventure.");
-	    vyhody.addLore("&9&l• &cCREATIVE mód není obsažen!");
-	    spzr.setItem(23, vyhody.create(), ops);
-	    
-	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
-		spzr.setItem(0, okraj.create(), ops);
-		spzr.setItem(1, okraj.create(), ops);
-		spzr.setItem(7, okraj.create(), ops);
-		spzr.setItem(8, okraj.create(), ops);
-		spzr.setItem(17, okraj.create(), ops);
-		spzr.setItem(44, okraj.create(), ops);
-		spzr.setItem(53, okraj.create(), ops);
-		spzr.setItem(52, okraj.create(), ops);
-		spzr.setItem(46, okraj.create(), ops);
-		spzr.setItem(45, okraj.create(), ops);
-		spzr.setItem(36, okraj.create(), ops);
-		spzr.setItem(9, okraj.create(), ops);
-		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
-		back.setDisplayName("&4&lBack");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				vip(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-			}
-		});
-		spzr.setItem(49, back.create(), ops);
-		
-		spzr.open();
 	}
 	
 	public static void info(Player p) {
