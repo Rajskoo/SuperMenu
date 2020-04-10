@@ -14,6 +14,7 @@ import me.Straiker123.GUICreatorAPI;
 import me.Straiker123.GUICreatorAPI.Options;
 import me.Straiker123.HoverMessage;
 import me.Straiker123.HoverMessage.ClickAction;
+import me.Straiker123.TheAPI.SudoType;
 import me.Straiker123.ItemCreatorAPI;
 import me.Straiker123.TheAPI;
 
@@ -91,7 +92,7 @@ public class AllGuis {
 		ItemCreatorAPI tutorial = TheAPI.getItemCreatorAPI(Material.BLUE_STAINED_GLASS);
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				navody.navody.navod(p);
+				navod(p);
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});
@@ -271,6 +272,97 @@ public class AllGuis {
 	
 	rules.open();
 	
+	}
+	
+	public static void navod(Player p) {
+		GUICreatorAPI navody = TheAPI.getGUICreatorAPI(p);
+		navody.setSize(54);
+		navody.setTitle("&6&lN&f&lÁVODY");
+		HashMap<Options, Object> ops = new HashMap<Options, Object>();
+	    ops.put(Options.CANT_BE_TAKEN, true);
+	    
+	    ItemCreatorAPI reska = TheAPI.getItemCreatorAPI(Material.STICK);
+	    reska.setDisplayName("&6&lR&f&leska");
+	    reska.addLore("&c&lPár příkazů pro jednoduché residence.");
+	    reska.addLore("&3/res auto &8- &6Vytvoří novou residenci.");
+	    reska.addLore("&3/res padd &8- &6Povolí hráči residenci.");
+	    reska.addLore("&3/res pdel &8- &6Odebere hráči práva do residenci.");
+	    reska.addLore("&3/res tp <res> &8- &6Teleportuje Vás na residenci.");
+	    reska.addLore("&3/res set <flag> &8- &6Nastaví práva pro všechny.");
+	    reska.addLore("&6U nás se delá reska &9Drevěnou Tyčkou.");
+	    navody.setItem(20, reska.create(), ops);
+	    
+	    ItemCreatorAPI reskanavod = TheAPI.getItemCreatorAPI(Material.OAK_WOOD);
+	    reskanavod.setDisplayName("&6&lJ&f&lak &6&lv&f&lytvořit &6&lr&f&les?");
+	    reskanavod.addLore("&41.) &bPrvní musíte tyčkou vybrat 2 různé body.");
+	    reskanavod.addLore("&42.) &bPoté napište příkaz /res create <meno_resky>.");
+	    reskanavod.addLore("&43.) &bA máte hotovo, užívejte hru :)");
+	    reskanavod.addLore("&cHráč může mít 3 resky s velikostí 80x80.");
+	    navody.setItem(29, reskanavod.create(), ops);
+	    
+	    ItemCreatorAPI minihry = TheAPI.getItemCreatorAPI(Material.TOTEM_OF_UNDYING);
+	    minihry.setDisplayName("&6&lM&f&lini&6&lh&f&lry");
+	    minihry.addLore("&6&lN&f&la serveru máme tyto minihry:");
+	    minihry.addLore("&9&lMOB ARENA");
+	    minihry.addLore("&8- &6/ma leave &fpro odpojení z minihry.");
+	    minihry.addLore("&8- &6/ma join &fpro připojení do minihry.");
+	    minihry.addLore("&9&lPARKOUR");
+	    minihry.addLore("&8- &6/pa leave &fpro odpojení z minihry.");
+	    minihry.addLore("&8- &6/pa join &fpro připojení do minihry.");
+	    minihry.addLore("&9&lTNTRUN");
+	    minihry.addLore("&8- &6/tntrun leave &fpro odpojení z minihry.");
+	    minihry.addLore("&8- &6/tntrun join &fpro připojení do minihry.");
+	    minihry.addLore("&9&lPAINTBALL");
+	    minihry.addLore("&8- &6/pa leave &fpro odpojení z minihry.");
+	    minihry.addLore("&8- &6/pa join &fpro připojení do minihry.");
+	    navody.setItem(22, minihry.create(), ops);
+	    
+	    ItemCreatorAPI minihryport = TheAPI.getItemCreatorAPI(Material.BELL);
+	    ops.put(Options.RUNNABLE, new Runnable() {
+	    	public void run() {
+	    		TheAPI.sudoConsole(SudoType.COMMAND, "warp MiniGames "+p.getName());
+	    		TheAPI.sendTitle(p, "&6&lM&f&loneyak.cz", "&9Byl si teleportován na MiniHry.");
+	    		navody.close();
+	    	}
+	    });
+	    minihryport.setDisplayName("&6&lP&f&lro &6&lp&f&lort &6&ln&f&la &6&lm&f&lini&6&lh&f&lry:");
+	    minihryport.addLore("&7(&c&lKlikni&7)");
+	    navody.setItem(31, minihryport.create(), ops);
+	    
+	    ops.remove(Options.RUNNABLE);
+	    ItemCreatorAPI homes = TheAPI.getItemCreatorAPI(Material.PAINTING);
+	    homes.setDisplayName("&6&lH&f&lome");
+	    homes.addLore("&3/sethome <home> &8- &6Vytvoří domov na dané pozici.");
+	    homes.addLore("&3/delhome <home> &8- &6Vymaže domov.");
+	    homes.addLore("&3/home <home> &8- &6Teleportuje hráče na jeho domov.");
+	    homes.addLore("&cHráč může mít 2 domovy.");
+	    navody.setItem(24, homes.create(), ops);
+	    
+	    ops.remove(Options.RUNNABLE);
+	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
+		navody.setItem(0, okraj.create(), ops);
+		navody.setItem(1, okraj.create(), ops);
+		navody.setItem(7, okraj.create(), ops);
+		navody.setItem(8, okraj.create(), ops);
+		navody.setItem(17, okraj.create(), ops);
+		navody.setItem(44, okraj.create(), ops);
+		navody.setItem(53, okraj.create(), ops);
+		navody.setItem(52, okraj.create(), ops);
+		navody.setItem(46, okraj.create(), ops);
+		navody.setItem(45, okraj.create(), ops);
+		navody.setItem(36, okraj.create(), ops);
+		navody.setItem(9, okraj.create(), ops);
+		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
+		back.setDisplayName("&4&lBack");
+		ops.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				AllGuis.main(p);
+				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
+			}
+		});
+		navody.setItem(49, back.create(), ops);
+		
+		navody.open();
 	}
 	
 	public static void vip(Player p) {
