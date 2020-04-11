@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 
 import CleniAT.bayis;
 import CleniAT.endiman;
+import CleniAT.wolfik;
 import me.Straiker123.GUICreatorAPI;
 import me.Straiker123.GUICreatorAPI.Options;
 import me.Straiker123.ItemCreatorAPI;
@@ -22,6 +23,7 @@ public class helperteam {
 	static String p1 = "&0[&6Msg&0] ";
 	static String p2 = "&0[&6Mail&0] ";
 	
+	@SuppressWarnings("unused")
 	public static void helpert(Player p) {
 			GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 			b.setSize(54);
@@ -31,6 +33,8 @@ public class helperteam {
 			
 			String bay = "&7(&4&lOFFLINE&7)";
 			String endi = "&7(&4&lOFFLINE&7)";
+			String wolf = "&7(&4&lOFFLINE&7)";
+			String wwolf = "&cnull";
 			String wbay = "&cnull";
 			String wendi = "&cnull";
 			
@@ -39,9 +43,14 @@ public class helperteam {
 	        		bay = "&7(&2&lONLINE&7)";
 	        		wbay = ssp.getWorld().getName();
 	        	}
-	        	if(ssp.getName().equals("Kethanee")) {
+	        	if(ssp.getName().equals("EndivMan594")) {
 	        		endi = "&7(&2&lONLINE&7)";
 	        		wendi = ssp.getWorld().getName();
+	        	}
+	        	
+	        	if(ssp.getName().equals("Wolfik135")) {
+	        		wolf = "&7(&2&lONLINE&7)";
+	        		wwolf = ssp.getWorld().getName();
 	        	}
 			}
 			
@@ -59,6 +68,23 @@ public class helperteam {
 				}
 			});
 			b.setItem(20, bayi.create(), ops);
+			
+			ops.remove(Options.RUNNABLE);
+			
+			ItemCreatorAPI wolfs = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+			bayi.setSkullType(SkullType.PLAYER);
+			bayi.setOwner("Wolfik135");
+			bayi.setDisplayName("&e&lWolfik135");
+			bayi.addLore("&aPozice: &5Zk.Helper");
+			bayi.addLore("&aStatus: " + wolf);
+			bayi.addLore("&aSvět: &7" + wwolf);
+			ops.put(Options.RUNNABLE, new Runnable() {
+				public void run() {
+					wolfik.wolff(p);
+					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				}
+			});
+			b.setItem(22, bayi.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			

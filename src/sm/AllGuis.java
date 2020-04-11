@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 
 import AT.builderteam;
 import AT.helperteam;
+import AT.ostatni;
 import AT.vedenit;
 import me.Straiker123.GUICreatorAPI;
 import me.Straiker123.GUICreatorAPI.Options;
@@ -148,12 +149,21 @@ public class AllGuis {
           ops.put(Options.CANT_BE_TAKEN, true);
           ops.put(Options.RUNNABLE, new Runnable() {
         	  public void run() {
-				
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				vedenit.vedeni(p);
 			}
 		});
 		atgui.setItem(20, vedeni.create(), ops);
+		
+		ItemCreatorAPI ostatnit = TheAPI.getItemCreatorAPI(Material.CHAINMAIL_HELMET);
+        vedeni.setDisplayName("&9&lOstatní členové AT");
+          ops.put(Options.RUNNABLE, new Runnable() {
+        	  public void run() {
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				ostatni.ostatnit(p);
+			}
+		});
+		atgui.setItem(31, ostatnit.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI helpert = TheAPI.getItemCreatorAPI(Material.IRON_HELMET);
