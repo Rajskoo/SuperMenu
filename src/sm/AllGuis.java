@@ -156,7 +156,7 @@ public class AllGuis {
 		atgui.setItem(20, vedeni.create(), ops);
 		
 		ItemCreatorAPI ostatnit = TheAPI.getItemCreatorAPI(Material.CHAINMAIL_HELMET);
-        vedeni.setDisplayName("&9&lOstatní členové AT");
+        ostatnit.setDisplayName("&9&lOstatní členové AT");
           ops.put(Options.RUNNABLE, new Runnable() {
         	  public void run() {
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);

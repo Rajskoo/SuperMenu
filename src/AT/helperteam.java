@@ -23,7 +23,7 @@ public class helperteam {
 	static String p1 = "&0[&6Msg&0] ";
 	static String p2 = "&0[&6Mail&0] ";
 	
-	@SuppressWarnings("unused")
+
 	public static void helpert(Player p) {
 			GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 			b.setSize(54);
@@ -72,19 +72,19 @@ public class helperteam {
 			ops.remove(Options.RUNNABLE);
 			
 			ItemCreatorAPI wolfs = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-			bayi.setSkullType(SkullType.PLAYER);
-			bayi.setOwner("Wolfik135");
-			bayi.setDisplayName("&e&lWolfik135");
-			bayi.addLore("&aPozice: &5Zk.Helper");
-			bayi.addLore("&aStatus: " + wolf);
-			bayi.addLore("&aSvět: &7" + wwolf);
+			wolfs.setSkullType(SkullType.PLAYER);
+			wolfs.setOwner("Wolfik135");
+			wolfs.setDisplayName("&e&lWolfik135");
+			wolfs.addLore("&aPozice: &5Zk.Helper");
+			wolfs.addLore("&aStatus: " + wolf);
+			wolfs.addLore("&aSvět: &7" + wwolf);
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
 					wolfik.wolff(p);
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(22, bayi.create(), ops);
+			b.setItem(22, wolfs.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			
