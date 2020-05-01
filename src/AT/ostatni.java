@@ -37,10 +37,12 @@ public class ostatni {
 		        	if(ssp.getName().equals("Saelo")) {
 		        		saelo = "&7(&2&lONLINE&7)";
 		        		wsaelo = ssp.getWorld().getName();
+		        		continue;
 		        	}
 		        	if(ssp.getName().equals("TheOrsy")) {
 		        		theorsy = "&7(&2&lONLINE&7)";
 		        		worsy = ssp.getWorld().getName();
+		        		continue;
 		        	}
 				}
 				

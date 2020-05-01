@@ -41,18 +41,22 @@ public class vedenit {
         	if(ssp.getName().equals("Hoff")) {
         		hoffi = "&7(&2&lONLINE&7)";
         		whoff = ssp.getWorld().getName();
+        		continue;
         	}
         	if(ssp.getName().equals("Houska02")) {
         		houskaaa = "&7(&2&lONLINE&7)";
         		whouska = ssp.getWorld().getName();
+        		continue;
         	}
         	if(ssp.getName().equals("_ItsRajsko_")) {
         		rajsko = "&7(&2&lONLINE&7)";
         		wrajsko = ssp.getWorld().getName();
+        		continue;
         	}
         	if(ssp.getName().equals("BobaFett")) {
         		bobik = "&7(&2&lONLINE&7)";
         		wbob = ssp.getWorld().getName();
+        		continue;
         	}
 		}
 		
@@ -76,6 +80,7 @@ public class vedenit {
 		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		houskaa.setSkullType(SkullType.PLAYER);
 		houskaa.setOwner("Houska02");
+		houskaa.setOwnerFromWeb("https://minecraft-heads.com/custom-heads/miscellaneous/29829-discord");
 		houskaa.setDisplayName("&e&lHouska02");
 		houskaa.addLore("&aPozice: &bDeveloper");
 		houskaa.addLore("&aStatus: " + houskaaa);

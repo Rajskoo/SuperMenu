@@ -4,6 +4,7 @@ package sm;
 import java.util.HashMap;
 
 import org.bukkit.Material;
+import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
@@ -13,12 +14,11 @@ import AT.ostatni;
 import AT.vedenit;
 import me.Straiker123.GUICreatorAPI;
 import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.HoverMessage;
-import me.Straiker123.HoverMessage.ClickAction;
-import me.Straiker123.TheAPI.SudoType;
 import me.Straiker123.ItemCreatorAPI;
 import me.Straiker123.TheAPI;
+import me.Straiker123.TheAPI.SudoType;
 
+@SuppressWarnings("deprecation")
 public class AllGuis {
 
 	main l = main.instance;
@@ -34,9 +34,8 @@ public class AllGuis {
 		shop.setDisplayName("&6&lS&f&lhop");
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro otevření shopu.").setClickEvent(ClickAction.RUN_COMMAND, "/shop").send(p);
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				gui.close();
+				p.performCommand("shop");
 			}
 		});
 		gui.setItem(31, shop.create(), opt);
@@ -110,6 +109,23 @@ public class AllGuis {
 		});
 		vip.setDisplayName("&6&lV&f&lI&6&lP");
 		gui.setItem(23, vip.create(), opt);
+		
+		opt.remove(Options.RUNNABLE);
+		ItemCreatorAPI dc = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+		dc.setSkullType(SkullType.PLAYER);
+		dc.setOwnerFromWeb("http://textures.minecraft.net/texture/4d42337be0bdca2128097f1c5bb1109e5c633c17926af5fb6fc20000011aeb53");
+		dc.setDisplayName("&9&lDiscord");
+		dc.addLore("&2&lAno &6m&fáme &9Discord");
+		dc.addLore("&5https://discord.gg/t2WGpS9");
+		dc.addLore("&7Klikni pro zaslání odkazu do chatu...");
+		opt.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
+				p.closeInventory();
+				TheAPI.sendMessage("&6&lD&f&liscord : &5https://discord.gg/t2WGpS9", p);
+			}
+		});
+		gui.setItem(26, dc.create(), opt);
 		
 		opt.remove(Options.RUNNABLE);
 		ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
@@ -233,18 +249,26 @@ public class AllGuis {
     rules.setItem(24, build.create(), ops);
     
     ItemCreatorAPI tresty = TheAPI.getItemCreatorAPI(Material.SPAWNER);
-    tresty.setDisplayName("&cFormy trestů");
+    tresty.setDisplayName("&c&lFormy trestů");
     tresty.addLore("&8&l• &6Z&fa &6p&forušení &6p&fravidel, &6m&fůže &6b&fýt &6u&fdělen &6J&fAIL.");
     tresty.addLore("&8&l• &6D&falší &6m&fožností &6j&fe &6DOČASTNÝ&f/&6TRVALÝ &6z&fákaz n&fa &6s&ferver.");
     tresty.addLore("&8&l• &6Z&fa &6t&frest &6l&fze &6p&fovažovat &6M&fUTE.");
-    rules.setItem(22, tresty.create(), ops);
+    rules.setItem(13, tresty.create(), ops);
     
     ItemCreatorAPI chat = TheAPI.getItemCreatorAPI(Material.OAK_SIGN);
-    chat.setDisplayName("&aPravidla chatu");
+    chat.setDisplayName("&a&lPravidla chatu");
     chat.addLore("&8&l• &6P&fovídej &6s&fi &6s&flušně, &6b&fez &6u&frážení s &6h&fráči i s &6Admin&fTeamem.");
     chat.addLore("&8&l• &6D&fále &6j&fe &6z&fakázáno &6d&fiskutovat o &6u&frážlivých &6n&febo &6s&fexuálních &6t&fématech.");
     chat.addLore("&8&l• &6T&faké &6d&fělat &6r&feklamu, &6z&fahlcovat &6c&fhat, &6o&fbtěžovat &6o&fstatní &6h&fráče a &6p&fod..");
     rules.setItem(20, chat.create(), ops);
+    
+    ItemCreatorAPI bugs = TheAPI.getItemCreatorAPI(Material.DAMAGED_ANVIL);
+    bugs.setDisplayName("&6&lChyby a bugy");
+    bugs.addLore("&8&l• &4!! &6J&fakékoli &6z&fneužití &6b&fugu &6n&febo &6c&fhyby &6s&ferveur &6s&fe &6t&faké &6t&frestá&4 !!");
+    bugs.addLore("&8&l• &6P&fokud &6n&fějakou &6c&fhybu &6n&faleznete &6p&frosím &6n&fahlašte &6j&fi&6.&f.");
+    bugs.addLore("&8&l• &6Z&fa &6n&fahlášení &6c&fhyby &6d&fostanete &6o&fdměnu&6!");
+    
+    rules.setItem(22, bugs.create(), ops);
     
     ItemCreatorAPI allrules = TheAPI.getItemCreatorAPI(Material.FILLED_MAP);
     allrules.setDisplayName("&6V&fšechny &6p&fravidla &6n&falezneš &6n&fa:");
@@ -473,8 +497,10 @@ public class AllGuis {
 	    i.setItem(20, web.create(), ops);
 	    ops.remove(Options.RUNNABLE);
 	    
-	    ItemCreatorAPI dis = TheAPI.getItemCreatorAPI(Material.OBSIDIAN);
-	    dis.setDisplayName("&6&lD&f&liscord");
+	    ItemCreatorAPI dis = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+	    dis.setSkullType(SkullType.PLAYER);
+	    dis.setOwnerFromWeb("http://textures.minecraft.net/texture/4d42337be0bdca2128097f1c5bb1109e5c633c17926af5fb6fc20000011aeb53");
+	    dis.setDisplayName("&9&lDiscord");
 	    dis.addLore("&7(&c&lKlikni&7)");
 	    ops.put(Options.RUNNABLE, new Runnable() {
 	    	public void run() {

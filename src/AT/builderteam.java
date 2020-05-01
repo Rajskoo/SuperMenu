@@ -38,14 +38,17 @@ public class builderteam {
         	if(ssp.getName().equals("Tramicful")) {
         		trami = "&7(&2&lONLINE&7)";
         		wtrami = ssp.getWorld().getName();
+        		continue;
         	}
         	if(ssp.getName().equals("Kethanee")) {
         		kitini = "&7(&2&lONLINE&7)";
         		wkit = ssp.getWorld().getName();
+        		continue;
         	}
         	if(ssp.getName().equals("Bloodmmureder")) {
         		blood = "&7(&2&lONLINE&7)";
         		wblood = ssp.getWorld().getName();
+        		continue;
         	}
 		}
 		

@@ -42,15 +42,18 @@ public class helperteam {
 	        	if(ssp.getName().equals("BaySirak")) {
 	        		bay = "&7(&2&lONLINE&7)";
 	        		wbay = ssp.getWorld().getName();
+	        		continue;
 	        	}
 	        	if(ssp.getName().equals("EndivMan594")) {
 	        		endi = "&7(&2&lONLINE&7)";
 	        		wendi = ssp.getWorld().getName();
+	        		continue;
 	        	}
 	        	
 	        	if(ssp.getName().equals("Wolfik135")) {
 	        		wolf = "&7(&2&lONLINE&7)";
 	        		wwolf = ssp.getWorld().getName();
+	        		continue;
 	        	}
 			}
 			
