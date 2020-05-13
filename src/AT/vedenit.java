@@ -60,29 +60,12 @@ public class vedenit {
         	}
 		}
 		
-		ItemCreatorAPI hoffo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		hoffo.setSkullType(SkullType.PLAYER);
-		hoffo.setOwner("Hoff");
-		hoffo.setDisplayName("&e&lHoff");
-		hoffo.addLore("&aPozice: &3Majitel");
-		hoffo.addLore("&aStatus: " + hoffi);
-		hoffo.addLore("&aSvět: &7" + whoff);
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				hoff.hoffik(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		v.setItem(13, hoffo.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		
 		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		houskaa.setSkullType(SkullType.PLAYER);
-		houskaa.setOwner("Houska02");
+		houskaa.setOwner("Hoff");
 		houskaa.setOwnerFromWeb("https://minecraft-heads.com/custom-heads/miscellaneous/29829-discord");
 		houskaa.setDisplayName("&e&lHouska02");
-		houskaa.addLore("&aPozice: &bDeveloper");
+		houskaa.addLore("&aPozice: &3Majitel");
 		houskaa.addLore("&aStatus: " + houskaaa);
 		houskaa.addLore("&aSvět: &7" + whouska);
 		ops.put(Options.RUNNABLE, new Runnable() {
@@ -91,7 +74,9 @@ public class vedenit {
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});
-		v.setItem(22, houskaa.create(), ops);
+		v.setItem(13, houskaa.create(), ops);
+		
+		ops.remove(Options.RUNNABLE);
 		
 		ItemCreatorAPI rajskoo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		rajskoo.setSkullType(SkullType.PLAYER);

@@ -8,6 +8,7 @@ import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
+import CleniAT.hoff;
 import CleniAT.orsyy;
 import CleniAT.saeloo;
 import me.Straiker123.GUICreatorAPI;
@@ -32,6 +33,8 @@ public class ostatni {
 				String theorsy = "&7(&4&lOFFLINE&7)";
 				String wsaelo = "&cnull";
 				String worsy = "&cnull";
+				String whoffik = "&cnull";
+				String hoffko = "&7(&4&lOFFLINE&7)";
 				
 				for (Player ssp: Bukkit.getOnlinePlayers()) {	
 		        	if(ssp.getName().equals("Saelo")) {
@@ -42,6 +45,11 @@ public class ostatni {
 		        	if(ssp.getName().equals("TheOrsy")) {
 		        		theorsy = "&7(&2&lONLINE&7)";
 		        		worsy = ssp.getWorld().getName();
+		        		continue;
+		        	}
+		        	if(ssp.getName().equals("Hoff")) {
+		        		hoffko = "&7(&2&lONLINE&7)";
+		        		whoffik = ssp.getWorld().getName();
 		        		continue;
 		        	}
 				}
@@ -59,7 +67,7 @@ public class ostatni {
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 					}
 				});
-				b.setItem(20, seal.create(), ops);
+				b.setItem(22, seal.create(), ops);
 				
 				ops.remove(Options.RUNNABLE);
 				
@@ -77,6 +85,23 @@ public class ostatni {
 					}
 				});
 				b.setItem(24, orsy.create(), ops);
+				
+				ops.remove(Options.RUNNABLE);
+				
+				ItemCreatorAPI hoffo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+				hoffo.setSkullType(SkullType.PLAYER);
+				hoffo.setOwner("Hoff");
+				hoffo.setDisplayName("&e&lHoff");
+				hoffo.addLore("&aPozice: &6Zakladatel");
+				hoffo.addLore("&aStatus: " + hoffko);
+				hoffo.addLore("&aSvět: &7" + whoffik);
+				ops.put(Options.RUNNABLE, new Runnable() {
+					public void run() {
+						hoff.hoffik(p);
+						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+					}
+				});
+				b.setItem(20, hoffo.create(), ops);
 				
 				ops.remove(Options.RUNNABLE);
 				

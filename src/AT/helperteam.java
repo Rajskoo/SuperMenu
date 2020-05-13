@@ -57,20 +57,17 @@ public class helperteam {
 	        	}
 			}
 			
-			ItemCreatorAPI bayi = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-			bayi.setSkullType(SkullType.PLAYER);
-			bayi.setOwner("BaySirak");
-			bayi.setDisplayName("&e&lBaySirak");
-			bayi.addLore("&aPozice: &5Helper");
-			bayi.addLore("&aStatus: " + bay);
-			bayi.addLore("&aSvět: &7" + wbay);
+			ItemCreatorAPI free = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+			free.setSkullType(SkullType.PLAYER);
+			free.setOwner("Booperr");
+			free.setDisplayName("&a&lVolná pozice");
+			free.addLore("&6Hledáme..");
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
-					bayis.bays(p);
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(20, bayi.create(), ops);
+			b.setItem(20, free.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			
@@ -78,7 +75,7 @@ public class helperteam {
 			wolfs.setSkullType(SkullType.PLAYER);
 			wolfs.setOwner("Wolfik135");
 			wolfs.setDisplayName("&e&lWolfik135");
-			wolfs.addLore("&aPozice: &5Zk.Helper");
+			wolfs.addLore("&aPozice: &5.Helper");
 			wolfs.addLore("&aStatus: " + wolf);
 			wolfs.addLore("&aSvět: &7" + wwolf);
 			ops.put(Options.RUNNABLE, new Runnable() {
