@@ -28,7 +28,7 @@ public class Menu implements CommandExecutor, TabCompleter {
 		
 		if (args.length == 0) {
 			AllGuis.main((Player)s);
-			TheAPI.sendMessage( prefix + "&eOtevíraní menu...", p);
+			main.sendActionBar(p, prefix + "&eOtevíraní menu...");
 			p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 			return true;
 		}
@@ -36,35 +36,35 @@ public class Menu implements CommandExecutor, TabCompleter {
 		if (args.length == 1) {
 			if (args[0].equalsIgnoreCase("at")) {
 				AllGuis.ATGUI((Player)s);
-				TheAPI.sendMessage( prefix + "&eOtevíraní menu... &7(&6AdminTeam&7)", p);
+				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&6AdminTeam&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("navody")) {
 				AllGuis.navod((Player)s);
-				TheAPI.sendMessage( prefix + "&eOtevíraní menu... &7(&6Návody&7)", p);
+				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&6Návody&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("vip")) {
 				AllGuis.vip((Player)s);
-				TheAPI.sendMessage( prefix + "&eOtevíraní menu... &7(&6VIP&7)", p);
+				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&VIP&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("pravidla")) {
 				AllGuis.Rules((Player)s);
-				TheAPI.sendMessage( prefix + "&eOtevíraní menu... &7(&6Pravidla&7)", p);
+				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&Pravidla&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("info")) {
 				AllGuis.info((Player)s);
-				TheAPI.sendMessage( prefix + "&eOtevíraní menu... &7(&6Info&7)", p);
+				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&Info&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
