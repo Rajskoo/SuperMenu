@@ -8,8 +8,9 @@ import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import CleniAT.bayis;
+import CleniAT.tominodos;
 import CleniAT.endiman;
+import CleniAT.palko;
 import CleniAT.wolfik;
 import me.Straiker123.GUICreatorAPI;
 import me.Straiker123.GUICreatorAPI.Options;
@@ -31,17 +32,17 @@ public class helperteam {
 			HashMap<Options, Object> ops = new HashMap<Options, Object>();
 			ops.put(Options.CANT_BE_TAKEN, true);
 			
-			String bay = "&7(&4&lOFFLINE&7)";
+			String tom = "&7(&4&lOFFLINE&7)";
 			String endi = "&7(&4&lOFFLINE&7)";
 			String wolf = "&7(&4&lOFFLINE&7)";
 			String wwolf = "&cnull";
-			String wbay = "&cnull";
+			String wtom = "&cnull";
 			String wendi = "&cnull";
 			
 			for (Player ssp: Bukkit.getOnlinePlayers()) {	
-	        	if(ssp.getName().equals("BaySirak")) {
-	        		bay = "&7(&2&lONLINE&7)";
-	        		wbay = ssp.getWorld().getName();
+	        	if(ssp.getName().equals("Tominodo")) {
+	        		tom = "&7(&2&lONLINE&7)";
+	        		wtom = ssp.getWorld().getName();
 	        		continue;
 	        	}
 	        	if(ssp.getName().equals("EndivMan594")) {
@@ -57,17 +58,18 @@ public class helperteam {
 	        	}
 			}
 			
-			ItemCreatorAPI free = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-			free.setSkullType(SkullType.PLAYER);
-			free.setOwner("Booperr");
-			free.setDisplayName("&a&lVolná pozice");
-			free.addLore("&6Hledáme..");
+			ItemCreatorAPI Tominodo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+			Tominodo.setSkullType(SkullType.PLAYER);
+			Tominodo.setOwner("Tominodo");
+			Tominodo.setDisplayName("&e&lTominodo");
+			Tominodo.addLore("&aPozice: &5Zk.Helper");
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
+					tominodos.tominodo(p);
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(20, free.create(), ops);
+			b.setItem(29, Tominodo.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			
@@ -75,7 +77,7 @@ public class helperteam {
 			wolfs.setSkullType(SkullType.PLAYER);
 			wolfs.setOwner("Wolfik135");
 			wolfs.setDisplayName("&e&lWolfik135");
-			wolfs.addLore("&aPozice: &5.Helper");
+			wolfs.addLore("&aPozice: &5Helper");
 			wolfs.addLore("&aStatus: " + wolf);
 			wolfs.addLore("&aSvět: &7" + wwolf);
 			ops.put(Options.RUNNABLE, new Runnable() {
@@ -84,7 +86,7 @@ public class helperteam {
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(22, wolfs.create(), ops);
+			b.setItem(21, wolfs.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			
@@ -101,7 +103,22 @@ public class helperteam {
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(24, end.create(), ops);
+			b.setItem(23, end.create(), ops);
+			
+			ops.remove(Options.RUNNABLE);
+			
+			ItemCreatorAPI palec = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+			palec.setSkullType(SkullType.PLAYER);
+			palec.setOwner("P4LKO");
+			palec.setDisplayName("&e&P4LKO");
+			palec.addLore("&aPozice: &5Zk.Helper");
+			ops.put(Options.RUNNABLE, new Runnable() {
+				public void run() {
+					palko.p4lko(p);
+					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				}
+			});
+			b.setItem(33, palec.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			

@@ -14,12 +14,12 @@ import me.Straiker123.HoverMessage.ClickAction;
 import me.Straiker123.ItemCreatorAPI;
 import me.Straiker123.TheAPI;
 
-public class bayis {
+public class tominodos {
 
-	public static void bays(Player p) {
+	public static void tominodo(Player p) {
 		GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 		b.setSize(27);
-		b.setTitle("&e&lBaySirak");
+		b.setTitle("&e&lTominodo");
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
 		
@@ -28,7 +28,7 @@ public class bayis {
 		msg.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg BaySirak ").send(p);
+				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Tominodo ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
@@ -41,7 +41,7 @@ public class bayis {
 		mail.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání mail zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send BaySirak ").send(p);
+				new HoverMessage("&6Klikni pro poslání mail zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send Tominodo ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
