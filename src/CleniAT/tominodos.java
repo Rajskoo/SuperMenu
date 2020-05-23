@@ -28,7 +28,7 @@ public class tominodos {
 		msg.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Tominodo ").send(p);
+				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráči Tominodo").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg Tominodo ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
@@ -41,7 +41,7 @@ public class tominodos {
 		mail.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání mail zprávy hráči BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send Tominodo ").send(p);
+				new HoverMessage("&6Klikni pro poslání mail zprávy hráči Tominodo").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send Tominodo ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}

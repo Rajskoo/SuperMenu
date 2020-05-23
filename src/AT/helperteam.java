@@ -33,9 +33,11 @@ public class helperteam {
 			ops.put(Options.CANT_BE_TAKEN, true);
 			
 			String tom = "&7(&4&lOFFLINE&7)";
+			String palino = "&7(&4&lOFFLINE&7)";
 			String endi = "&7(&4&lOFFLINE&7)";
 			String wolf = "&7(&4&lOFFLINE&7)";
 			String wwolf = "&cnull";
+			String wpalko = "&cnull";
 			String wtom = "&cnull";
 			String wendi = "&cnull";
 			
@@ -63,6 +65,8 @@ public class helperteam {
 			Tominodo.setOwner("Tominodo");
 			Tominodo.setDisplayName("&e&lTominodo");
 			Tominodo.addLore("&aPozice: &5Zk.Helper");
+			Tominodo.addLore("&aStatus: " + tom);
+			Tominodo.addLore("&aSvět: &7" + wtom);
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
 					tominodos.tominodo(p);
@@ -111,7 +115,9 @@ public class helperteam {
 			palec.setSkullType(SkullType.PLAYER);
 			palec.setOwner("P4LKO");
 			palec.setDisplayName("&e&P4LKO");
-			palec.addLore("&aPozice: &5Zk.Helper");
+			palec.addLore("&aPozice: &5Helper");
+			palec.addLore("&aStatus: " + palino);
+			palec.addLore("&aSvět: &7" + wpalko);
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
 					palko.p4lko(p);

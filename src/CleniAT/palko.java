@@ -28,7 +28,7 @@ public class palko {
 		msg.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráèi BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg P4LKO ").send(p);
+				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráèi P4LKO").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg P4LKO ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
@@ -41,7 +41,7 @@ public class palko {
 		mail.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání mail zprávy hráèi BaySirak").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send P4LKO ").send(p);
+				new HoverMessage("&6Klikni pro poslání mail zprávy hráèi P4LKO").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send P4LKO ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
