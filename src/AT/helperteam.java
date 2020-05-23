@@ -32,10 +32,10 @@ public class helperteam {
 			HashMap<Options, Object> ops = new HashMap<Options, Object>();
 			ops.put(Options.CANT_BE_TAKEN, true);
 			
-			String tom = "&7(&4&lOFFLINE&7)";
-			String palino = "&7(&4&lOFFLINE&7)";
-			String endi = "&7(&4&lOFFLINE&7)";
-			String wolf = "&7(&4&lOFFLINE&7)";
+			String tom = "&4&lOFFLINE";
+			String palino = "&4&lOFFLINE";
+			String endi = "&4&lOFFLINE";
+			String wolf = "&4&lOFFLINE";
 			String wwolf = "&cnull";
 			String wpalko = "&cnull";
 			String wtom = "&cnull";
@@ -43,19 +43,24 @@ public class helperteam {
 			
 			for (Player ssp: Bukkit.getOnlinePlayers()) {	
 	        	if(ssp.getName().equals("Tominodo")) {
-	        		tom = "&7(&2&lONLINE&7)";
+	        		tom = "&2&lONLINE";
 	        		wtom = ssp.getWorld().getName();
 	        		continue;
 	        	}
 	        	if(ssp.getName().equals("EndivMan594")) {
-	        		endi = "&7(&2&lONLINE&7)";
+	        		endi = "&2&lONLINE";
 	        		wendi = ssp.getWorld().getName();
 	        		continue;
 	        	}
 	        	
 	        	if(ssp.getName().equals("Wolfik135")) {
-	        		wolf = "&7(&2&lONLINE&7)";
+	        		wolf = "&2&lONLINE";
 	        		wwolf = ssp.getWorld().getName();
+	        		continue;
+	        	}
+	        	if(ssp.getName().equals("P4LKO")) {
+	        		palino = "&2&lONLINE";
+	        		wpalko = ssp.getWorld().getName();
 	        		continue;
 	        	}
 			}

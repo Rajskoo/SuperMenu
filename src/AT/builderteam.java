@@ -27,26 +27,26 @@ public class builderteam {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
 		
-		String trami = "&7(&4&lOFFLINE&7)";
-		String kitini = "&7(&4&lOFFLINE&7)";
-		String blood = "&7(&4&lOFFLINE&7)";
+		String trami = "&4&lOFFLINE";
+		String kitini = "&4&lOFFLINE";
+		String blood = "&4&lOFFLINE";
 		String wkit = "&cnull";
 		String wtrami = "&cnull";
 		String wblood = "&cnull";
 		
 		for (Player ssp: Bukkit.getOnlinePlayers()) {	
         	if(ssp.getName().equals("Tramicful")) {
-        		trami = "&7(&2&lONLINE&7)";
+        		trami = "&2&lONLINE";
         		wtrami = ssp.getWorld().getName();
         		continue;
         	}
         	if(ssp.getName().equals("Kethanee")) {
-        		kitini = "&7(&2&lONLINE&7)";
+        		kitini = "&2&lONLINE";
         		wkit = ssp.getWorld().getName();
         		continue;
         	}
         	if(ssp.getName().equals("Bloodmmureder")) {
-        		blood = "&7(&2&lONLINE&7)";
+        		blood = "&2&lONLINE";
         		wblood = ssp.getWorld().getName();
         		continue;
         	}

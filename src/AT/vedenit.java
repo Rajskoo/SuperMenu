@@ -9,7 +9,6 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import CleniAT.bobko;
-import CleniAT.hoff;
 import CleniAT.houska;
 import CleniAT.rajskooo;
 import me.Straiker123.GUICreatorAPI;
@@ -28,33 +27,26 @@ public class vedenit {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
 		
-		String hoffi = "&7(&4&lOFFLINE&7)";
-		String houskaaa = "&7(&4&lOFFLINE&7)";
-		String rajsko = "&7(&4&lOFFLINE&7)";
-		String bobik = "&7(&4&lOFFLINE&7)";
-		String whoff = "&cnull";
+		String houskaaa = "&4&lOFFLINE&";
+		String rajsko = "&4&lOFFLINE&";
+		String bobik = "&4&lOFFLINE&";
 		String whouska = "&cnull";
 		String wrajsko = "&cnull";
 		String wbob = "&cnull";
 		
 		for (Player ssp: Bukkit.getOnlinePlayers()) {	
-        	if(ssp.getName().equals("Hoff")) {
-        		hoffi = "&7(&2&lONLINE&7)";
-        		whoff = ssp.getWorld().getName();
-        		continue;
-        	}
         	if(ssp.getName().equals("Houska02")) {
-        		houskaaa = "&7(&2&lONLINE&7)";
+        		houskaaa = "&2&lONLINE";
         		whouska = ssp.getWorld().getName();
         		continue;
         	}
         	if(ssp.getName().equals("_ItsRajsko_")) {
-        		rajsko = "&7(&2&lONLINE&7)";
+        		rajsko = "&2&lONLINE";
         		wrajsko = ssp.getWorld().getName();
         		continue;
         	}
         	if(ssp.getName().equals("BobaFett")) {
-        		bobik = "&7(&2&lONLINE&7)";
+        		bobik = "&2&lONLINE";
         		wbob = ssp.getWorld().getName();
         		continue;
         	}
@@ -62,8 +54,7 @@ public class vedenit {
 		
 		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		houskaa.setSkullType(SkullType.PLAYER);
-		houskaa.setOwner("Hoff");
-		houskaa.setOwnerFromWeb("https://minecraft-heads.com/custom-heads/miscellaneous/29829-discord");
+		houskaa.setOwner("Houska02");
 		houskaa.setDisplayName("&e&lHouska02");
 		houskaa.addLore("&aPozice: &3Majitel");
 		houskaa.addLore("&aStatus: " + houskaaa);

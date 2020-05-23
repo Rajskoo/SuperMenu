@@ -29,26 +29,27 @@ public class ostatni {
 				HashMap<Options, Object> ops = new HashMap<Options, Object>();
 				ops.put(Options.CANT_BE_TAKEN, true);
 				
-				String saelo = "&7(&4&lOFFLINE&7)";
-				String theorsy = "&7(&4&lOFFLINE&7)";
+				String saelo = "&4&lOFFLINE";
+				String hoffko = "&4&lOFFLINE";
+				String theorsy = "&4&lOFFLINE";
 				String wsaelo = "&cnull";
 				String worsy = "&cnull";
 				String whoffik = "&cnull";
-				String hoffko = "&7(&4&lOFFLINE&7)";
+
 				
 				for (Player ssp: Bukkit.getOnlinePlayers()) {	
 		        	if(ssp.getName().equals("Saelo")) {
-		        		saelo = "&7(&2&lONLINE&7)";
+		        		saelo = "&2&lONLINE";
 		        		wsaelo = ssp.getWorld().getName();
 		        		continue;
 		        	}
 		        	if(ssp.getName().equals("TheOrsy")) {
-		        		theorsy = "&7(&2&lONLINE&7)";
+		        		theorsy = "&2&lONLINE";
 		        		worsy = ssp.getWorld().getName();
 		        		continue;
 		        	}
 		        	if(ssp.getName().equals("Hoff")) {
-		        		hoffko = "&7(&2&lONLINE&7)";
+		        		hoffko = "&2&lONLINE";
 		        		whoffik = ssp.getWorld().getName();
 		        		continue;
 		        	}
