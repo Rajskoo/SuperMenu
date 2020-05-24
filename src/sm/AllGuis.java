@@ -47,6 +47,8 @@ public class AllGuis {
 			public void run() {
 				ATGUI(p);
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				p.sendMessage("možno funguje, možno nie, uvidíme xD");
+
 			}
 		});
 		gui.setItem(12, AT.create(), opt);

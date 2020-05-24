@@ -12,6 +12,8 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
+import me.Straiker123.TheAPI;
+
 
 
 public class Menu implements CommandExecutor, TabCompleter {
@@ -26,7 +28,7 @@ public class Menu implements CommandExecutor, TabCompleter {
 		
 		if (args.length == 0) {
 			AllGuis.main((Player)s);
-			main.sendActionBar(p, prefix + "&eOtevíraní menu...");
+			TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu...");
 			p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 			return true;
 		}
@@ -34,35 +36,35 @@ public class Menu implements CommandExecutor, TabCompleter {
 		if (args.length == 1) {
 			if (args[0].equalsIgnoreCase("at")) {
 				AllGuis.ATGUI((Player)s);
-				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&6AdminTeam&7)");
+				TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&6AdminTeam&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("navody")) {
 				AllGuis.navod((Player)s);
-				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&6Návody&7)");
+				TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&6Návody&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("vip")) {
 				AllGuis.vip((Player)s);
-				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&VIP&7)");
+				TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&VIP&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("pravidla")) {
 				AllGuis.Rules((Player)s);
-				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&Pravidla&7)");
+				TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&Pravidla&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
 			
 			if (args[0].equalsIgnoreCase("info")) {
 				AllGuis.info((Player)s);
-				main.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&Info&7)");
+				TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&Info&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;
 			}
