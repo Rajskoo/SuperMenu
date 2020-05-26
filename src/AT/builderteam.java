@@ -26,7 +26,9 @@ public class builderteam {
 		b.setTitle("&2&lBuilder Tým");
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
-		
+		//u koho jsem
+		//houskad :D hezky on :D nmz dík :D teď se budu dívat jak to děláš :)))))
+		//jistě XD ale ještě to musí někdo udělat rajčeti :D
 		String trami = "&4&lOFFLINE";
 		String kitini = "&4&lOFFLINE";
 		String blood = "&4&lOFFLINE";
