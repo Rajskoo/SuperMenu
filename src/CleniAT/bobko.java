@@ -8,11 +8,11 @@ import org.bukkit.entity.Player;
 
 import AT.vedenit;
 import me.Straiker123.GUICreatorAPI;
+import me.Straiker123.GUICreatorAPI.Options;
 import me.Straiker123.HoverMessage;
+import me.Straiker123.HoverMessage.ClickAction;
 import me.Straiker123.ItemCreatorAPI;
 import me.Straiker123.TheAPI;
-import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.HoverMessage.ClickAction;
 
 public class bobko {
 

@@ -27,9 +27,9 @@ public class vedenit {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
 		
-		String houskaaa = "&4&lOFFLINE&";
-		String rajsko = "&4&lOFFLINE&";
-		String bobik = "&4&lOFFLINE&";
+		String houskaaa = "&4&lOFFLINE";
+		String rajsko = "&4&lOFFLINE";
+		String bobik = "&4&lOFFLINE";
 		String whouska = "&cnull";
 		String wrajsko = "&cnull";
 		String wbob = "&cnull";

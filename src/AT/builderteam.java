@@ -39,7 +39,7 @@ public class builderteam {
 		ItemCreatorAPI mat = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		mat.setSkullType(SkullType.PLAYER);
 		mat.setOwner("_Matesak_");
-		mat.setDisplayName("&e&_Matesak_");
+		mat.setDisplayName("&e&l_Matesak_");
 		mat.addLore("&aPozice: &2Zk.Builder");
 		mat.addLore("&aStatus: " + matisek);
 		mat.addLore("&aSvět: &7" + wmat);
