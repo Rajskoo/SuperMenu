@@ -20,7 +20,7 @@ import me.Straiker123.TheAPI.SudoType;
 
 @SuppressWarnings("deprecation")
 public class AllGuis {
-
+	
 	main l = main.instance;
 	public static void main(Player p) {
 		GUICreatorAPI gui = TheAPI.getGUICreatorAPI(p);
@@ -47,13 +47,23 @@ public class AllGuis {
 			public void run() {
 				ATGUI(p);
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-				p.sendMessage("možno funguje, možno nie, uvidíme xD");
-
 			}
 		});
 		gui.setItem(12, AT.create(), opt);
 		
 		opt.remove(Options.RUNNABLE);
+		
+		ItemCreatorAPI stats = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+		stats.setDisplayName("&6&lT&f&lvoje &6&lS&f&ltaty");
+		stats.setSkullType(SkullType.PLAYER);
+		stats.setOwner(p.getName());
+		stats.addLore("&6Nick: &e%player_displayname%");
+		stats.addLore("&6Ping: &e%player_ping%");
+		stats.addLore("&6Rank: &e%luckperms_groups%");
+		stats.addLore("&6Peníze: &e%money%");
+		
+		gui.setItem(18, stats.create(), opt);
+		
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
 				TheAPI.sendMessage("&8-=-=-=-=-=-=-=-=-=-=- &6&lV&f&lote &8-=-=-=-=-=-=-=-=-=-=-", p);
