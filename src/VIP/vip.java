@@ -6,10 +6,11 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
-import me.Straiker123.GUICreatorAPI.Options;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 
 public class vip {
 
@@ -17,6 +18,9 @@ public class vip {
 		GUICreatorAPI vp = TheAPI.getGUICreatorAPI(p);
 		vp.setSize(54);
 		vp.setTitle("&a&lVIP");
+		vp.open();
+		new Tasker() {
+			public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 	    ops.put(Options.CANT_BE_TAKEN, true);
 	    
@@ -73,8 +77,7 @@ public class vip {
 			}
 		});
 		vp.setItem(49, back.create(), ops);
-		
-		vp.open();
+			}}.runAsync();
 	}
 	
 }

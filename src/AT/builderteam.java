@@ -4,15 +4,15 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import CleniAT.matimat;
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
+import CleniAT.UserAT;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 import sm.AllGuis;
 
 @SuppressWarnings("deprecation")
@@ -22,30 +22,22 @@ public class builderteam {
 		GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 		b.setSize(54);
 		b.setTitle("&2&lBuilder Tým");
+		b.open();
+
+		new Tasker() {
+		public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
-		
-		String matisek = "&4&lOFFLINE";
-		String wmat = "&cnull";
-		
-		for (Player ssp: Bukkit.getOnlinePlayers()) {	
-        	if(ssp.getName().equals("Tramicful")) {
-        		matisek = "&2&lONLINE";
-        		wmat = ssp.getWorld().getName();
-        		continue;
-        	}
-		}
-		
-		ItemCreatorAPI mat = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		mat.setSkullType(SkullType.PLAYER);
+		ItemCreatorAPI mat = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+		mat.setSkullType("PLAYER");
 		mat.setOwner("_Matesak_");
 		mat.setDisplayName("&e&l_Matesak_");
 		mat.addLore("&aPozice: &2Zk.Builder");
-		mat.addLore("&aStatus: " + matisek);
-		mat.addLore("&aSvět: &7" + wmat);
+		Player s = Bukkit.getPlayer("_Matesak_");
+		mat.addLore("&aStatus: " + (s!=null && s.getName().equals("_Matesak_") ? "Online" : "Offline"));
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				matimat.matesak(p);
+				new UserAT("_Matesak_",p); //oprav všude oka
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});
@@ -74,10 +66,6 @@ public class builderteam {
 			}
 		});
 		b.setItem(49, back.create(), ops);
-		
-		b.open();
+		}}.runAsync();
 	}
-
-	
-
 }

@@ -4,17 +4,15 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import CleniAT.hoff;
-import CleniAT.orsyy;
-import CleniAT.saeloo;
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
-import me.Straiker123.GUICreatorAPI.Options;
+import CleniAT.UserAT;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 import sm.AllGuis;
 
 @SuppressWarnings("deprecation")
@@ -26,45 +24,21 @@ public class ostatni {
 				GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 				b.setSize(54);
 				b.setTitle("&6&lOstatní členové AT");
+				b.open();
+				new Tasker() {
+				public void run() {
 				HashMap<Options, Object> ops = new HashMap<Options, Object>();
 				ops.put(Options.CANT_BE_TAKEN, true);
-				
-				String saelo = "&4&lOFFLINE";
-				String hoffko = "&4&lOFFLINE";
-				String theorsy = "&4&lOFFLINE";
-				String wsaelo = "&cnull";
-				String worsy = "&cnull";
-				String whoffik = "&cnull";
-
-				
-				for (Player ssp: Bukkit.getOnlinePlayers()) {	
-		        	if(ssp.getName().equals("Saelo")) {
-		        		saelo = "&2&lONLINE";
-		        		wsaelo = ssp.getWorld().getName();
-		        		continue;
-		        	}
-		        	if(ssp.getName().equals("TheOrsy")) {
-		        		theorsy = "&2&lONLINE";
-		        		worsy = ssp.getWorld().getName();
-		        		continue;
-		        	}
-		        	if(ssp.getName().equals("Hoff")) {
-		        		hoffko = "&2&lONLINE";
-		        		whoffik = ssp.getWorld().getName();
-		        		continue;
-		        	}
-				}
-				
-				ItemCreatorAPI seal = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-				seal.setSkullType(SkullType.PLAYER);
+				ItemCreatorAPI seal = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+				seal.setSkullType("PLAYER");
 				seal.setOwner("Saelo");
 				seal.setDisplayName("&e&lSaelo");
 				seal.addLore("&aPozice: &6Eventer");
-				seal.addLore("&aStatus: " + saelo);
-				seal.addLore("&aSvět: &7" + wsaelo);
+				Player s = Bukkit.getPlayer("Saelo");
+				seal.addLore("&aStatus: " + (s!=null && s.getName().equals("Saelo") ? "Online" : "Offline"));
 				ops.put(Options.RUNNABLE, new Runnable() {
 					public void run() {
-						saeloo.sealo(p);
+						new UserAT("Saelo", p);
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 					}
 				});
@@ -72,16 +46,16 @@ public class ostatni {
 				
 				ops.remove(Options.RUNNABLE);
 				
-				ItemCreatorAPI orsy = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-				orsy.setSkullType(SkullType.PLAYER);
+				ItemCreatorAPI orsy = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+				orsy.setSkullType("PLAYER");
 				orsy.setOwner("TheOrsy");
 				orsy.setDisplayName("&e&lTheOrsy");
 				orsy.addLore("&aPozice: &cZakladatel");
-				orsy.addLore("&aStatus: " + theorsy);
-				orsy.addLore("&aSvět: &7" + worsy);
+				s = Bukkit.getPlayer("TheOrsy");
+				orsy.addLore("&aStatus: " + (s!=null && s.getName().equals("TheOrsy") ? "Online" : "Offline"));
 				ops.put(Options.RUNNABLE, new Runnable() {
 					public void run() {
-						orsyy.torsy(p);
+						new UserAT("TheOrsy", p);
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 					}
 				});
@@ -89,16 +63,16 @@ public class ostatni {
 				
 				ops.remove(Options.RUNNABLE);
 				
-				ItemCreatorAPI hoffo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-				hoffo.setSkullType(SkullType.PLAYER);
+				ItemCreatorAPI hoffo = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+				hoffo.setSkullType("PLAYER");
 				hoffo.setOwner("Hoff");
 				hoffo.setDisplayName("&e&lHoff");
 				hoffo.addLore("&aPozice: &6Zakladatel");
-				hoffo.addLore("&aStatus: " + hoffko);
-				hoffo.addLore("&aSvět: &7" + whoffik);
+				s = Bukkit.getPlayer("Hoff");
+				hoffo.addLore("&aStatus: " + (s!=null && s.getName().equals("Hoff") ? "Online" : "Offline"));
 				ops.put(Options.RUNNABLE, new Runnable() {
 					public void run() {
-						hoff.hoffik(p);
+						new UserAT("Hoff", p);
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 					}
 				});
@@ -128,8 +102,7 @@ public class ostatni {
 					}
 				});
 				b.setItem(49, back.create(), ops);
-				
-				b.open();
+				}}.runAsync();
 			}
 	
 }

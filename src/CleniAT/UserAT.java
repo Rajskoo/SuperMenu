@@ -6,20 +6,23 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import AT.builderteam;
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.HoverMessage;
-import me.Straiker123.HoverMessage.ClickAction;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
+import AT.vedenit;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Other.HoverMessage;
+import me.DevTec.Other.HoverMessage.ClickAction;
+import me.DevTec.Scheduler.Tasker;
 
-public class matimat {
-
-	public static void matesak(Player p) {
+public class UserAT {
+	public UserAT(String user, Player p) {
 		GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 		b.setSize(27);
-		b.setTitle("&e&l_Matesak_");
+		b.setTitle("&e&l"+user);
+		b.open();
+		new Tasker() {
+			public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
 		
@@ -28,25 +31,25 @@ public class matimat {
 		msg.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy hráèi _Matesak_").setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg _Matesak_ ").send(p);
+				new HoverMessage("&6Klikni pro poslání soukromé zprávy adminovi "+user).setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg "+user+" ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
 		});
 		b.setItem(11, msg.create(), ops);
-		
+		 //proè máš class pro každého admina XDD 
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI mail = TheAPI.getItemCreatorAPI(Material.BOOK);
 		mail.setDisplayName("&3Pošli mail zprávu.");
 		mail.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání mail zprávy hráèi _Matesak_").setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send _Matesak_ ").send(p);
+				new HoverMessage("&6Klikni pro poslání mail zprávy adminovi "+user).setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send "+user+" ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
 		});
-		b.setItem(15, mail.create(), ops);
+		b.setItem(15, mail.create(), ops);//nooooooooooooo :D
 		
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
@@ -72,14 +75,12 @@ public class matimat {
 		back.setDisplayName("&4&lBack");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				builderteam.buildert(p);
+				vedenit.vedeni(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
 		b.setItem(22, back.create(), ops);
-		
-		b.open();
+			}}.runAsync();
 	}
 	
 }
-	

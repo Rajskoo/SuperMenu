@@ -12,11 +12,12 @@ import AT.builderteam;
 import AT.helperteam;
 import AT.ostatni;
 import AT.vedenit;
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
-import me.Straiker123.TheAPI.SudoType;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.TheAPI.SudoType;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 
 @SuppressWarnings("deprecation")
 public class AllGuis {
@@ -26,7 +27,9 @@ public class AllGuis {
 		GUICreatorAPI gui = TheAPI.getGUICreatorAPI(p);
 		gui.setSize(54);
 		gui.setTitle("&6&lM&f&lONEYAK'S &6&lM&f&lENU");
-		
+		gui.open();//udělej si to tu s tím taskerem
+		new Tasker() {
+			public void run() {
 		HashMap<Options, Object> opt = new HashMap<Options, Object>();
 		opt.put(Options.CANT_BE_TAKEN, true);
 		
@@ -43,6 +46,8 @@ public class AllGuis {
 		
 		ItemCreatorAPI AT = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
 		AT.setDisplayName("&6&lA&f&ldmin&6&lT&f&leam");
+		AT.setSkullType(SkullType.PLAYER);
+		AT.setOwnerFromWeb("http://textures.minecraft.net/texture/11bb4266a22dcbc4607621b9c768932950160c2b96708267d707d44551378cd7");
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
 				ATGUI(p);
@@ -52,17 +57,6 @@ public class AllGuis {
 		gui.setItem(12, AT.create(), opt);
 		
 		opt.remove(Options.RUNNABLE);
-		
-		ItemCreatorAPI stats = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		stats.setDisplayName("&6&lT&f&lvoje &6&lS&f&ltaty");
-		stats.setSkullType(SkullType.PLAYER);
-		stats.setOwner(p.getName());
-		stats.addLore("&6Nick: &e%player_displayname%");
-		stats.addLore("&6Ping: &e%player_ping%");
-		stats.addLore("&6Rank: &e%luckperms_groups%");
-		stats.addLore("&6Peníze: &e%money%");
-		
-		gui.setItem(18, stats.create(), opt);
 		
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
@@ -127,14 +121,14 @@ public class AllGuis {
 		dc.setSkullType(SkullType.PLAYER);
 		dc.setOwnerFromWeb("http://textures.minecraft.net/texture/4d42337be0bdca2128097f1c5bb1109e5c633c17926af5fb6fc20000011aeb53");
 		dc.setDisplayName("&9&lDiscord");
-		dc.addLore("&2&lAno &6m&fáme &9Discord");
-		dc.addLore("&5https://discord.gg/t2WGpS9");
-		dc.addLore("&7Klikni pro zaslání odkazu do chatu...");
+		dc.addLore("&aÁno, máme i Discord!");
+		dc.addLore("&6Přijď si pokecat, jen tak s kamarádmi :)");
+		dc.addLore("&eKlikni pro zaslání odkazu do chatu...");
 		opt.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
 				p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
 				p.closeInventory();
-				TheAPI.sendMessage("&6&lD&f&liscord : &5https://discord.gg/t2WGpS9", p);
+				TheAPI.sendMessage("&6&lD&f&liscord: &5https://discord.gg/t2WGpS9", p);
 			}
 		});
 		gui.setItem(26, dc.create(), opt);
@@ -162,15 +156,16 @@ public class AllGuis {
 			}
 		});
 		gui.setItem(49, back.create(), opt);
-		
-		gui.open();
+			}}.runAsync();
 	}
 	
 	public static void ATGUI(Player p) {
 		GUICreatorAPI atgui = TheAPI.getGUICreatorAPI(p);
 		atgui.setSize(54);
 		atgui.setTitle("&6&lA&f&lDMIN &6&lT&f&lEAM");
-		
+		atgui.open();//udělej si to tu s tím taskerem
+		new Tasker() {
+			public void run() {
         ItemCreatorAPI vedeni = TheAPI.getItemCreatorAPI(Material.DIAMOND_HELMET);
         vedeni.setDisplayName("&c&lVedení serveru");
         HashMap<Options, Object> ops = new HashMap<Options, Object>();
@@ -242,43 +237,45 @@ public class AllGuis {
 			}
 		});
 		atgui.setItem(49, back.create(), bakk);
-		
-		atgui.open();
+			}}.runAsync();//pokračuj zde
      }
 	
 	public static void Rules(Player p) {
 	GUICreatorAPI rules = TheAPI.getGUICreatorAPI(p);
 	rules.setSize(54);
 	rules.setTitle("&6&lP&f&lRAVIDLA");
+	rules.open();
+	new Tasker() {
+	public void run() {
 	HashMap<Options, Object> ops = new HashMap<Options, Object>();
     ops.put(Options.CANT_BE_TAKEN, true);
     
     ItemCreatorAPI build = TheAPI.getItemCreatorAPI(Material.BRICKS);
     build.setDisplayName("&a&lPravidla stavění");
-    build.addLore("&8&l• &6R&fesky &6n&feaktivních &6h&fráčů &6b&fudou &6o&fdstraněny.");
-    build.addLore("&8&l• &6J&fe &6z&fakázáno &6v&fypalovat &6v&fesnice, &6k&frajiny.");
-    build.addLore("&8&l• &6J&fe &6z&fakázáno &6s&ftavět &6n&feslušné &6s&ftavby.");
+    build.addLore("&8&l• &6Resky neaktivních hráčů budou odstraněny.");
+    build.addLore("&8&l• &6Je zakázáno vypalovat vesnice, krajiny.");
+    build.addLore("&8&l• &6Je zakázáno stavět neslušné stavby.");
     rules.setItem(24, build.create(), ops);
     
     ItemCreatorAPI tresty = TheAPI.getItemCreatorAPI(Material.SPAWNER);
     tresty.setDisplayName("&c&lFormy trestů");
-    tresty.addLore("&8&l• &6Z&fa &6p&forušení &6p&fravidel, &6m&fůže &6b&fýt &6u&fdělen &6J&fAIL.");
-    tresty.addLore("&8&l• &6D&falší &6m&fožností &6j&fe &6DOČASTNÝ&f/&6TRVALÝ &6z&fákaz n&fa &6s&ferver.");
-    tresty.addLore("&8&l• &6Z&fa &6t&frest &6l&fze &6p&fovažovat &6M&fUTE.");
+    tresty.addLore("&8&l• &6Za porušení pravidel, může být udělen &cJAIL.");
+    tresty.addLore("&8&l• &6Další možností je DOČASTNÝ&f/&6TRVALÝ zákaz na server.");
+    tresty.addLore("&8&l• &6Za trest lze považovat &cMUTE.");
     rules.setItem(13, tresty.create(), ops);
     
     ItemCreatorAPI chat = TheAPI.getItemCreatorAPI(Material.OAK_SIGN);
     chat.setDisplayName("&a&lPravidla chatu");
-    chat.addLore("&8&l• &6P&fovídej &6s&fi &6s&flušně, &6b&fez &6u&frážení s &6h&fráči i s &6Admin&fTeamem.");
-    chat.addLore("&8&l• &6D&fále &6j&fe &6z&fakázáno &6d&fiskutovat o &6u&frážlivých &6n&febo &6s&fexuálních &6t&fématech.");
-    chat.addLore("&8&l• &6T&faké &6d&fělat &6r&feklamu, &6z&fahlcovat &6c&fhat, &6o&fbtěžovat &6o&fstatní &6h&fráče a &6p&fod..");
+    chat.addLore("&8&l• &6Povídej si slušně, bez urážení s hráči i s &6Admin&fTeamem.");
+    chat.addLore("&8&l• &6Dále je zakázáno diskutovat o urážlivých nebo sexuálních tématech.");
+    chat.addLore("&8&l• &6Také dělat reklamu, zahlcovat chat, obtěžovat ostatní hráče a pod..");
     rules.setItem(20, chat.create(), ops);
     
     ItemCreatorAPI bugs = TheAPI.getItemCreatorAPI(Material.DAMAGED_ANVIL);
     bugs.setDisplayName("&6&lChyby a bugy");
-    bugs.addLore("&8&l• &4!! &6J&fakékoli &6z&fneužití &6b&fugu &6n&febo &6c&fhyby &6s&ferveur &6s&fe &6t&faké &6t&frestá&4 !!");
-    bugs.addLore("&8&l• &6P&fokud &6n&fějakou &6c&fhybu &6n&faleznete &6p&frosím &6n&fahlašte &6j&fi&6.&f.");
-    bugs.addLore("&8&l• &6Z&fa &6n&fahlášení &6c&fhyby &6d&fostanete &6o&fdměnu&6!");
+    bugs.addLore("&8&l• &4!! &6Jakékoli zneužití bugu nebo chyby serveru se také trestá&4 !!");
+    bugs.addLore("&8&l• &6Pokud nějakou chybu naleznete prosím nahlašte ji..");
+    bugs.addLore("&8&l• &6Za nahlášení chyby dostanete odměnu!");
     
     rules.setItem(22, bugs.create(), ops);
     
@@ -291,7 +288,24 @@ public class AllGuis {
     		rules.close();
     	}
     });
-    rules.setItem(40, allrules.create(), ops);
+    rules.setItem(39, allrules.create(), ops);
+    
+    ops.remove(Options.RUNNABLE);
+    
+    ItemCreatorAPI eventrules = TheAPI.getItemCreatorAPI(Material.MAP);
+    eventrules.setDisplayName("&6&lPravidla Eventů");
+    eventrules.addLore("&7(&c&lKlikni&7)");
+    ops.put(Options.RUNNABLE, new Runnable() {
+
+		@Override
+		public void run() {
+			AllGuis.Erules(p);
+			p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+		}
+    	
+    });
+    
+    rules.setItem(41, eventrules.create(), ops);
     
     ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
 	rules.setItem(0, okraj.create(), ops);
@@ -315,15 +329,94 @@ public class AllGuis {
 		}
 	});
 	rules.setItem(49, back.create(), ops);
+	}}.runAsync();
+	}
 	
-	rules.open();
-	
+	public static void Erules(Player p) {
+		GUICreatorAPI erules = TheAPI.getGUICreatorAPI(p);
+		erules.setSize(54);
+		erules.setTitle("&6&lE&f&lVENT PRAVIDLA");
+		erules.open();
+		new Tasker() {
+			public void run() {
+		HashMap<Options, Object> ops = new HashMap<Options, Object>();
+	    ops.put(Options.CANT_BE_TAKEN, true);
+	    
+	    ItemCreatorAPI parkour = TheAPI.getItemCreatorAPI(Material.LEATHER_BOOTS);
+	    parkour.setDisplayName("&6&lP&f&larkour");
+	    parkour.addLore("&7(&c&lKlikni&7)");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+
+			@Override
+			public void run() {
+				TheAPI.msg("&8---------------------------", p);
+				TheAPI.msg("&c1. &6Vyhráva ten, kdo první doskáče do cíle.", p);
+				TheAPI.msg("&c2. &6Zákaz /fly, /sethome, /tpa...", p);
+				TheAPI.msg("&c3. &6Nepoužívat Ender Perly.", p);
+				TheAPI.msg("&6Neznalost pravidel neomlouváme, dostanete trest.", p);
+				TheAPI.msg("&8---------------------------", p);
+				erules.close();
+			}
+	    	
+	    }); 
+	    erules.setItem(20, parkour.create(), ops);
+	    
+	    ops.remove(Options.RUNNABLE);
+	    
+	    ItemCreatorAPI kopajda = TheAPI.getItemCreatorAPI(Material.IRON_SHOVEL);
+	    kopajda.setDisplayName("&6&lK&f&lopajda");
+	    kopajda.addLore("&7(&c&lKlikni&7)");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+
+			@Override
+			public void run() {
+				TheAPI.msg("&8---------------------------", p);
+				TheAPI.msg("&c1. &6Zákaz /fly.", p);
+				TheAPI.msg("&c2. &6Používat pouze &cŽELEZNOU LOPATKU!", p);
+				TheAPI.msg("&c3. &6Nepodkopávat hráče nad sebou!", p);
+				TheAPI.msg("&c4. &6Neobkopávat se!", p);
+				TheAPI.msg("&c5. &6Nepoužívat Ender Perly.", p);
+				TheAPI.msg("&6Neznalost pravidel neomlouváme, dostanete trest.", p);
+				TheAPI.msg("&8---------------------------", p);
+				erules.close();
+			}
+	    	
+	    }); 
+	    erules.setItem(22, kopajda.create(), ops);
+	    
+	    ops.remove(Options.RUNNABLE);
+	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
+	    erules.setItem(0, okraj.create(), ops);
+	    erules.setItem(1, okraj.create(), ops);
+	    erules.setItem(7, okraj.create(), ops);
+	    erules.setItem(8, okraj.create(), ops);
+		erules.setItem(17, okraj.create(), ops);
+		erules.setItem(44, okraj.create(), ops);
+		erules.setItem(53, okraj.create(), ops);
+		erules.setItem(52, okraj.create(), ops);
+		erules.setItem(46, okraj.create(), ops);
+		erules.setItem(45, okraj.create(), ops);
+		erules.setItem(36, okraj.create(), ops);
+		erules.setItem(9, okraj.create(), ops);
+		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
+		back.setDisplayName("&4&lBack");
+		ops.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				AllGuis.main(p);
+				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
+			}
+		});
+		erules.setItem(49, back.create(), ops);
+			}}.runAsync();
 	}
 	
 	public static void navod(Player p) {
 		GUICreatorAPI navody = TheAPI.getGUICreatorAPI(p);
 		navody.setSize(54);
 		navody.setTitle("&6&lN&f&lÁVODY");
+		navody.open();
+		new Tasker() {
+			public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 	    ops.put(Options.CANT_BE_TAKEN, true);
 	    
@@ -335,7 +428,7 @@ public class AllGuis {
 	    reska.addLore("&3/res pdel &8- &6Odebere hráči práva do residenci.");
 	    reska.addLore("&3/res tp <res> &8- &6Teleportuje Vás na residenci.");
 	    reska.addLore("&3/res set <flag> &8- &6Nastaví práva pro všechny.");
-	    reska.addLore("&6U nás se delá reska &9Drevěnou Tyčkou.");
+	    reska.addLore("&6U nás se dělá reska &9Drevěnou Tyčkou.");
 	    navody.setItem(20, reska.create(), ops);
 	    
 	    ItemCreatorAPI reskanavod = TheAPI.getItemCreatorAPI(Material.OAK_WOOD);
@@ -407,15 +500,17 @@ public class AllGuis {
 			}
 		});
 		navody.setItem(49, back.create(), ops);
+			}}.runAsync();
 		
-		navody.open();
 	}
 	
 	public static void vip(Player p) {
 		GUICreatorAPI vip = TheAPI.getGUICreatorAPI(p);
 		vip.setSize(54);
 		vip.setTitle("&6&lV&f&lI&6&lP");
-	
+		vip.open();
+		new Tasker() {
+			public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 	    ops.put(Options.CANT_BE_TAKEN, true);
 		
@@ -437,7 +532,7 @@ public class AllGuis {
 			public void run() {
 				VIP.supervip.SuperVIP(p);
 			}
-		});
+		});//v každé class dej CTRL + SHIFT + O
 		vip.setItem(22, sprvp.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
@@ -464,6 +559,15 @@ public class AllGuis {
 		vip.setItem(40, allVIP.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
+		
+		ItemCreatorAPI paypal = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
+		paypal.setSkullType(SkullType.PLAYER);
+		paypal.setOwnerFromWeb("http://textures.minecraft.net/texture/d4dcfcfaf770e563c0cfdcd306a185ea9423fe169ccacea6b9037f233a2bf5c");
+		paypal.setDisplayName("&6&lP&f&layPal");
+		paypal.addLore("&6Platbu PayPalem najdete na našem webu.");
+		
+		vip.setItem(4, paypal.create(), ops);
+		
 	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
 		vip.setItem(0, okraj.create(), ops);
 		vip.setItem(1, okraj.create(), ops);
@@ -486,14 +590,16 @@ public class AllGuis {
 			}
 		});
 		vip.setItem(49, back.create(), ops);
-		
-		vip.open();
+			}}.runAsync();
 	}
 	
 	public static void info(Player p) {
 		GUICreatorAPI i = TheAPI.getGUICreatorAPI(p);
 		i.setSize(54);
 		i.setTitle("&6&lI&f&lnfo");
+		i.open();
+		new Tasker() {
+			public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 	    ops.put(Options.CANT_BE_TAKEN, true);
 	    
@@ -559,7 +665,6 @@ public class AllGuis {
 			}
 		});
 		i.setItem(49, back.create(), ops);
-		
-		i.open();
+			}}.runAsync();
 	}
 }

@@ -6,10 +6,11 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
-import me.Straiker123.GUICreatorAPI.Options;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 
 public class supervip {
 
@@ -17,6 +18,9 @@ public class supervip {
 		GUICreatorAPI sprvp = TheAPI.getGUICreatorAPI(p);
 		sprvp.setSize(54);
 		sprvp.setTitle("&a&lVIP");
+		sprvp.open();
+		new Tasker() { 
+			public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 	    ops.put(Options.CANT_BE_TAKEN, true);
 	    
@@ -73,8 +77,7 @@ public class supervip {
 			}
 		});
 		sprvp.setItem(49, back.create(), ops);
-		
-		sprvp.open();
+			}}.runAsync();
 	}
 	
 }

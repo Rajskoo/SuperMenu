@@ -4,16 +4,15 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import CleniAT.palko;
-import CleniAT.wolfik;
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
+import CleniAT.UserAT;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 import sm.AllGuis;
 
 @SuppressWarnings("deprecation")
@@ -21,64 +20,65 @@ public class helperteam {
 
 	static String p1 = "&0[&6Msg&0] ";
 	static String p2 = "&0[&6Mail&0] ";
-	
+	//dal si to dodělej :P
 
 	public static void helpert(Player p) {
 			GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 			b.setSize(54);
 			b.setTitle("&5&lHelper Tým");
+			b.open();
+			//díky runasync můžeme odstranit laggs při načítání -> pokud se to nějak laggne či když to trvá dlouho tak se menu otevře hned a ten určitý item/y načítají postupně
+			new Tasker() { //viz Prison, top menu, oka
+			public void run() {
 			HashMap<Options, Object> ops = new HashMap<Options, Object>();
 			ops.put(Options.CANT_BE_TAKEN, true);
-			
-			String palino = "&4&lOFFLINE";
-			String wolf = "&4&lOFFLINE";
-			String wwolf = "&cnull";
-			String wpalko = "&cnull";
-			
-			for (Player ssp: Bukkit.getOnlinePlayers()) {	
-	        	if(ssp.getName().equals("Wolfik135")) {
-	        		wolf = "&2&lONLINE";
-	        		wwolf = ssp.getWorld().getName();
-	        		continue;
-	        	}
-	        	if(ssp.getName().equals("P4LKO")) {
-	        		palino = "&2&lONLINE";
-	        		wpalko = ssp.getWorld().getName();
-	        		continue;
-	        	}
-			}
-
-			ItemCreatorAPI wolfs = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-			wolfs.setSkullType(SkullType.PLAYER);
-			wolfs.setOwner("Wolfik135");
-			wolfs.setDisplayName("&e&lWolfik135");
-			wolfs.addLore("&aPozice: &5Helper");
-			wolfs.addLore("&aStatus: " + wolf);
-			wolfs.addLore("&aSvět: &7" + wwolf);
+			ItemCreatorAPI tomm = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+			tomm.setSkullType("PLAYER");
+			tomm.setOwner("Tomm99");
+			tomm.setDisplayName("&e&lTomm99");
+			tomm.addLore("&aPozice: &5Zk.Helper");
+			Player s = Bukkit.getPlayer("Tomm99");
+			tomm.addLore("&aStatus: " + (s!=null && s.getName().equals("Tomm99") ? "Online" : "Offline"));
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
-					wolfik.wolff(p);
+					new UserAT("Tomm99",p);
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(21, wolfs.create(), ops);
+			b.setItem(20, tomm.create(), ops);
+			
+			ops.remove(Options.RUNNABLE);
+			ItemCreatorAPI Pernik = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+			Pernik.setSkullType("PLAYER");
+			Pernik.setOwner("PRAZSKYpernik");
+			Pernik.setDisplayName("&e&lPRAZSKYpernik");
+			Pernik.addLore("&aPozice: &5Zk.Helper");
+			s = Bukkit.getPlayer("PRAZSKYpernik");
+			Pernik.addLore("&aStatus: " + (s!=null && s.getName().equals("PRAZSKYpernik") ? "Online" : "Offline"));
+			ops.put(Options.RUNNABLE, new Runnable() {
+				public void run() {
+					new UserAT("PRAZSKYpernik",p);
+					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+				}
+			});
+			b.setItem(22, Pernik.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			
-			ItemCreatorAPI palec = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-			palec.setSkullType(SkullType.PLAYER);
-			palec.setOwner("P4LKO");
-			palec.setDisplayName("&e&lP4LKO");
-			palec.addLore("&aPozice: &5Helper");
-			palec.addLore("&aStatus: " + palino);
-			palec.addLore("&aSvět: &7" + wpalko);
+			ItemCreatorAPI drakovix = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+			drakovix.setSkullType("PLAYER");
+			drakovix.setOwner("drakovix");
+			drakovix.setDisplayName("&e&ldrakovix");
+			drakovix.addLore("&aPozice: &5Zk.Helper");
+			s = Bukkit.getPlayer("drakovix");
+			drakovix.addLore("&aStatus: " + (s!=null && s.getName().equals("drakovix") ? "Online" : "Offline"));
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
-					palko.p4lko(p);
+					new UserAT("drakovix",p);
 					p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 				}
 			});
-			b.setItem(33, palec.create(), ops);
+			b.setItem(24, drakovix.create(), ops);
 			
 			ops.remove(Options.RUNNABLE);
 			
@@ -104,8 +104,7 @@ public class helperteam {
 				}
 			});
 			b.setItem(49, back.create(), ops);
-			
-			b.open();
+			}}.runAsync();
 		}
 	
 }

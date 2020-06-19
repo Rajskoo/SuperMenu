@@ -4,17 +4,15 @@ import java.util.HashMap;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.SkullType;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
-import CleniAT.bobko;
-import CleniAT.houska;
-import CleniAT.rajskooo;
-import me.Straiker123.GUICreatorAPI;
-import me.Straiker123.GUICreatorAPI.Options;
-import me.Straiker123.ItemCreatorAPI;
-import me.Straiker123.TheAPI;
+import CleniAT.UserAT;
+import me.DevTec.ItemCreatorAPI;
+import me.DevTec.TheAPI;
+import me.DevTec.GUI.GUICreatorAPI;
+import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.Scheduler.Tasker;
 import sm.AllGuis;
 
 @SuppressWarnings("deprecation")
@@ -24,81 +22,12 @@ public class vedenit {
 		GUICreatorAPI v = TheAPI.getGUICreatorAPI(p);
 		v.setSize(54);
 		v.setTitle("&c&lVedení serveru");
+		v.open();
+
+		new Tasker() {
+		public void run() {
 		HashMap<Options, Object> ops = new HashMap<Options, Object>();
 		ops.put(Options.CANT_BE_TAKEN, true);
-		
-		String houskaaa = "&4&lOFFLINE";
-		String rajsko = "&4&lOFFLINE";
-		String bobik = "&4&lOFFLINE";
-		String whouska = "&cnull";
-		String wrajsko = "&cnull";
-		String wbob = "&cnull";
-		
-		for (Player ssp: Bukkit.getOnlinePlayers()) {	
-        	if(ssp.getName().equals("Houska02")) {
-        		houskaaa = "&2&lONLINE";
-        		whouska = ssp.getWorld().getName();
-        		continue;
-        	}
-        	if(ssp.getName().equals("_ItsRajsko_")) {
-        		rajsko = "&2&lONLINE";
-        		wrajsko = ssp.getWorld().getName();
-        		continue;
-        	}
-        	if(ssp.getName().equals("BobaFett")) {
-        		bobik = "&2&lONLINE";
-        		wbob = ssp.getWorld().getName();
-        		continue;
-        	}
-		}
-		
-		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		houskaa.setSkullType(SkullType.PLAYER);
-		houskaa.setOwner("Houska02");
-		houskaa.setDisplayName("&e&lHouska02");
-		houskaa.addLore("&aPozice: &3Majitel");
-		houskaa.addLore("&aStatus: " + houskaaa);
-		houskaa.addLore("&aSvět: &7" + whouska);
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				houska.houskaaaa(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		v.setItem(13, houskaa.create(), ops);
-		
-		ops.remove(Options.RUNNABLE);
-		
-		ItemCreatorAPI rajskoo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		rajskoo.setSkullType(SkullType.PLAYER);
-		rajskoo.setOwner("_ItsRajsko_");
-		rajskoo.setDisplayName("&e&l_ItsRajsko_");
-		rajskoo.addLore("&aPozice: &4Admin");
-		rajskoo.addLore("&aStatus: " + rajsko);
-		rajskoo.addLore("&aSvět: &7" + wrajsko);
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				rajskooo.rajce(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		v.setItem(29, rajskoo.create(), ops);
-		
-		ItemCreatorAPI bobo = TheAPI.getItemCreatorAPI(Material.PLAYER_HEAD);
-		bobo.setSkullType(SkullType.PLAYER);
-		bobo.setOwner("BobaFett");
-		bobo.setDisplayName("&e&lBobaFett");
-		bobo.addLore("&aPozice: &4Admin");
-		bobo.addLore("&aStatus: " + bobik);
-		bobo.addLore("&aSvět: &7" + wbob);
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
-				bobko.bobek(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		v.setItem(33, bobo.create(), ops);
-		
 		ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
 		v.setItem(0, okraj.create(), ops);
 		v.setItem(1, okraj.create(), ops);
@@ -121,8 +50,57 @@ public class vedenit {
 			}
 		});
 		v.setItem(49, back.create(), ops);
+		ops.remove(Options.RUNNABLE);
+		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+		houskaa.setSkullType("PLAYER");
+		//zkus houskaa.setOwner("Houska02");
+		houskaa.setOwnerFromWeb("https://sessionserver.mojang.com/session/minecraft/profile/"+Bukkit.getOfflinePlayer("StraikerinaCZ").getUniqueId().toString());
+		houskaa.setDisplayName("&e&lHouska02");
+		houskaa.addLore("&aPozice: &3Majitel");
+		Player s = Bukkit.getPlayer("Houska02");
+		houskaa.addLore("&aStatus: " + (s!=null && s.getName().equals("Houska02") ? "Online" : "Offline"));
+		ops.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				new UserAT("Houska02", p);
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+			}
+		});
+		v.setItem(13, houskaa.create(), ops);
 		
-		v.open();
+		ops.remove(Options.RUNNABLE);
+		
+		ItemCreatorAPI rajskoo = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+		rajskoo.setSkullType("PLAYER");
+		rajskoo.setOwner("_ItsRajsko_");
+		rajskoo.setDisplayName("&e&l_ItsRajsko_");
+		rajskoo.addLore("&aPozice: &4Admin");
+		s = Bukkit.getPlayer("_ItsRajsko_");
+		rajskoo.addLore("&aStatus: " + (s!=null && s.getName().equals("_ItsRajsko_") ? "Online" : "Offline"));
+		ops.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				new UserAT("_ItsRajsko_", p);
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+			}
+		});
+		v.setItem(29, rajskoo.create(), ops);
+		
+		ops.remove(Options.RUNNABLE);
+		
+		ItemCreatorAPI bobo = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+		bobo.setSkullType("PLAYER");
+		bobo.setOwner("BobaFett");
+		bobo.setDisplayName("&e&lBobaFett");
+		bobo.addLore("&aPozice: &4Admin");
+		s = Bukkit.getPlayer("BobaFett");
+		bobo.addLore("&aStatus: " + (s!=null && s.getName().equals("BobaFett") ? "Online" : "Offline"));
+		ops.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				new UserAT("BobaFett", p);
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+			}
+		});
+		v.setItem(33, bobo.create(), ops);
+		}}.runAsync();
 	}
 	
 }
