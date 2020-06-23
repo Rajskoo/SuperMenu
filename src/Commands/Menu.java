@@ -1,4 +1,4 @@
-package sm;
+package Commands;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +13,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
 import me.DevTec.TheAPI;
+import sm.AllGuis;
+import sm.main;
 
 
 

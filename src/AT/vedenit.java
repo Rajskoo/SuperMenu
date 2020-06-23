@@ -51,14 +51,14 @@ public class vedenit {
 		});
 		v.setItem(49, back.create(), ops);
 		ops.remove(Options.RUNNABLE);
+		
 		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
 		houskaa.setSkullType("PLAYER");
-		//zkus houskaa.setOwner("Houska02");
-		houskaa.setOwnerFromWeb("https://sessionserver.mojang.com/session/minecraft/profile/"+Bukkit.getOfflinePlayer("StraikerinaCZ").getUniqueId().toString());
+		houskaa.setOwner("Houska02");
 		houskaa.setDisplayName("&e&lHouska02");
 		houskaa.addLore("&aPozice: &3Majitel");
 		Player s = Bukkit.getPlayer("Houska02");
-		houskaa.addLore("&aStatus: " + (s!=null && s.getName().equals("Houska02") ? "Online" : "Offline"));
+		houskaa.addLore("&aStatus: " + (s!=null && s.getName().equals("Houska02") ? "&2&lONLINE" : "&4&lOFFLINE"));
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
 				new UserAT("Houska02", p);
@@ -75,7 +75,7 @@ public class vedenit {
 		rajskoo.setDisplayName("&e&l_ItsRajsko_");
 		rajskoo.addLore("&aPozice: &4Admin");
 		s = Bukkit.getPlayer("_ItsRajsko_");
-		rajskoo.addLore("&aStatus: " + (s!=null && s.getName().equals("_ItsRajsko_") ? "Online" : "Offline"));
+		rajskoo.addLore("&aStatus: " + (s!=null && s.getName().equals("_ItsRajsko_") ? "&2&lONLINE" : "&4&lOFFLINE"));
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
 				new UserAT("_ItsRajsko_", p);
@@ -92,7 +92,7 @@ public class vedenit {
 		bobo.setDisplayName("&e&lBobaFett");
 		bobo.addLore("&aPozice: &4Admin");
 		s = Bukkit.getPlayer("BobaFett");
-		bobo.addLore("&aStatus: " + (s!=null && s.getName().equals("BobaFett") ? "Online" : "Offline"));
+		bobo.addLore("&aStatus: " + (s!=null && s.getName().equals("BobaFett") ? "&2&lONLINE" : "&4&lOFFLINE"));
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
 				new UserAT("BobaFett", p);

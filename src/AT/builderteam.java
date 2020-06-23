@@ -34,10 +34,10 @@ public class builderteam {
 		mat.setDisplayName("&e&l_Matesak_");
 		mat.addLore("&aPozice: &2Zk.Builder");
 		Player s = Bukkit.getPlayer("_Matesak_");
-		mat.addLore("&aStatus: " + (s!=null && s.getName().equals("_Matesak_") ? "Online" : "Offline"));
+		mat.addLore("&aStatus: " + (s!=null && s.getName().equals("_Matesak_") ? "&2&lONLINE" : "&4&lOFFLINE"));
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new UserAT("_Matesak_",p); //oprav všude oka
+				new UserAT("_Matesak_",p);
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});

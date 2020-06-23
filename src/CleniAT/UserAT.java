@@ -17,9 +17,12 @@ import me.DevTec.Scheduler.Tasker;
 
 public class UserAT {
 	public UserAT(String user, Player p) {
+		
+		Player u = TheAPI.getPlayer(user);
+		
 		GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 		b.setSize(27);
-		b.setTitle("&e&l"+user);
+		b.setTitle("&e&l"+u.getName());
 		b.open();
 		new Tasker() {
 			public void run() {
@@ -31,25 +34,24 @@ public class UserAT {
 		msg.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání soukromé zprávy adminovi "+user).setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg "+user+" ").send(p);
+				new HoverMessage("&6Klikni pro poslání soukromé zprávy adminovi "+u.getName()).setClickEvent(ClickAction.SUGGEST_COMMAND, "/msg "+u.getName()+" ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
 		});
 		b.setItem(11, msg.create(), ops);
-		 //proè máš class pro každého admina XDD 
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI mail = TheAPI.getItemCreatorAPI(Material.BOOK);
 		mail.setDisplayName("&3Pošli mail zprávu.");
 		mail.addLore("&6KLIKNI");
 		ops.put(Options.RUNNABLE, new Runnable() {
 			public void run() {
-				new HoverMessage("&6Klikni pro poslání mail zprávy adminovi "+user).setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send "+user+" ").send(p);
+				new HoverMessage("&6Klikni pro poslání mail zprávy adminovi "+u.getName()).setClickEvent(ClickAction.SUGGEST_COMMAND, "/mail send "+u.getName()+" ").send(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				b.close();
 			}
 		});
-		b.setItem(15, mail.create(), ops);//nooooooooooooo :D
+		b.setItem(15, mail.create(), ops);
 		
 		ops.remove(Options.RUNNABLE);
 		ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);

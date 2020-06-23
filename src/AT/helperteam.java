@@ -18,10 +18,6 @@ import sm.AllGuis;
 @SuppressWarnings("deprecation")
 public class helperteam {
 
-	static String p1 = "&0[&6Msg&0] ";
-	static String p2 = "&0[&6Mail&0] ";
-	//dal si to dodělej :P
-
 	public static void helpert(Player p) {
 			GUICreatorAPI b = TheAPI.getGUICreatorAPI(p);
 			b.setSize(54);
@@ -38,7 +34,7 @@ public class helperteam {
 			tomm.setDisplayName("&e&lTomm99");
 			tomm.addLore("&aPozice: &5Zk.Helper");
 			Player s = Bukkit.getPlayer("Tomm99");
-			tomm.addLore("&aStatus: " + (s!=null && s.getName().equals("Tomm99") ? "Online" : "Offline"));
+			tomm.addLore("&aStatus: " + (s!=null && s.getName().equals("Tomm99") ? "&2&lONLINE" : "&4&lOFFLINE"));
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
 					new UserAT("Tomm99",p);
@@ -54,7 +50,7 @@ public class helperteam {
 			Pernik.setDisplayName("&e&lPRAZSKYpernik");
 			Pernik.addLore("&aPozice: &5Zk.Helper");
 			s = Bukkit.getPlayer("PRAZSKYpernik");
-			Pernik.addLore("&aStatus: " + (s!=null && s.getName().equals("PRAZSKYpernik") ? "Online" : "Offline"));
+			Pernik.addLore("&aStatus: " + (s!=null && s.getName().equals("PRAZSKYpernik") ? "&2&lONLINE" : "&4&lOFFLINE"));
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
 					new UserAT("PRAZSKYpernik",p);
@@ -71,7 +67,7 @@ public class helperteam {
 			drakovix.setDisplayName("&e&ldrakovix");
 			drakovix.addLore("&aPozice: &5Zk.Helper");
 			s = Bukkit.getPlayer("drakovix");
-			drakovix.addLore("&aStatus: " + (s!=null && s.getName().equals("drakovix") ? "Online" : "Offline"));
+			drakovix.addLore("&aStatus: " + (s!=null && s.getName().equals("drakovix") ? "&2&lONLINE" : "&4&lOFFLINE"));
 			ops.put(Options.RUNNABLE, new Runnable() {
 				public void run() {
 					new UserAT("drakovix",p);
@@ -105,6 +101,6 @@ public class helperteam {
 			});
 			b.setItem(49, back.create(), ops);
 			}}.runAsync();
-		}
+	}
 	
 }

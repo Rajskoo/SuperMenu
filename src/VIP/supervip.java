@@ -53,6 +53,7 @@ public class supervip {
 	    vyhody.addLore("&9&l• &6/kit VIP &e(Enchantované železný nástroje).");
 	    vyhody.addLore("&9&l• &eVirtuální crafting table &7(&6/craft&7).");
 	    vyhody.addLore("&9&l• &eOkamžité vyléčení &7(&6/heal, /feed&7).");
+	    vyhody.addLore("&9&l• &ePráva na &7Železnej &ea Zlatej &7Grappler. &e(/ghmenu)");
 	    sprvp.setItem(23, vyhody.create(), ops);
 	    
 	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);

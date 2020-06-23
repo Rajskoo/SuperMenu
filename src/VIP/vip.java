@@ -52,7 +52,8 @@ public class vip {
 	    vyhody.addLore("&9&l• &eTeleportace na místo smrti/posledního warpu &7(&6/back&7).");
 	    vyhody.addLore("&9&l• &6/kit VIP &e(Enchantované železný nástroje).");
 	    vyhody.addLore("&9&l• &eAntiAFK kick, (AFK kick na vás nebude působit).");
-	    vyhody.addLore("&9&l• &eMožnost psát barevné zprávy na cedulky nebo do chatu.)");
+	    vyhody.addLore("&9&l• &eMožnost psát barevné zprávy na cedulky nebo do chatu.");
+	    vyhody.addLore("&9&l• &ePráva na &6Dřevenej &ea &8Kamennej &7Grappler. &e(/ghmenu)");
 	    vp.setItem(23, vyhody.create(), ops);
 	    
 	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);

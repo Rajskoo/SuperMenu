@@ -12,6 +12,7 @@ import AT.builderteam;
 import AT.helperteam;
 import AT.ostatni;
 import AT.vedenit;
+import GrapplingHook.GHGUI;
 import me.DevTec.ItemCreatorAPI;
 import me.DevTec.TheAPI;
 import me.DevTec.TheAPI.SudoType;
@@ -27,7 +28,7 @@ public class AllGuis {
 		GUICreatorAPI gui = TheAPI.getGUICreatorAPI(p);
 		gui.setSize(54);
 		gui.setTitle("&6&lM&f&lONEYAK'S &6&lM&f&lENU");
-		gui.open();//udělej si to tu s tím taskerem
+		gui.open();
 		new Tasker() {
 			public void run() {
 		HashMap<Options, Object> opt = new HashMap<Options, Object>();
@@ -641,6 +642,101 @@ public class AllGuis {
 	    	}
 	    });
 	    i.setItem(22, forum.create(), ops);
+	    ops.remove(Options.RUNNABLE);
+	    
+	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
+		i.setItem(0, okraj.create(), ops);
+		i.setItem(1, okraj.create(), ops);
+		i.setItem(7, okraj.create(), ops);
+		i.setItem(8, okraj.create(), ops);
+		i.setItem(17, okraj.create(), ops);
+		i.setItem(44, okraj.create(), ops);
+		i.setItem(53, okraj.create(), ops);
+		i.setItem(52, okraj.create(), ops);
+		i.setItem(46, okraj.create(), ops);
+		i.setItem(45, okraj.create(), ops);
+		i.setItem(36, okraj.create(), ops);
+		i.setItem(9, okraj.create(), ops);
+		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
+		back.setDisplayName("&4&lBack");
+		ops.put(Options.RUNNABLE, new Runnable() {
+			public void run() {
+				main(p);
+				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
+			}
+		});
+		i.setItem(49, back.create(), ops);
+			}}.runAsync();
+	}
+	
+	public static void ghmenu(Player p) {
+		GUICreatorAPI i = TheAPI.getGUICreatorAPI(p);
+		i.setSize(54);
+		i.setTitle("&6&lGH &f&lMenu");
+		i.open();
+		new Tasker() {
+			public void run() {
+		HashMap<Options, Object> ops = new HashMap<Options, Object>();
+	    ops.put(Options.CANT_BE_TAKEN, true);
+	    
+	    ItemCreatorAPI wood = TheAPI.getItemCreatorAPI(Material.OAK_LOG);
+	    wood.setDisplayName("&6Dřevěný Grappler");
+	    wood.addLore("&7Klikni pro recept");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+	    	public void run() {
+	    		GHGUI.Wood(p);
+	    		p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+	    	}
+	    });
+	    i.setItem(20, wood.create(), ops);
+	    ops.remove(Options.RUNNABLE);
+	    
+	    ItemCreatorAPI stone = TheAPI.getItemCreatorAPI(Material.STONE);
+	    stone.setDisplayName("&8Kamenný Grappler");
+	    stone.addLore("&7Klikni pro recept");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+	    	public void run() {
+	    		GHGUI.Stone(p);
+	    		p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+	    	}
+	    });
+	    i.setItem(22, stone.create(), ops);
+	    ops.remove(Options.RUNNABLE);
+	    
+	    ItemCreatorAPI iron = TheAPI.getItemCreatorAPI(Material.IRON_BLOCK);
+	    iron.setDisplayName("&7Železný Grappler");
+	    iron.addLore("&7Klikni pro recept");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+	    	public void run() {
+	    		GHGUI.Iron(p);
+	    		p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+	    	}
+	    });
+	    i.setItem(24, iron.create(), ops);
+	    ops.remove(Options.RUNNABLE);
+	    
+	    ItemCreatorAPI gold = TheAPI.getItemCreatorAPI(Material.GOLD_BLOCK);
+	    gold.setDisplayName("&eZlatej Grappler");
+	    gold.addLore("&7Klikni pro recept");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+	    	public void run() {
+	    		GHGUI.Gold(p);
+	    		p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+	    	}
+	    });
+	    i.setItem(30, gold.create(), ops);
+	    ops.remove(Options.RUNNABLE);
+	    
+	    ItemCreatorAPI dia = TheAPI.getItemCreatorAPI(Material.DIAMOND_BLOCK);
+	    dia.setDisplayName("&bDiamantovej Grappler");
+	    dia.addLore("&7Klikni pro recept");
+	    ops.put(Options.RUNNABLE, new Runnable() {
+	    	public void run() {
+	    		GHGUI.Dia(p);
+	    		p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+	    	}
+	    });
+	    i.setItem(32, dia.create(), ops);
 	    ops.remove(Options.RUNNABLE);
 	    
 	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);

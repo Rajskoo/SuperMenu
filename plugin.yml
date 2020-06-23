@@ -8,3 +8,4 @@ commands:
   menu:
   supermenu:
     aliases: [smenu]
+  ghmenu: 

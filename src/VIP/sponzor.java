@@ -48,6 +48,7 @@ public class sponzor {
 	    vyhody.addLore("&9&l• &6/kit Sponzor &e(Enchantované diamantové nástroje).");
 	    vyhody.addLore("&9&l• &eMožnost měnit hrení mód mezi Survival, Spectator, Adventure.");
 	    vyhody.addLore("&9&l• &cCREATIVE mód není obsažen!");
+	    vyhody.addLore("&9&l• &ePráva na &bDiamantovej &7Grappler. &e(/ghmenu)");
 	    spzr.setItem(23, vyhody.create(), ops);
 	    
 	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);

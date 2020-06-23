@@ -35,7 +35,7 @@ public class ostatni {
 				seal.setDisplayName("&e&lSaelo");
 				seal.addLore("&aPozice: &6Eventer");
 				Player s = Bukkit.getPlayer("Saelo");
-				seal.addLore("&aStatus: " + (s!=null && s.getName().equals("Saelo") ? "Online" : "Offline"));
+				seal.addLore("&aStatus: " + (s!=null && s.getName().equals("Saelo") ? "&2&lONLINE" : "&4&lOFFLINE"));
 				ops.put(Options.RUNNABLE, new Runnable() {
 					public void run() {
 						new UserAT("Saelo", p);
@@ -52,7 +52,7 @@ public class ostatni {
 				orsy.setDisplayName("&e&lTheOrsy");
 				orsy.addLore("&aPozice: &cZakladatel");
 				s = Bukkit.getPlayer("TheOrsy");
-				orsy.addLore("&aStatus: " + (s!=null && s.getName().equals("TheOrsy") ? "Online" : "Offline"));
+				orsy.addLore("&aStatus: " + (s!=null && s.getName().equals("TheOrsy") ? "&2&lONLINE" : "&4&lOFFLINE"));
 				ops.put(Options.RUNNABLE, new Runnable() {
 					public void run() {
 						new UserAT("TheOrsy", p);
@@ -67,9 +67,9 @@ public class ostatni {
 				hoffo.setSkullType("PLAYER");
 				hoffo.setOwner("Hoff");
 				hoffo.setDisplayName("&e&lHoff");
-				hoffo.addLore("&aPozice: &6Zakladatel");
+				hoffo.addLore("&aPozice: &cZakladatel");
 				s = Bukkit.getPlayer("Hoff");
-				hoffo.addLore("&aStatus: " + (s!=null && s.getName().equals("Hoff") ? "Online" : "Offline"));
+				hoffo.addLore("&aStatus: " + (s!=null && s.getName().equals("Hoff") ? "&2&lONLINE" : "&4&lOFFLINE"));
 				ops.put(Options.RUNNABLE, new Runnable() {
 					public void run() {
 						new UserAT("Hoff", p);
