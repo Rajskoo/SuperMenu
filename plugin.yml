@@ -1,4 +1,4 @@
-name: SuperMenu
+name: MoneyakMenu
 main: sm.main
 author: DevTec, _ItsRajsko_
 depend: [TheAPI]
@@ -6,6 +6,6 @@ api-version: 1.13
 version: 1.0
 commands:
   menu:
-  supermenu:
-    aliases: [smenu]
+  moneyakmenu:
+    aliases: [mmenu]
   ghmenu: 

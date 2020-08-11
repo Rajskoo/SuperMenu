@@ -1,14 +1,13 @@
 package sm;
 
-import org.bukkit.Bukkit; 
+import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import Commands.Menu;
-import Commands.SMenu;
+import Commands.MMenu;
 import GrapplingHook.GHMenu;
-import Helper.Events;
 import me.DevTec.TheAPI;
 
 public class main extends JavaPlugin {
@@ -24,9 +23,8 @@ public static FileConfiguration Translation;
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		Bukkit.getPluginCommand("menu").setExecutor(new Menu());
-		Bukkit.getPluginCommand("supermenu").setExecutor(new SMenu());
+		Bukkit.getPluginCommand("moneyakmenu").setExecutor(new MMenu());
 		Bukkit.getPluginCommand("ghmenu").setExecutor(new GHMenu());
-		Bukkit.getPluginManager().registerEvents(new Events(), instance);
 		TheAPI.msg("&bSuper&aMenu&7: &7****************", getConsole());
 		TheAPI.msg("&bSuper&aMenu&7: &aEnabling plugin..", getConsole());
 		TheAPI.msg("&bSuper&aMenu&7: &7****************", getConsole());

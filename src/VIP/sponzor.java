@@ -1,42 +1,52 @@
 package VIP;
 
-import java.util.HashMap;
-
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 
 import me.DevTec.ItemCreatorAPI;
 import me.DevTec.TheAPI;
 import me.DevTec.GUI.GUICreatorAPI;
-import me.DevTec.GUI.GUICreatorAPI.Options;
+import me.DevTec.GUI.ItemGUI;
 import me.DevTec.Scheduler.Tasker;
 
 public class sponzor {
 
+	/* Pomůcka:
+	 a.setItem(-, new ItemGUI(){
+					@Override
+					public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+					}
+				});
+	 */
+	
 	public static void Sponzor(Player p) {
-		GUICreatorAPI spzr = TheAPI.getGUICreatorAPI(p);
-		spzr.setSize(54);
-		spzr.setTitle("&b&lSponzor");
-		spzr.open();
+		GUICreatorAPI spzr = new GUICreatorAPI("&b&lSponzor", 54, p);
 		new Tasker() {
 			public void run() {
-		HashMap<Options, Object> ops = new HashMap<Options, Object>();
-	    ops.put(Options.CANT_BE_TAKEN, true);
-	    
+		
 	    ItemCreatorAPI czk = TheAPI.getItemCreatorAPI(Material.ORANGE_STAINED_GLASS);
 	    czk.setDisplayName("&b&lSponzor pro Česko:");
 	    czk.addLore("&6&lC&f&lena: &3500kč");
 	    czk.addLore("&6&lP&f&lladba možná pouze přes &6&lPayPal.");
 	    czk.addLore("&bSponzor je navždy.");
-	    spzr.setItem(20, czk.create(), ops);
+	    spzr.setItem(20, new ItemGUI(czk.create()){
+			@Override
+			public void onClick(Player arg0, GUICreatorAPI arg1, ClickType arg2) {
+			}
+		});
 	    
 	    ItemCreatorAPI svk = TheAPI.getItemCreatorAPI(Material.RED_STAINED_GLASS);
 	    svk.setDisplayName("&b&lSponzor pro Slovensko:");
 	    svk.addLore("&6&lC&f&lena: &320€");
 	    svk.addLore("&6&lP&f&lladba možná pouze přes &6&lPayPal.");
 	    svk.addLore("&bSponzor je navždy.");
-	    spzr.setItem(29, svk.create(), ops);
+	    spzr.setItem(29, new ItemGUI(svk.create()){
+			@Override
+			public void onClick(Player arg0, GUICreatorAPI arg1, ClickType arg2) {
+			}
+		});
 	    
 	    ItemCreatorAPI vyhody = TheAPI.getItemCreatorAPI(Material.DIAMOND);
 	    vyhody.setDisplayName("&b&lSponor Výhody:");
@@ -49,30 +59,38 @@ public class sponzor {
 	    vyhody.addLore("&9&l• &eMožnost měnit hrení mód mezi Survival, Spectator, Adventure.");
 	    vyhody.addLore("&9&l• &cCREATIVE mód není obsažen!");
 	    vyhody.addLore("&9&l• &ePráva na &bDiamantovej &7Grappler. &e(/ghmenu)");
-	    spzr.setItem(23, vyhody.create(), ops);
+	    spzr.setItem(23, new ItemGUI(vyhody.create()){
+			@Override
+			public void onClick(Player arg0, GUICreatorAPI arg1, ClickType arg2) {
+			}
+		});
 	    
-	    ItemCreatorAPI okraj = TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE);
-		spzr.setItem(0, okraj.create(), ops);
-		spzr.setItem(1, okraj.create(), ops);
-		spzr.setItem(7, okraj.create(), ops);
-		spzr.setItem(8, okraj.create(), ops);
-		spzr.setItem(17, okraj.create(), ops);
-		spzr.setItem(44, okraj.create(), ops);
-		spzr.setItem(53, okraj.create(), ops);
-		spzr.setItem(52, okraj.create(), ops);
-		spzr.setItem(46, okraj.create(), ops);
-		spzr.setItem(45, okraj.create(), ops);
-		spzr.setItem(36, okraj.create(), ops);
-		spzr.setItem(9, okraj.create(), ops);
+	    ItemGUI item = new ItemGUI(TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE).create()){
+			@Override
+			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+			}
+		};
+		spzr.setItem(0, item);
+		spzr.setItem(1, item);
+		spzr.setItem(7, item);
+		spzr.setItem(8, item);
+		spzr.setItem(17, item);
+		spzr.setItem(44, item);
+		spzr.setItem(53, item);
+		spzr.setItem(52, item);
+		spzr.setItem(46, item);
+		spzr.setItem(45, item);
+		spzr.setItem(36, item);
+		spzr.setItem(9, item);
 		ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
 		back.setDisplayName("&4&lBack");
-		ops.put(Options.RUNNABLE, new Runnable() {
-			public void run() {
+		spzr.setItem(49, new ItemGUI(back.create()){
+			@Override
+			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
 				sm.AllGuis.vip(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-		spzr.setItem(49, back.create(), ops);
 			}}.runAsync();
 	}
 	
