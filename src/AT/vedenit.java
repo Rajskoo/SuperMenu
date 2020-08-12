@@ -61,13 +61,28 @@ public class vedenit {
 		houskaa.setSkullType("PLAYER");
 		houskaa.setOwner("Houska02");
 		houskaa.setDisplayName("&e&lHouska02");
-		houskaa.addLore("&aPozice: &3Majitel");
+		houskaa.addLore("&aPozice: &bMajitel");
 		Player s = Bukkit.getPlayer("Houska02");
 		houskaa.addLore("&aStatus: " + (s!=null && s.getName().equals("Houska02") ? "&2&lONLINE" : "&4&lOFFLINE"));
 		v.setItem(13, new ItemGUI(houskaa.create()){
 			@Override
 			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
 				new UserAT("Houska02", p);
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+			}
+		});
+		
+		ItemCreatorAPI straiky = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+		straiky.setSkullType("PLAYER");
+		straiky.setOwner("StraikerinaCZ");
+		straiky.setDisplayName("&e&lStraikerinaCZ");
+		straiky.addLore("&aPozice: &3Developer");
+	    s = Bukkit.getPlayer("StraikerinaCZ");
+		straiky.addLore("&aStatus: " + (s!=null && s.getName().equals("StraikerinaCZ") ? "&2&lONLINE" : "&4&lOFFLINE"));
+		v.setItem(31, new ItemGUI(straiky.create()){
+			@Override
+			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+				new UserAT("StraikerinaCZ", p);
 				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});

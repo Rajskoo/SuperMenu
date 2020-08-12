@@ -1,10 +1,12 @@
 package AT;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
+import CleniAT.UserAT;
 import me.DevTec.ItemCreatorAPI;
 import me.DevTec.TheAPI;
 import me.DevTec.GUI.GUICreatorAPI;
@@ -37,6 +39,21 @@ public class builderteam {
 		b.setItem(13, new ItemGUI(mat.create()){
 			@Override
 			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+			}
+		});
+		
+		ItemCreatorAPI cirik = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
+		cirik.setSkullType("PLAYER");
+		cirik.setOwner("CirikCZ");
+		cirik.setDisplayName("&e&lCirikCZ");
+		cirik.addLore("&aPozice: &2Builder");
+	    Player s = Bukkit.getPlayer("CirikCZ");
+		cirik.addLore("&aStatus: " + (s!=null && s.getName().equals("CirikCZ") ? "&2&lONLINE" : "&4&lOFFLINE"));
+		b.setItem(31, new ItemGUI(cirik.create()){
+			@Override
+			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+				new UserAT("CirikCZ", p);
+				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 			}
 		});
 		

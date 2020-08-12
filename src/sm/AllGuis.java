@@ -27,7 +27,7 @@ public class AllGuis {
 	public static void main(Player p) {
 		GUICreatorAPI gui = new GUICreatorAPI("&6&lM&f&lONEYAK'S &6&lM&f&lENU", 54, p);
 		new Tasker() {
-			public void run() {// ten rum má být v celém tom GUI ne:
+			public void run() {
 				
 				gui.setItem(31, new ItemGUI(Utils.Create.createItem(Material.EMERALD,"&6&lS&f&lhop")) {
 					@Override	
