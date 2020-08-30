@@ -1,20 +1,19 @@
 package AT;
 
-import org.bukkit.Bukkit;
+import java.util.Arrays;
+
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
+import org.bukkit.inventory.ItemStack;
 
-import CleniAT.UserAT;
-import me.DevTec.ItemCreatorAPI;
-import me.DevTec.TheAPI;
-import me.DevTec.GUI.GUICreatorAPI;
-import me.DevTec.GUI.ItemGUI;
-import me.DevTec.Scheduler.Tasker;
+import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
+import me.DevTec.TheAPI.GUIAPI.GUI;
+import me.DevTec.TheAPI.GUIAPI.ItemGUI;
+import me.DevTec.TheAPI.Scheduler.Tasker;
 import sm.AllGuis;
 
-@SuppressWarnings("deprecation")
 public class vedenit {
 	
 	/* Pomůcka:
@@ -26,14 +25,14 @@ public class vedenit {
 	 */
 	
 	public static void vedeni(Player p) {
-		GUICreatorAPI v = new GUICreatorAPI("&c&lVedení serveru", 54, p);
+		GUI v = new GUI("&c&lVedení serveru", 54, p);
 
 		new Tasker() {
 		public void run() {
 			
-			ItemGUI okraj = new ItemGUI(TheAPI.getItemCreatorAPI(Material.BLACK_STAINED_GLASS_PANE).create()){
+			ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
 				@Override
-				public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+				public void onClick(Player p, GUI gui, ClickType c) {
 				}
 			};
 			v.setItem(0, okraj);
@@ -46,76 +45,38 @@ public class vedenit {
 			v.setItem(52, okraj);
 			v.setItem(45, okraj);
 			v.setItem(36, okraj);
+			v.setItem(46, okraj);
 			v.setItem(9, okraj);
-			ItemCreatorAPI back = TheAPI.getItemCreatorAPI(Material.BARRIER);
-			back.setDisplayName("&4&lBack");
-			v.setItem(49, new ItemGUI(back.create()){
+			ItemStack back = ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack");
+			v.setItem(49, new ItemGUI(back){
 				@Override
-				public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
+				public void onClick(Player p, GUI gui, ClickType c) {
 					AllGuis.ATGUI(p);
 					p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 				}
 			});
 		
-		ItemCreatorAPI houskaa = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
-		houskaa.setSkullType("PLAYER");
-		houskaa.setOwner("Houska02");
-		houskaa.setDisplayName("&e&lHouska02");
-		houskaa.addLore("&aPozice: &bMajitel");
-		Player s = Bukkit.getPlayer("Houska02");
-		houskaa.addLore("&aStatus: " + (s!=null && s.getName().equals("Houska02") ? "&2&lONLINE" : "&4&lOFFLINE"));
-		v.setItem(13, new ItemGUI(houskaa.create()){
-			@Override
-			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
-				new UserAT("Houska02", p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
+			Player s = p;
+			ItemStack houska = ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: &3Majitel", "&aStatus: " + (s!=null && s.getName().equals("Houska02") ? "&2&lONLINE" : "&4&lOFFLINE")));
+			v.setItem(13, new ItemGUI(houska){
+				@Override
+				public void onClick(Player p, GUI gui, ClickType c) {
+				}
+			});
 		
-		ItemCreatorAPI straiky = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
-		straiky.setSkullType("PLAYER");
-		straiky.setOwner("StraikerinaCZ");
-		straiky.setDisplayName("&e&lStraikerinaCZ");
-		straiky.addLore("&aPozice: &3Developer");
-	    s = Bukkit.getPlayer("StraikerinaCZ");
-		straiky.addLore("&aStatus: " + (s!=null && s.getName().equals("StraikerinaCZ") ? "&2&lONLINE" : "&4&lOFFLINE"));
-		v.setItem(31, new ItemGUI(straiky.create()){
-			@Override
-			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
-				new UserAT("StraikerinaCZ", p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
+			ItemStack straiky = ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: &9Developer", "&aStatus: " + (s!=null && s.getName().equals("StraikerinaCZ") ? "&2&lONLINE" : "&4&lOFFLINE")));
+			v.setItem(33, new ItemGUI(straiky){
+				@Override
+				public void onClick(Player p, GUI gui, ClickType c) {
+				}
+			});
 		
-		ItemCreatorAPI rajskoo = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
-		rajskoo.setSkullType("PLAYER");
-		rajskoo.setOwner("_ItsRajsko_");
-		rajskoo.setDisplayName("&e&l_ItsRajsko_");
-		rajskoo.addLore("&aPozice: &4Admin");
-		s = Bukkit.getPlayer("_ItsRajsko_");
-		rajskoo.addLore("&aStatus: " + (s!=null && s.getName().equals("_ItsRajsko_") ? "&2&lONLINE" : "&4&lOFFLINE"));
-		v.setItem(29, new ItemGUI(rajskoo.create()){
-			@Override
-			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
-				new UserAT("_ItsRajsko_", p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		
-		ItemCreatorAPI bobo = TheAPI.getItemCreatorAPI(Material.LEGACY_SKULL_ITEM);
-		bobo.setSkullType("PLAYER");
-		bobo.setOwner("BobaFett");
-		bobo.setDisplayName("&e&lBobaFett");
-		bobo.addLore("&aPozice: &4Admin");
-		s = Bukkit.getPlayer("BobaFett");
-		bobo.addLore("&aStatus: " + (s!=null && s.getName().equals("BobaFett") ? "&2&lONLINE" : "&4&lOFFLINE"));
-		v.setItem(33, new ItemGUI(bobo.create()){
-			@Override
-			public void onClick(Player p, GUICreatorAPI gui, ClickType c) {
-				new UserAT("BobaFett", p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
+			ItemStack rajsko = ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (s!=null && s.getName().equals("_ItsRajsko_") ? "&2&lONLINE" : "&4&lOFFLINE")));
+			v.setItem(29, new ItemGUI(rajsko){
+				@Override
+				public void onClick(Player p, GUI gui, ClickType c) {
+				}
+			});
 		}}.runAsync();
 	}
 	

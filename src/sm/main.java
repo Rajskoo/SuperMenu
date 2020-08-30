@@ -5,10 +5,9 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import Commands.Menu;
 import Commands.MMenu;
-import GrapplingHook.GHMenu;
-import me.DevTec.TheAPI;
+import Commands.Menu;
+import me.DevTec.TheAPI.TheAPI;
 
 public class main extends JavaPlugin {
 
@@ -24,7 +23,6 @@ public static FileConfiguration Translation;
 		saveConfig();
 		Bukkit.getPluginCommand("menu").setExecutor(new Menu());
 		Bukkit.getPluginCommand("moneyakmenu").setExecutor(new MMenu());
-		Bukkit.getPluginCommand("ghmenu").setExecutor(new GHMenu());
 		TheAPI.msg("&bSuper&aMenu&7: &7****************", getConsole());
 		TheAPI.msg("&bSuper&aMenu&7: &aEnabling plugin..", getConsole());
 		TheAPI.msg("&bSuper&aMenu&7: &7****************", getConsole());

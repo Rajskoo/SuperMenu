@@ -12,7 +12,7 @@ import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.bukkit.util.StringUtil;
 
-import me.DevTec.TheAPI;
+import me.DevTec.TheAPI.TheAPI;
 import sm.AllGuis;
 import sm.main;
 
