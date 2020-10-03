@@ -14,13 +14,10 @@ import org.bukkit.util.StringUtil;
 
 import me.DevTec.TheAPI.TheAPI;
 import sm.AllGuis;
-import sm.main;
 
 
 
 public class Menu implements CommandExecutor, TabCompleter {
-	
-	main l = main.instance;
 	
 	public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
 		

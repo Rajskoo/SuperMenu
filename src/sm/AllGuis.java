@@ -8,6 +8,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import AT.builderteam;
 import AT.helperteam;
@@ -21,112 +22,122 @@ import me.DevTec.TheAPI.GUIAPI.ItemGUI;
 import me.DevTec.TheAPI.Scheduler.Tasker;
 
 public class AllGuis {
-	
-	main l = main.instance;
+
 	public static void main(Player p) {
-		GUI gui = new GUI("&6&lM&f&lONEYAK'S &6&lM&f&lENU", 54, p);
+		GUI g = new GUI("&6&lM&f&lONEYAK'S &6&lM&f&lENU", 54, p);
 		new Tasker() {
 			public void run() {
-				ItemStack shop = ItemCreatorAPI.createHeadByWeb(1, "&6&lA&f&lukce", "http://textures.minecraft.net/texture/7e3deb57eaa2f4d403ad57283ce8b41805ee5b6de912ee2b4ea736a9d1f465a7");
-				gui.setItem(31, new ItemGUI(shop) {
-					@Override	
-					public void onClick(Player p, GUI gui, ClickType c) {
-							p.performCommand("ah");
-							gui.close();
-					}});
-				ItemStack at = ItemCreatorAPI.createHeadByWeb(1, "&6&lA&f&ldmin&6&lT&f&leam", "http://textures.minecraft.net/texture/11bb4266a22dcbc4607621b9c768932950160c2b96708267d707d44551378cd7");
-				gui.setItem(12, new ItemGUI(at) {
 				
+				ItemStack shop = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvN2UzZGViNTdlYWEyZjRkNDAzYWQ1NzI4M2NlOGI0MTgwNWVlNWI2ZGU5MTJlZTJiNGVhNzM2YTlkMWY0NjVhNyJ9fX0="));
+				ItemMeta shopmeta = shop.getItemMeta();
+				shopmeta.setDisplayName(TheAPI.colorize("&6&lA&f&lukce"));			
+				shop.setItemMeta(shopmeta);
+				g.setItem(31, new ItemGUI(shop) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						p.performCommand("ah");
+						gui.close();
+					}
+				});
+			
+						
+				ItemStack at = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdkZDM0OTI0ZDJiNmEyMTNhNWVkNDZhZTU3ODNmOTUzNzNhOWVmNWNlNWM4OGY5ZDczNjcwNTk4M2I5NyJ9fX0="));
+				ItemMeta atmeta = at.getItemMeta();
+				atmeta.setDisplayName(TheAPI.colorize("&6&lA&f&ldmin&6&lT&f&leam"));			
+				at.setItemMeta(atmeta);
+				g.setItem(12, new ItemGUI(at) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						ATGUI(p);
+						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+					}
+				});
+				
+				ItemStack vote = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZjdhYWYyZWU2NGJkYjIxMTAxNGM3ZWNjNzAwNmZhYTIzNDQ4ZDc4ZjRiYjkwMmU4YTEzMjVlMWM5ZDdmMTFlIn19fQ=="));
+				ItemMeta votemeta = vote.getItemMeta();
+				votemeta.setDisplayName(TheAPI.colorize("&6&lV&f&lote"));			
+				vote.setItemMeta(votemeta);
+				g.setItem(13, new ItemGUI(vote) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						TheAPI.sendMessage("&8-=-=-=-=-=-=-=-=-=-=- &6&lV&f&lote &8-=-=-=-=-=-=-=-=-=-=-", p);
+						TheAPI.sendMessage("&6C&fzech-&6C&fraft &8- &ehttps://czech-craft.eu/server/moneyak/vote/", p);
+						TheAPI.sendMessage("&6&6C&fraft&6l&fist &8- &ehttps://craftlist.org/moneyak", p);
+						TheAPI.sendMessage("&8-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-", p);
+						gui.close();
+						p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
+					}
+				});
+				
+				ItemStack rules = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjZlNTIyZDkxODI1MjE0OWU2ZWRlMmVkZjNmZTBmMmMyYzU4ZmVlNmFjMTFjYjg4YzYxNzIwNzIxOGFlNDU5NSJ9fX0="));
+				ItemMeta rulesmeta = rules.getItemMeta();
+				rulesmeta.setDisplayName(TheAPI.colorize("&6&lP&f&lravidla"));			
+				rules.setItemMeta(rulesmeta);
+				g.setItem(14, new ItemGUI(rules) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						Rules(p);
+						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+					}
+				});
+				
+				ItemStack info = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDAxYWZlOTczYzU0ODJmZGM3MWU2YWExMDY5ODgzM2M3OWM0MzdmMjEzMDhlYTlhMWEwOTU3NDZlYzI3NGEwZiJ9fX0="));
+				ItemMeta infometa = info.getItemMeta();
+				infometa.setDisplayName(TheAPI.colorize("&6&lI&f&lnfo o &6&ls&f&lerveru"));			
+				info.setItemMeta(infometa);
+				g.setItem(21, new ItemGUI(info) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						info(p);
+						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+					}
+				});
+				
+				ItemStack tutorial = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGQ1NWMzMmFjYWNlNzY2ZjljOTRiNDNkMmEzNzYyMWViODVlMDdjMDlkZWJlNWUzM2UwZTBiMzIxZDI3MDkxMiJ9fX0="));
+				ItemMeta tutmeta = tutorial.getItemMeta();
+				tutmeta.setDisplayName(TheAPI.colorize("&6&lN&f&lávody"));			
+				tutorial.setItemMeta(tutmeta);
+				g.setItem(22, new ItemGUI(tutorial) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						navod(p);
+						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+					}
+				});
+				
+				ItemStack vip = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYjdmYzRkZmE1ZjY1MmY2ZTFjMWIxOWZiODc2NTU5NjdlYjgyZmI1ZmE3MTkwNDJmOGM4MDVjYWQ3ZjAxZTQ4NyJ9fX0="));
+				ItemMeta vipmeta = vip.getItemMeta();
+				vipmeta.setDisplayName(TheAPI.colorize("&6&lV&f&lI&6&lP"));			
+				vip.setItemMeta(vipmeta);
+				g.setItem(23, new ItemGUI(vip) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						vip(p);
+						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
+					}
+				});
+		
+				ItemStack dc = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzg3M2MxMmJmZmI1MjUxYTBiODhkNWFlNzVjNzI0N2NiMzlhNzVmZjFhODFjYmU0YzhhMzliMzExZGRlZGEifX19"));
+				ItemMeta dcmeta = dc.getItemMeta();
+				dcmeta.setDisplayName(TheAPI.colorize("&9&lDiscord"));	
+				dcmeta.setLore(Arrays.asList(TheAPI.colorize("&eÁno, máme i Discord!"), TheAPI.colorize("&ePřijď si pokecat, jen tak s kamarádmi :)"), TheAPI.colorize("&eKlikni pro zaslání odkazu do chatu...")));
+				dc.setItemMeta(dcmeta);
+				g.setItem(26, new ItemGUI(dc) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
+						p.closeInventory();
+						TheAPI.sendMessage("&6&lD&f&liscord: &5discord.io/moneyak", p);
+					}
+				});
+
+				ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")){
 					@Override
 					public void onClick(Player p, GUI gui, ClickType c) {
-							ATGUI(p);
-							p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-					}});
-			
-		ItemStack vote = ItemCreatorAPI.createHeadByWeb(1, "&6&lV&f&lote", "http://textures.minecraft.net/texture/445edaf59364162480fcbf0d91df1bd680f273583b6609fb22bf58fc64a8ee65");
-		gui.setItem(13, new ItemGUI(vote){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				TheAPI.sendMessage("&8-=-=-=-=-=-=-=-=-=-=- &6&lV&f&lote &8-=-=-=-=-=-=-=-=-=-=-", p);
-				TheAPI.sendMessage("&6C&fzech-&6C&fraft &8- &ehttps://czech-craft.eu/server/moneyak/vote/", p);
-				TheAPI.sendMessage("&6&6C&fraft&6l&fist &8- &ehttps://craftlist.org/moneyak", p);
-				TheAPI.sendMessage("&8-=-=-=-=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=-=-=-=-=-", p);
-				gui.close();
-				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
-			}
-		});
-		ItemStack pravidla = ItemCreatorAPI.create(Material.OAK_SIGN, 1, "&6&lP&f&lravidla");
-		gui.setItem(14, new ItemGUI(pravidla){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				Rules(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		ItemStack info = ItemCreatorAPI.create(Material.BOOK, 1, "&6&lI&f&lnfo o &6&ls&f&lerveru");
-		gui.setItem(21,  new ItemGUI(info){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				info(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		
-		ItemStack tutorial = ItemCreatorAPI.createHeadByWeb(1, "&6&lN&f&lávody", "http://textures.minecraft.net/texture/d01afe973c5482fdc71e6aa10698833c79c437f21308ea9a1a095746ec274a0f");
-		gui.setItem(22, new ItemGUI(tutorial){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				navod(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		ItemStack vip = ItemCreatorAPI.createHeadByWeb(1, "&6&lV&f&lI&6&lP", "http://textures.minecraft.net/texture/303500dd09b454eab9f7de833db188a2f65e5fcedf128ae51ff2807f3de2aed8");
-		gui.setItem(23, new ItemGUI(vip){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				vip(p);
-				p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
-			}
-		});
-		ItemStack dc = ItemCreatorAPI.createHeadByWeb(1, "&9&lDiscord", Arrays.asList("&aÁno, máme i Discord!", "&6Přijď si pokecat, jen tak s kamarádmi :)", "&eKlikni pro zaslání odkazu do chatu..."), "http://textures.minecraft.net/texture/4d42337be0bdca2128097f1c5bb1109e5c633c17926af5fb6fc20000011aeb53");
-		gui.setItem(26, new ItemGUI(dc){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
-				p.closeInventory();
-				TheAPI.sendMessage("&6&lD&f&liscord: &5discord.io/moneyak", p);
-			}
-		});
-		ItemStack okraj = ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "");
-		
-		
-		ItemGUI item = new ItemGUI(okraj){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-			}
-		};
-		
-		ItemStack back = ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack");
-		gui.setItem(0, item);
-		gui.setItem(1, item);
-		gui.setItem(7,item);
-		gui.setItem(8, item);
-		gui.setItem(17, item);
-		gui.setItem(44, item);
-		gui.setItem(53,item);
-		gui.setItem(52, item);
-		gui.setItem(46, item);
-		gui.setItem(45, item);
-		gui.setItem(46, item);
-		gui.setItem(36, item);
-		gui.setItem(9, item);
-		gui.setItem(49,  new ItemGUI(back){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				gui.close();
-				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_CLOSE, 5, 1);
-			}
-		});;
+					}
+				};
+				int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+				for (int slot : slots) {
+					g.setItem(slot, okraj);
+				}
+				g.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+						g.close();
+						p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
+					}
+				});
 			}}.runAsync();
 	}
 	
@@ -168,25 +179,18 @@ public class AllGuis {
 				builderteam.buildert(p);
 			}
 		});
-		ItemStack okraj = ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "");
-		ItemGUI item = new ItemGUI(okraj){
+		
+		ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		};
+		int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+		for (int slot : slots) {
+			atgui.setItem(slot, okraj);
+		}
+		
 		ItemStack back = ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack");
-		atgui.setItem(0, item);
-		atgui.setItem(1, item);
-		atgui.setItem(7, item);
-		atgui.setItem(8, item);
-		atgui.setItem(17, item);
-		atgui.setItem(44, item);
-		atgui.setItem(53,item);
-		atgui.setItem(52, item);
-		atgui.setItem(46, item);
-		atgui.setItem(45, item);
-		atgui.setItem(36, item);
-		atgui.setItem(9, item);
 		atgui.setItem(49,new ItemGUI(back){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -265,23 +269,15 @@ public class AllGuis {
 					}
 				});
 	 */
-    ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
+    ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")){
 		@Override
 		public void onClick(Player p, GUI gui, ClickType c) {
 		}
 	};
-	rules.setItem(0, item);
-	rules.setItem(1, item);
-	rules.setItem(7, item);
-	rules.setItem(8, item);
-	rules.setItem(17, item);
-	rules.setItem(44, item);
-	rules.setItem(53, item);
-	rules.setItem(52, item);
-	rules.setItem(46, item);
-	rules.setItem(45, item);
-	rules.setItem(36, item);
-	rules.setItem(9, item);
+	int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+	for (int slot : slots) {
+		rules.setItem(slot, okraj);
+	}
 	rules.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")){
 		@Override
 		public void onClick(Player p, GUI gui, ClickType c) {
@@ -325,23 +321,15 @@ public class AllGuis {
 			}
 		});
 
-	    ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
+	    ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		};
-	    erules.setItem(0, item);
-	    erules.setItem(1, item);
-	    erules.setItem(7, item);
-	    erules.setItem(8, item);
-		erules.setItem(17, item);
-		erules.setItem(44, item);
-		erules.setItem(53, item);
-		erules.setItem(52, item);
-		erules.setItem(46, item);
-		erules.setItem(45, item);
-		erules.setItem(36, item);
-		erules.setItem(9, item);
+		int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+		for (int slot : slots) {
+			erules.setItem(slot, okraj);
+		}
 		erules.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -396,15 +384,23 @@ public class AllGuis {
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		});
-	    navody.setItem(31, new ItemGUI(ItemCreatorAPI.createHeadByWeb(1, "&6&lP&f&lort na minihry:", Arrays.asList("&7(&c&lKlikni&7)"), "http://textures.minecraft.net/texture/4ec1c3f7d09ce6c0cb48ed30b4596a5c14fae79def8bfd14a59fc1935600bc7b")){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
+	    
+	    ItemStack teleport = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVjMWMzZjdkMDljZTZjMGNiNDhlZDMwYjQ1OTZhNWMxNGZhZTc5ZGVmOGJmZDE0YTU5ZmMxOTM1NjAwYmM3YiJ9fX0="));
+		ItemMeta teleportmeta = teleport.getItemMeta();
+		teleportmeta.setLore(Arrays.asList(TheAPI.colorize("&aJestli jsi myslíš, že umíš stavět."), TheAPI.colorize("&aUrčite se nám ozvi!")));
+		teleportmeta.setDisplayName(TheAPI.colorize("&e&lHLEDÁME!"));			
+		teleport.setItemMeta(teleportmeta);
+		navody.setItem(31, new ItemGUI(teleport) {
+			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+				
 				TheAPI.sudoConsole(SudoType.COMMAND, "warp MiniGames "+p.getName());
 	    		TheAPI.sendTitle(p, TheAPI.colorize("&6&lM&f&loneyak.cz"), TheAPI.colorize("&9Byl si teleportován na MiniHry."));
 				p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
 	    		navody.close();
+				
 			}
 		});
+	    
 	    navody.setItem(24, new ItemGUI(ItemCreatorAPI.create(Material.PAINTING, 1, "&6&lH&f&lomes", Arrays.asList(
 	    		"&3/sethome <home> &8- &6Vytvoří domov na dané pozici.",
 	    		"&3/delhome <home> &8- &6Vymaže domov.",
@@ -414,23 +410,15 @@ public class AllGuis {
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		});
-	    ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
+	    ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		};
-		navody.setItem(0, item);
-		navody.setItem(1, item);
-		navody.setItem(7, item);
-		navody.setItem(8, item);
-		navody.setItem(17, item);
-		navody.setItem(44, item);
-		navody.setItem(53, item);
-		navody.setItem(52, item);
-		navody.setItem(46, item);
-		navody.setItem(45, item);
-		navody.setItem(36, item);
-		navody.setItem(9, item);
+		int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+		for (int slot : slots) {
+			navody.setItem(slot, okraj);
+		}
 		navody.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -474,29 +462,25 @@ public class AllGuis {
 				vip.close();
 			}
 		});
-		vip.setItem(4, new ItemGUI(ItemCreatorAPI.createHeadByWeb(1, "&6&lP&f&layPal", Arrays.asList("&6Platbu PayPalem najdete na našem webu."), "http://textures.minecraft.net/texture/d4dcfcfaf770e563c0cfdcd306a185ea9423fe169ccacea6b9037f233a2bf5c")){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
+		ItemStack paypal = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZDRkY2ZjZmFmNzcwZTU2M2MwY2ZkY2QzMDZhMTg1ZWE5NDIzZmUxNjljY2FjZWE2YjkwMzdmMjMzYTJiZjVjIn19fQ=="));
+		ItemMeta paypalmeta = paypal.getItemMeta();
+		paypalmeta.setDisplayName(TheAPI.colorize("&9&lDiscord"));	
+		paypalmeta.setLore(Arrays.asList(TheAPI.colorize("&6Platbu PayPalem najdete na našem webu.")));
+		paypal.setItemMeta(paypalmeta);
+		vip.setItem(4, new ItemGUI(paypal) {
+			public void onClick(Player p, GUI gui, ClickType c) {	
 			}
 		});
 		
-		ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
+		ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		};
-		vip.setItem(0, item);
-		vip.setItem(1, item);
-		vip.setItem(7, item);
-		vip.setItem(8, item);
-		vip.setItem(17, item);
-		vip.setItem(44, item);
-		vip.setItem(53, item);
-		vip.setItem(52, item);
-		vip.setItem(46, item);
-		vip.setItem(45, item);
-		vip.setItem(36, item);
-		vip.setItem(9, item);
+		int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+		for (int slot : slots) {
+			vip.setItem(slot, okraj);
+		}
 		vip.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -519,14 +503,20 @@ public class AllGuis {
 				p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
 			}
 		});
-	    i.setItem(24, new ItemGUI(ItemCreatorAPI.createHeadByWeb(1, "&9&lDiscord", Arrays.asList("&7(&c&lKlikni&7)"), "http://textures.minecraft.net/texture/4d42337be0bdca2128097f1c5bb1109e5c633c17926af5fb6fc20000011aeb53")){
-			@Override
-			public void onClick(Player p, GUI gui, ClickType c) {
-				TheAPI.sendMessage("&6&lD&f&liscord: &5discord.io/moneyak", p);
-	    		i.close();
+	    
+	    ItemStack dc = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNzg3M2MxMmJmZmI1MjUxYTBiODhkNWFlNzVjNzI0N2NiMzlhNzVmZjFhODFjYmU0YzhhMzliMzExZGRlZGEifX19"));
+		ItemMeta dcmeta = dc.getItemMeta();
+		dcmeta.setDisplayName(TheAPI.colorize("&9&lDiscord"));	
+		dcmeta.setLore(Arrays.asList(TheAPI.colorize("&eÁno, máme i Discord!"), TheAPI.colorize("&ePřijď si pokecat, jen tak s kamarádmi :)"), TheAPI.colorize("&eKlikni pro zaslání odkazu do chatu...")));
+		dc.setItemMeta(dcmeta);
+		i.setItem(24, new ItemGUI(dc) {
+			public void onClick(Player p, GUI gui, ClickType c) {	
 				p.playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 5, 1);
+				p.closeInventory();
+				TheAPI.sendMessage("&6&lD&f&liscord: &5discord.io/moneyak", p);
 			}
 		});
+	    
 	    i.setItem(22, new ItemGUI(ItemCreatorAPI.create(Material.NAME_TAG, 1, "&6&lF&f&lorum", Arrays.asList("&7(&c&lKlikni&7)"))){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -538,23 +528,15 @@ public class AllGuis {
 			}
 		});
 	    
-	    ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
+	    ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.GRAY_STAINED_GLASS_PANE, 1, " ")) {
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		};
-		i.setItem(0, item);
-		i.setItem(1, item);
-		i.setItem(7, item);
-		i.setItem(8, item);
-		i.setItem(17, item);
-		i.setItem(44, item);
-		i.setItem(53, item);
-		i.setItem(52, item);
-		i.setItem(46, item);
-		i.setItem(45, item);
-		i.setItem(36, item);
-		i.setItem(9, item);
+		int[] slots = {0,1,7,8,17,44,53,52,45,36,46,9};
+		for (int slot : slots) {
+			i.setItem(slot, item);
+		}		
 		i.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {

@@ -12,13 +12,13 @@ import me.DevTec.TheAPI.TheAPI;
 public class main extends JavaPlugin {
 
 
-public static main instance;
+public static main plugin;
 public static FileConfiguration Translation;
 
 
 	@Override
 	public void onEnable() {
-		instance = this;
+		plugin = this;
 		getConfig().options().copyDefaults(true);
 		saveConfig();
 		Bukkit.getPluginCommand("menu").setExecutor(new Menu());
@@ -45,7 +45,7 @@ public static FileConfiguration Translation;
 	}
 	
 	public static main getInstance() {
-		return instance;
+		return plugin;
 		
 	}
 	
