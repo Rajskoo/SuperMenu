@@ -34,10 +34,19 @@ public class helperteam {
 		//"&aJestli si myslíš, že umíš s příkazy, a máš schopnost řešit problémy."
 		//"&aUrčitě se nám ozvi!"
 		
-		g.setItem(31,  new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lRhys", "Rhys", Arrays.asList("&aPozice: &5Helper", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Rhys") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+			String rhys = "Rhys";
+		
+			if (TheAPI.isVanished(rhys)) {
+				g.setItem(31,  new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lRhys", "Rhys", Arrays.asList("&aPozice: &5Helper", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+				}
+			});	
+			} else {
+				g.setItem(31,  new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lRhys", "Rhys", Arrays.asList("&aPozice: &5Helper", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Rhys") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+				}
+			});	
 			}
-		});	
 		
 		ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.PURPLE_STAINED_GLASS_PANE, 1, " ")){
 			@Override

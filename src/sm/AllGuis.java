@@ -387,8 +387,7 @@ public class AllGuis {
 	    
 	    ItemStack teleport = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNGVjMWMzZjdkMDljZTZjMGNiNDhlZDMwYjQ1OTZhNWMxNGZhZTc5ZGVmOGJmZDE0YTU5ZmMxOTM1NjAwYmM3YiJ9fX0="));
 		ItemMeta teleportmeta = teleport.getItemMeta();
-		teleportmeta.setLore(Arrays.asList(TheAPI.colorize("&aJestli jsi myslíš, že umíš stavět."), TheAPI.colorize("&aUrčite se nám ozvi!")));
-		teleportmeta.setDisplayName(TheAPI.colorize("&e&lHLEDÁME!"));			
+		teleportmeta.setDisplayName(TheAPI.colorize("&6&lT&f&leleport na minihry"));			
 		teleport.setItemMeta(teleportmeta);
 		navody.setItem(31, new ItemGUI(teleport) {
 			public void onClick(Player arg0, GUI arg1, ClickType arg2) {

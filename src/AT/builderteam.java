@@ -33,10 +33,19 @@ public class builderteam {
 				}
 			});
 			
-			g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lCirikCZ", "CirikCZ", Arrays.asList("&aPozice: &2Builder", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("CirikCZ") ? "&a&lONLINE" : "&c&lOFFLINE")))) {				
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {					
-				}
-			});
+			String cirik = "CirikCZ";
+			if (TheAPI.isVanished(cirik)) {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lCirikCZ", "CirikCZ", Arrays.asList("&aPozice: &2Builder", "&aStatus: &c&lOFFLINE"))) {				
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {					
+					}
+				});
+			} else {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lCirikCZ", "CirikCZ", Arrays.asList("&aPozice: &2Builder", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("CirikCZ") ? "&a&lONLINE" : "&c&lOFFLINE")))) {				
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {					
+					}
+				});
+			}
+			
 			
 			ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.GREEN_STAINED_GLASS_PANE, 1, " ")){
 				@Override

@@ -38,25 +38,56 @@ public class vedenit {
 				}
 			});
 			
-			g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: &3Majitel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Houska02") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});
+			String houska = "Houska02";
+			if (TheAPI.isVanished(houska)) {
+				g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: &3Majitel", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			} else {
+				g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: &3Majitel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Houska02") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			}
 			
-			g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: &9Developer", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("StraikerinaCZ") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});
-				
-			g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("_ItsRajsko_") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});
-		
-			g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("petulikan1") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});	
+			String straiker = "StraikerinaCZ";
+			if (TheAPI.isVanished(straiker)) {
+				g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: &9Developer", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			} else {
+				g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: &9Developer", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("StraikerinaCZ") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			}
+			
+			String rajsko = "_ItsRajsko_";
+			if (TheAPI.isVanished(rajsko)) {
+				g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: &4Admin", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			} else {
+				g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("_ItsRajsko_") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			}
+			String petulikan = "petulikan1";
+			if (TheAPI.isVanished(petulikan)) {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: &4Admin", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+						}
+					});	
+			} else {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("petulikan1") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+						}
+					});	
+			}
 		}}.runAsync();
 	}
 

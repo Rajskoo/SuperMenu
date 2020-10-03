@@ -21,23 +21,45 @@ public class ostatni {
 		new Tasker() {
 		public void run() {
 			
+			String saelo = "Saelo";
+			String orsy = "TheOrsy";
+			String hoff = "Hoff";
 			
-			g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSaelo", "Saelo", Arrays.asList("&aPozice: &6Eventer", "&aStatus: "+ (TheAPI.getOnlinePlayers().toString().contains("Saelo") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});
+			if (TheAPI.isVanished(saelo)) {
+				g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSaelo", "Saelo", Arrays.asList("&aPozice: &6Eventer", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			} else {
+				g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSaelo", "Saelo", Arrays.asList("&aPozice: &6Eventer", "&aStatus: "+ (TheAPI.getOnlinePlayers().toString().contains("Saelo") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			}
 				
+			if (TheAPI.isVanished(orsy)) {
+				g.setItem(22, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: &2Zakldatatel", "&aStatus: &c&lOFFLINE"))){
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			} else {
+				g.setItem(22, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: &2Zakldatatel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("TheOrsy") ? "&a&lONLINE" : "&c&lOFFLINE")))){
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			}
 			
-			g.setItem(22, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: &2Zakldatatel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("TheOrsy") ? "&a&lONLINE" : "&c&lOFFLINE")))){
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});
-			
-			g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: &2Zakladatel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Hoff") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
-				public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				}
-			});
-				
+			if (TheAPI.isVanished(hoff)) {
+				g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: &2Zakladatel", "&aStatus: &c&lOFFLINE"))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			} else {
+				g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: &2Zakladatel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Hoff") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+					}
+				});
+			}
 		
 			ItemGUI okraj = new ItemGUI(ItemCreatorAPI.create(Material.ORANGE_STAINED_GLASS_PANE, 1, " ")){
 				@Override
