@@ -14,12 +14,15 @@ import AT.builderteam;
 import AT.helperteam;
 import AT.ostatni;
 import AT.vedenit;
+import me.DevTec.ServerControlReloaded.SCR.API;
+import me.DevTec.ServerControlReloaded.SCR.API.SeenType;
 import me.DevTec.TheAPI.TheAPI;
 import me.DevTec.TheAPI.TheAPI.SudoType;
 import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
 import me.DevTec.TheAPI.GUIAPI.GUI;
 import me.DevTec.TheAPI.GUIAPI.ItemGUI;
 import me.DevTec.TheAPI.Scheduler.Tasker;
+import me.clip.placeholderapi.PlaceholderAPI;
 
 public class AllGuis {
 
@@ -38,7 +41,38 @@ public class AllGuis {
 						gui.close();
 					}
 				});
-			
+				
+				ItemStack grcl = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ0OWI5MzE4ZTMzMTU4ZTY0YTQ2YWIwZGUxMjFjM2Q0MDAwMGUzMzMyYzE1NzQ5MzJiM2M4NDlkOGZhMGRjMiJ9fX0="));
+				ItemMeta grassmeta = grcl.getItemMeta();
+				grassmeta.setDisplayName(TheAPI.colorize("&2&lGrass Clicker MiniGame"));			
+				grcl.setItemMeta(grassmeta);
+				g.setItem(32, new ItemGUI(grcl) {
+					public void onClick(Player p, GUI gui, ClickType c) {	
+						p.performCommand("grcl");
+						gui.close();
+					}
+				});
+				
+				g.setItem(30, new ItemGUI(ItemCreatorAPI.createHead(1, "&6&lT&f&lvůj profil", p.getName(), Arrays.asList(
+						"&c» &ePeněžní stav: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_eco_balance_formatted%"), 
+						"&c» &ePing: &7" + PlaceholderAPI.setPlaceholders(p, "%player_ping%"), 
+						"&c» &ePrvní připojení: &7" + PlaceholderAPI.setPlaceholders(p, "%player_first_join_date%"),
+						"&c» &eOnlineTime: &7" + API.getSeen(p.getName(), SeenType.Online),
+						"&c» &ePočet připojení: &7" + TheAPI.getUser(p).getInt("Joins"),
+						"&c» &eSkupina oprávnění: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_group%")))) {				
+					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+						g.setItem(30, new ItemGUI(ItemCreatorAPI.createHead(1, "&6&lT&f&lvůj profil", p.getName(), Arrays.asList(
+								"&c» &ePeněžní stav: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_eco_balance_formatted%"), 
+								"&c» &ePing: &7" + PlaceholderAPI.setPlaceholders(p, "%player_ping%"), 
+								"&c» &ePrvní připojení: &7" + PlaceholderAPI.setPlaceholders(p, "%player_first_join_date%"),
+								"&c» &eOnlineTime: &7" + API.getSeen(p.getName(), SeenType.Online),
+								"&c» &ePočet připojení: &7" + TheAPI.getUser(p).getInt("Joins"),
+								"&c» &eSkupina oprávnění: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_group%")))) {
+								public void onClick(Player p, GUI g, ClickType c) {	
+								}
+						});
+					}
+				});		
 						
 				ItemStack at = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdkZDM0OTI0ZDJiNmEyMTNhNWVkNDZhZTU3ODNmOTUzNzNhOWVmNWNlNWM4OGY5ZDczNjcwNTk4M2I5NyJ9fX0="));
 				ItemMeta atmeta = at.getItemMeta();
@@ -138,7 +172,7 @@ public class AllGuis {
 						p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 					}
 				});
-			}}.runAsync();
+			}}.runTaskSync();
 	}
 	
 
@@ -147,7 +181,7 @@ public class AllGuis {
 		atgui.open();
 		new Tasker() {
 			public void run() {
-		ItemStack vedeniteam = ItemCreatorAPI.create(Material.DIAMOND_CHESTPLATE, 1, "&c&lVedení serveru");
+		ItemStack vedeniteam = ItemCreatorAPI.create(Material.DIAMOND_CHESTPLATE, 1, "!#A63524&lVedení serveru!#75290B");
 		atgui.setItem(20,  new ItemGUI(vedeniteam){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -155,7 +189,7 @@ public class AllGuis {
 				vedenit.vedeni(p);
 			}
 		});
-		ItemStack ostatniteam = ItemCreatorAPI.create(Material.CHAINMAIL_CHESTPLATE, 1, "&9&lOstatní členové AT");
+		ItemStack ostatniteam = ItemCreatorAPI.create(Material.CHAINMAIL_CHESTPLATE, 1, "!#D3941D&lOstatní členové Teamu!#B5C208");
 		atgui.setItem(31, new ItemGUI(ostatniteam){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -163,7 +197,7 @@ public class AllGuis {
 				ostatni.ostatnit(p);
 			}
 		});
-		ItemStack helpers = ItemCreatorAPI.create(Material.IRON_CHESTPLATE, 1, "&5&lHelper Team");
+		ItemStack helpers = ItemCreatorAPI.create(Material.IRON_CHESTPLATE, 1, "!#6F18A3&lHelper Team!#B808C2");
 		atgui.setItem(24, new ItemGUI(helpers){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -171,7 +205,7 @@ public class AllGuis {
 				helperteam.helpert(p);
 			}
 		});
-		ItemStack builders = ItemCreatorAPI.create(Material.GOLDEN_CHESTPLATE, 1, "&2&lBuilder Team");
+		ItemStack builders = ItemCreatorAPI.create(Material.GOLDEN_CHESTPLATE, 1, "!#0D560A&lBuilder Team!#18A336");
 		atgui.setItem(22, new ItemGUI(builders){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
@@ -198,7 +232,7 @@ public class AllGuis {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-			}}.runAsync();
+			}}.runTaskSync();
      }
 
 	public static void Rules(Player p) {
@@ -285,7 +319,7 @@ public class AllGuis {
 			p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 		}
 	});
-	}}.runAsync();
+	}}.runTaskSync();
 	}
 	
 	public static void Erules(Player p) {
@@ -337,7 +371,7 @@ public class AllGuis {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-			}}.runAsync();
+			}}.runTaskSync();
 	}
 	
 	
@@ -425,7 +459,7 @@ public class AllGuis {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-			}}.runAsync();	
+			}}.runTaskSync();	
 	}
 	
 	public static void vip(Player p) {
@@ -487,7 +521,7 @@ public class AllGuis {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-			}}.runAsync();
+			}}.runTaskSync();
 	}
 	
 	public static void info(Player p) {
@@ -543,6 +577,6 @@ public class AllGuis {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-			}}.runAsync();
+			}}.runTaskSync();
 	}
 }

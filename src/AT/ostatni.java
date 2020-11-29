@@ -6,8 +6,9 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
-import org.bukkit.inventory.ItemStack;
 
+import me.DevTec.ServerControlReloaded.SCR.API;
+import me.DevTec.ServerControlReloaded.SCR.API.SeenType;
 import me.DevTec.TheAPI.TheAPI;
 import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
 import me.DevTec.TheAPI.GUIAPI.GUI;
@@ -17,45 +18,41 @@ import sm.AllGuis;
 
 public class ostatni {
 	public static void ostatnit(Player p) {
-		GUI g = new GUI("&6&lOstatní členové Teamu", 54, p);
+		GUI g = new GUI("!#D3941D&lOstatní členové Teamu!#B5C208", 54, p);
 		new Tasker() {
 		public void run() {
 			
-			String saelo = "Saelo";
-			String orsy = "TheOrsy";
-			String hoff = "Hoff";
-			
-			if (TheAPI.isVanished(saelo)) {
-				g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSaelo", "Saelo", Arrays.asList("&aPozice: &6Eventer", "&aStatus: &c&lOFFLINE"))) {
+			if (TheAPI.hasVanish("Snixolinka")) {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSnixolinka", "Snixolinka", Arrays.asList("&aPozice: !#E6A417&lEVENTERKA!#E25A07", "&aStatus: &c&lOFFLINE &7" + API.getSeen("Snixolinka", SeenType.Offline)))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			} else {
-				g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSaelo", "Saelo", Arrays.asList("&aPozice: &6Eventer", "&aStatus: "+ (TheAPI.getOnlinePlayers().toString().contains("Saelo") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lSnixolinka", "Snixolinka", Arrays.asList("&aPozice: !#E6A417&lEVENTERKA!#E25A07", "&aStatus: "+ (TheAPI.getOnlinePlayers().toString().contains("Snixolinka") ? "&a&lONLINE &7" + API.getSeen("Snixolinka", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("Snixolinka", SeenType.Offline))))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			}
 				
-			if (TheAPI.isVanished(orsy)) {
-				g.setItem(22, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: &2Zakldatatel", "&aStatus: &c&lOFFLINE"))){
+			if (TheAPI.hasVanish("TheOrsy")) {
+				g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: !#186B13&lZAKLADATEL!#2A5831", "&aStatus: &c&lOFFLINE &7" + API.getSeen("TheOrsy", SeenType.Offline)))){
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			} else {
-				g.setItem(22, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: &2Zakldatatel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("TheOrsy") ? "&a&lONLINE" : "&c&lOFFLINE")))){
+				g.setItem(20, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lTheOrsy", "TheOrsy", Arrays.asList("&aPozice: !#186B13&lZAKLADATEL!#2A5831", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("TheOrsy") ? "&a&lONLINE &7" + API.getSeen("TheOrsy", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("TheOrsy", SeenType.Offline))))){
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			}
 			
-			if (TheAPI.isVanished(hoff)) {
-				g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: &2Zakladatel", "&aStatus: &c&lOFFLINE"))) {
+			if (TheAPI.hasVanish("Hoff")) {
+				g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: !#186B13&lZAKLADATEL!#2A5831", "&aStatus: &c&lOFFLINE &7" + API.getSeen("Hoff", SeenType.Offline)))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			} else {
-				g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: &2Zakladatel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Hoff") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+				g.setItem(24, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHoff", "Hoff", Arrays.asList("&aPozice: !#186B13&lZAKLADATEL!#2A5831", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Hoff") ? "&a&lONLINE &7" + API.getSeen("Hoff", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("Hoff", SeenType.Offline))))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
@@ -77,6 +74,6 @@ public class ostatni {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});		
-		}}.runAsync();
+		}}.runTaskSync();
 	}
 }

@@ -23,7 +23,7 @@ public class Menu implements CommandExecutor, TabCompleter {
 		
 		Player p = (Player) s;
 		
-		String prefix = "&0[&bSuper&3Menu&0] ";
+		String prefix = "&6&lS&f&lerver &7&l» ";
 		
 		if (args.length == 0) {
 			AllGuis.main((Player)s);

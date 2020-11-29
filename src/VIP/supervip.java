@@ -87,7 +87,7 @@ public class supervip {
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});
-			}}.runAsync();
+			}}.runTaskSync();
 	}
 	
 }

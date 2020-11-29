@@ -7,6 +7,8 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
+import me.DevTec.ServerControlReloaded.SCR.API;
+import me.DevTec.ServerControlReloaded.SCR.API.SeenType;
 import me.DevTec.TheAPI.TheAPI;
 import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
 import me.DevTec.TheAPI.GUIAPI.GUI;
@@ -16,7 +18,7 @@ import sm.AllGuis;
 
 public class vedenit {
 	public static void vedeni(Player p) {
-		GUI g= new GUI("&c&lVedení serveru", 54, p);
+		GUI g= new GUI("!#A63524&lVedení serveru!#75290B", 54, p);
 
 		new Tasker() {
 		public void run() {
@@ -38,57 +40,53 @@ public class vedenit {
 				}
 			});
 			
-			String houska = "Houska02";
-			if (TheAPI.isVanished(houska)) {
-				g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: &3Majitel", "&aStatus: &c&lOFFLINE"))) {
+			if (TheAPI.hasVanish("Houska02")) {
+				g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: !#2CDD86&lMAJITEL!#0E7B8C", "&aStatus: &c&lOFFLINE &7" + API.getSeen("Houska02", SeenType.Offline)))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			} else {
-				g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: &3Majitel", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Houska02") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+				g.setItem(13, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lHouska02", "Houska02", Arrays.asList("&aPozice: !#2CDD86&lMAJITEL!#0E7B8C", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("Houska02") ? "&a&lONLINE &7" + API.getSeen("Houska02", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("Houska02", SeenType.Offline))))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			}
 			
-			String straiker = "StraikerinaCZ";
-			if (TheAPI.isVanished(straiker)) {
-				g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: &9Developer", "&aStatus: &c&lOFFLINE"))) {
+			if (TheAPI.hasVanish("StraikerinaCZ")) {
+				g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: !#13A1A1&lDEVELOPER!#5CE7E8", "&aStatus: &c&lOFFLINE &7" + API.getSeen("StraikerinaCZ", SeenType.Offline)))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			} else {
-				g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: &9Developer", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("StraikerinaCZ") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+				g.setItem(33, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lStraikerinaCZ", "StraikerinaCZ", Arrays.asList("&aPozice: !#13A1A1&lDEVELOPER!#5CE7E8", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("StraikerinaCZ") ? "&a&lONLINE &7" + API.getSeen("StraikerinaCZ", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("StraikerinaCZ", SeenType.Offline))))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			}
 			
-			String rajsko = "_ItsRajsko_";
-			if (TheAPI.isVanished(rajsko)) {
-				g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: &4Admin", "&aStatus: &c&lOFFLINE"))) {
+			if (TheAPI.hasVanish("_ItsRajsko_")) {
+				g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: !#DA0C1F&lADMIN!#FB430D", "&aStatus: &c&lOFFLINE &7" + API.getSeen("_ItsRajsko_", SeenType.Offline)))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			} else {
-				g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("_ItsRajsko_") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+				g.setItem(29, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l_ItsRajsko_", "_ItsRajsko_", Arrays.asList("&aPozice: !#DA0C1F&lADMIN!#FB430D", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("_ItsRajsko_") ? "&a&lONLINE &7" + API.getSeen("_ItsRajsko_", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("_ItsRajsko_", SeenType.Offline))))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 					}
 				});
 			}
-			String petulikan = "petulikan1";
-			if (TheAPI.isVanished(petulikan)) {
-				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: &4Admin", "&aStatus: &c&lOFFLINE"))) {
+			if (TheAPI.hasVanish("petulikan1")) {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: !#DA0C1F&lADMIN!#FB430D", "&aStatus: " + "&c&lOFFLINE &7" + API.getSeen("petulikan1", SeenType.Offline)))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 						}
 					});	
 			} else {
-				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: &4Admin", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("petulikan1") ? "&a&lONLINE" : "&c&lOFFLINE")))) {
+				g.setItem(31, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&lpetulikan1", "petulikan1", Arrays.asList("&aPozice: !#DA0C1F&lADMIN!#FB430D", "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains("petulikan1") ? "&a&lONLINE &7" + API.getSeen("petulikan1", SeenType.Online) : "&c&lOFFLINE &7" + API.getSeen("petulikan1", SeenType.Offline))))) {
 					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
 						}
 					});	
 			}
-		}}.runAsync();
+		}}.runTaskSync();
 	}
 
 }

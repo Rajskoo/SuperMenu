@@ -1,7 +1,8 @@
 name: MoneyakMenu
 main: sm.main
 author: DevTec, _ItsRajsko_
-depend: [TheAPI]
+depend: [TheAPI, PlaceholderAPI]
+softdepend: [ServerControlReloaded]
 api-version: 1.13
 version: 1.0
 commands:
