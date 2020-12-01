@@ -1,15 +1,24 @@
 package Utils;
 
 import java.lang.reflect.Field;
+import java.util.Arrays;
 import java.util.UUID;
 
 import org.bukkit.Material;
+import org.bukkit.entity.Player;
+import org.bukkit.event.inventory.ClickType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.authlib.properties.Property;
 
+import me.DevTec.ServerControlReloaded.SCR.API;
+import me.DevTec.ServerControlReloaded.SCR.API.SeenType;
+import me.DevTec.TheAPI.TheAPI;
+import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
+import me.DevTec.TheAPI.GUIAPI.GUI;
+import me.DevTec.TheAPI.GUIAPI.ItemGUI;
 import sm.main;
 
 public class Utils {
@@ -41,6 +50,20 @@ public class Utils {
         head.setItemMeta(headMeta);
         return head;
     }
-	
+	public static void metoda(GUI g, int misto,String name, Groups group) {
+		if(TheAPI.hasVanish(name)) {
+			g.setItem(misto, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l"+name, name, Arrays.asList(group.get(), "&aStatus: &c&lOFFLINE &7" + API.getSeen(name, SeenType.Offline)))) {				
+				@Override
+				public void onClick(Player arg0, GUI arg1, ClickType arg2) {			
+					
+				}
+			});
+			return;
+		}
+		g.setItem(misto, new ItemGUI(ItemCreatorAPI.createHead(1, "&e&l"+name, name, Arrays.asList(group.get(), "&aStatus: " + (TheAPI.getOnlinePlayers().toString().contains(name)?"&a&lONLINE &7"+API.getSeen(name, SeenType.Online):"&c&lOFFLINE &7" + API.getSeen(name, SeenType.Offline))))) {
+			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+			}
+		});
+	}
 	
 }

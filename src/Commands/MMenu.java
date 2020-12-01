@@ -22,7 +22,7 @@ public class MMenu implements CommandExecutor, TabCompleter {
 			TheAPI.sendMessage("&6-------------------< &bSuper&9Menu &6>--------------------", s);
 			TheAPI.sendMessage("&3Plugin byl vytvořen pro server &6&lM&f&loneyak.cz,", s);
 			TheAPI.sendMessage("&3hráčem &6_ItsRajsko_ &3s klukami z &bDev&fTec.", s);
-			TheAPI.sendMessage("&3Pokud chceš vědet více, přijď na discord: &6discord.io/devtec", s);
+			TheAPI.sendMessage("&3Pokud chceš vědět více, přijď na discord: &6discord.io/devtec", s);
 			TheAPI.sendMessage("&6----------------------------------------------------", s);
 			return true;
 		}
