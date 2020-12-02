@@ -48,7 +48,8 @@ public class Menu implements CommandExecutor, TabCompleter {
 			}
 			
 			if (args[0].equalsIgnoreCase("vip")) {
-				AllGuis.vip((Player)s);
+				//AllGuis.vip((Player)s);
+				p.performCommand("vip");
 				TheAPI.sendActionBar(p, prefix + "&eOtevíraní menu... &7(&VIP&7)");
 				p.playSound(p.getLocation(), Sound.BLOCK_CHEST_OPEN, 5, 1);
 				return true;

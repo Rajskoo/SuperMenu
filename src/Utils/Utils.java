@@ -2,6 +2,7 @@ package Utils;
 
 import java.lang.reflect.Field;
 import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Material;
@@ -65,5 +66,17 @@ public class Utils {
 			}
 		});
 	}
-	
+	public static void metoda2(GUI g, Material material, String name, int amount,int position, List<String> coll) {
+		g.setItem(position, new ItemGUI(ItemCreatorAPI.create(material, amount, name, coll)) {
+			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+			}
+		});
+	}
+	public static void metoda2(GUI g, Material material, String name, int amount,int position) {
+		g.setItem(position, new ItemGUI(ItemCreatorAPI.create(material, amount, name)) {
+			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+				
+			}
+		});
+	}
 }

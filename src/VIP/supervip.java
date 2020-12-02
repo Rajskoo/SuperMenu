@@ -7,6 +7,7 @@ import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
+import Utils.Utils;
 import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
 import me.DevTec.TheAPI.GUIAPI.GUI;
 import me.DevTec.TheAPI.GUIAPI.ItemGUI;
@@ -23,33 +24,16 @@ public class supervip {
 	 */
 	
 	public static void SuperVIP(Player p) {
-		GUI sprvp = new GUI("&6&lSuper&a&lVIP", 54, p);
+		GUI g = new GUI("&6&lSuper&a&lVIP", 54, p);
 		new Tasker() { 
 			public void run() {
-				
-	    sprvp.setItem(20, new ItemGUI(ItemCreatorAPI.create(Material.ORANGE_STAINED_GLASS, 1, "&6&lSuper&a&lVIP pro Česko:", Arrays.asList(
-	    		"&6&lC&f&lena: &399kč",
-	    		"&6&lS&f&lM&6&lS Tvar: &3FAKAHEDA V31534 99 SUPERVIP NICK",
+				Utils.metoda2(g, Material.ORANGE_STAINED_GLASS, "&6&lSuper&a&lVIP pro Česko:", 1, 20, Arrays.asList("&6&lC&f&lena: &399kč",
+	    		"&6&lS&f&lM&6&lS Tvar: &3PM PARADISEHOST V31534 99 SUPERVIP NICK",
 	    		"&6&lNa &f&lčíslo: &390733",
 	    		"&6Super&aVIP je na &631 dní.",
-	    		"&cMísto 'NICK' napište své herní jméno."))){
-			@Override
-			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-			}
-		});
-	    
-	    sprvp.setItem(29, new ItemGUI(ItemCreatorAPI.create(Material.RED_STAINED_GLASS, 1, "&6&lSuper&a&lVIP pro Slovensko:", Arrays.asList(
-	    		"&6&lC&f&lena: &34€",
-	    		"&6&lS&f&lM&6&lS Tvar: &3FAKAHEDA V31534 4 SUPERVIP NICK",
-	    		"&6&lNa &f&lčíslo: &38866",
-	    		"&6Super&aVIP je na &631 dní.",
-	    		"&cMísto 'NICK' napište své herní jméno."))){
-			@Override
-			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-			}
-		});
-	    sprvp.setItem(23, new ItemGUI(ItemCreatorAPI.create(Material.DIAMOND, 1, "&6&lSuper&a&lVIP Výhody:", Arrays.asList(
-	    		"&9&l• &ePrefix v Chatu a TABu &6S&aVIP",
+	    		"&cMísto 'NICK' napište své herní jméno."));	    
+				Utils.metoda2(g, Material.RED_STAINED_GLASS, "&6&lSuper&a&lVIP pro Slovensko &cPŘIPRAVUJEME", 1, 29);
+				Utils.metoda2(g, Material.DIAMOND, "&6&lSuper&a&lVIP Výhody:", 1, 23, Arrays.asList("&9&l• &ePrefix v Chatu a TABu &6S&aVIP",
 	    		"&9&l• &ePri koupě dostanete &65000$",
 	    		"&9&l• &eStejná práva jako &aVIP.",
 	    		"&9&l• &eMožnost měnit počasí &7(&6/sun, /rain, /thunder&7).",
@@ -57,33 +41,20 @@ public class supervip {
 	    		"&9&l• &eMožnost měnit den a noc &7(&6/day, /night&7).",
 	    		"&9&l• &6/kit SVIP &e(Enchantované železný nástroje).",
 	    		"&9&l• &eVirtuální crafting table &7(&6/craft&7).",
-	    		"&9&l• &eOkamžité vyléčení &7(&6/heal, /feed&7)."))){
-			@Override
-			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-			}
-		});
+	    		"&9&l• &eOkamžité vyléčení &7(&6/heal, /feed&7)."));
 	    
 	    ItemGUI item = new ItemGUI(ItemCreatorAPI.create(Material.BLACK_STAINED_GLASS_PANE, 1, "")){
 			@Override
 			public void onClick(Player p, GUI gui, ClickType c) {
 			}
 		};
-		sprvp.setItem(0, item);
-		sprvp.setItem(1, item);
-		sprvp.setItem(7, item);
-		sprvp.setItem(8, item);
-		sprvp.setItem(17, item);
-		sprvp.setItem(44, item);
-		sprvp.setItem(53, item);
-		sprvp.setItem(52, item);
-		sprvp.setItem(46, item);
-		sprvp.setItem(45, item);
-		sprvp.setItem(36, item);
-		sprvp.setItem(9, item);
-		sprvp.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")){
-			@Override
+		int[] a = {0,1,7,8,17,44,53,52,46,45,36,9};
+		for(int i : a) {
+			Utils.metoda2(g, Material.BLACK_STAINED_GLASS, "", 1, i);
+		}
+		g.setItem(49, new ItemGUI(ItemCreatorAPI.create(Material.BARRIER, 1, "&4&lBack")) {
 			public void onClick(Player arg0, GUI arg1, ClickType arg2) {
-				sm.AllGuis.vip(p);
+				//sm.AllGuis.vip(p);
 				p.playSound(p.getLocation(), Sound.BLOCK_WOODEN_BUTTON_CLICK_ON, 5, 1);
 			}
 		});

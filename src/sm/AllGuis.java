@@ -42,7 +42,7 @@ public class AllGuis {
 					}
 				});
 				
-				ItemStack grcl = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ0OWI5MzE4ZTMzMTU4ZTY0YTQ2YWIwZGUxMjFjM2Q0MDAwMGUzMzMyYzE1NzQ5MzJiM2M4NDlkOGZhMGRjMiJ9fX0="));
+				/*ItemStack grcl = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvODQ0OWI5MzE4ZTMzMTU4ZTY0YTQ2YWIwZGUxMjFjM2Q0MDAwMGUzMzMyYzE1NzQ5MzJiM2M4NDlkOGZhMGRjMiJ9fX0="));
 				ItemMeta grassmeta = grcl.getItemMeta();
 				grassmeta.setDisplayName(TheAPI.colorize("&2&lGrass Clicker MiniGame"));			
 				grcl.setItemMeta(grassmeta);
@@ -51,7 +51,7 @@ public class AllGuis {
 						p.performCommand("grcl");
 						gui.close();
 					}
-				});
+				});*/
 				
 				g.setItem(30, new ItemGUI(ItemCreatorAPI.createHead(1, "&6&lT&f&lvůj profil", p.getName(), Arrays.asList(
 						"&c» &ePeněžní stav: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_eco_balance_formatted%"), 
@@ -139,7 +139,7 @@ public class AllGuis {
 				vip.setItemMeta(vipmeta);
 				g.setItem(23, new ItemGUI(vip) {
 					public void onClick(Player p, GUI gui, ClickType c) {	
-						vip(p);
+						p.performCommand("vip");
 						p.playSound(p.getLocation(), Sound.ENTITY_HORSE_SADDLE, 5, 1);
 					}
 				});
@@ -462,7 +462,7 @@ public class AllGuis {
 			}}.runTaskSync();	
 	}
 	
-	public static void vip(Player p) {
+	/*public static void vip(Player p) {
 		GUI vip = new GUI("&6&lV&f&lI&6&lP", 54, p);
 		new Tasker() {
 			public void run() {
@@ -522,7 +522,7 @@ public class AllGuis {
 			}
 		});
 			}}.runTaskSync();
-	}
+	}*/
 	
 	public static void info(Player p) {
 		GUI i = new GUI("&6&lI&f&lnfo", 54, p);
