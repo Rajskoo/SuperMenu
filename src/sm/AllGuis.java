@@ -52,27 +52,21 @@ public class AllGuis {
 						gui.close();
 					}
 				});*/
-				
-				g.setItem(30, new ItemGUI(ItemCreatorAPI.createHead(1, "&6&lT&f&lvůj profil", p.getName(), Arrays.asList(
-						"&c» &ePeněžní stav: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_eco_balance_formatted%"), 
-						"&c» &ePing: &7" + PlaceholderAPI.setPlaceholders(p, "%player_ping%"), 
-						"&c» &ePrvní připojení: &7" + PlaceholderAPI.setPlaceholders(p, "%player_first_join_date%"),
-						"&c» &eOnlineTime: &7" + API.getSeen(p.getName(), SeenType.Online),
-						"&c» &ePočet připojení: &7" + TheAPI.getUser(p).getInt("Joins"),
-						"&c» &eSkupina oprávnění: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_group%")))) {				
-					public void onClick(Player arg0, GUI arg1, ClickType arg2) {
+				new Tasker() {
+					
+					@Override
+					public void run() {
 						g.setItem(30, new ItemGUI(ItemCreatorAPI.createHead(1, "&6&lT&f&lvůj profil", p.getName(), Arrays.asList(
 								"&c» &ePeněžní stav: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_eco_balance_formatted%"), 
 								"&c» &ePing: &7" + PlaceholderAPI.setPlaceholders(p, "%player_ping%"), 
 								"&c» &ePrvní připojení: &7" + PlaceholderAPI.setPlaceholders(p, "%player_first_join_date%"),
 								"&c» &eOnlineTime: &7" + API.getSeen(p.getName(), SeenType.Online),
 								"&c» &ePočet připojení: &7" + TheAPI.getUser(p).getInt("Joins"),
-								"&c» &eSkupina oprávnění: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_group%")))) {
-								public void onClick(Player p, GUI g, ClickType c) {	
-								}
-						});
+								"&c» &eSkupina oprávnění: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_group%")))) {					
+							public void onClick(Player arg0, GUI arg1, ClickType arg2) {}});
 					}
-				});		
+				}.runRepeating(0, 20L);
+						
 						
 				ItemStack at = new ItemStack(Utils.Utils.createSkull("eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMTdkZDM0OTI0ZDJiNmEyMTNhNWVkNDZhZTU3ODNmOTUzNzNhOWVmNWNlNWM4OGY5ZDczNjcwNTk4M2I5NyJ9fX0="));
 				ItemMeta atmeta = at.getItemMeta();
