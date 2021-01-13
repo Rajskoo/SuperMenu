@@ -15,9 +15,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import Commands.MMenu;
 import Commands.Menu;
-import me.DevTec.TheAPI.TheAPI;
-import me.DevTec.TheAPI.ConfigAPI.Config;
-import me.DevTec.TheAPI.Utils.DataKeeper.Data;
+import me.devtec.theapi.TheAPI;
+import me.devtec.theapi.configapi.Config;
+import me.devtec.theapi.utils.datakeeper.Data;
 
 public class main extends JavaPlugin {
 

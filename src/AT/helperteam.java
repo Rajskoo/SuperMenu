@@ -7,9 +7,9 @@ import org.bukkit.event.inventory.ClickType;
 
 import Utils.Groups;
 import Utils.Utils;
-import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
-import me.DevTec.TheAPI.GUIAPI.GUI;
-import me.DevTec.TheAPI.GUIAPI.ItemGUI;
+import me.devtec.theapi.apis.ItemCreatorAPI;
+import me.devtec.theapi.guiapi.GUI;
+import me.devtec.theapi.guiapi.ItemGUI;
 import sm.AllGuis;
 
 public class helperteam {

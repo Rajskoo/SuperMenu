@@ -8,10 +8,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.ClickType;
 
 import Utils.Utils;
-import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
-import me.DevTec.TheAPI.GUIAPI.GUI;
-import me.DevTec.TheAPI.GUIAPI.ItemGUI;
-import me.DevTec.TheAPI.Scheduler.Tasker;
+import me.devtec.theapi.apis.ItemCreatorAPI;
+import me.devtec.theapi.guiapi.GUI;
+import me.devtec.theapi.guiapi.ItemGUI;
+import me.devtec.theapi.scheduler.Tasker;
 
 public class supervip {
 

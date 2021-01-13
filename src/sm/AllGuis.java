@@ -16,13 +16,13 @@ import AT.ostatni;
 import AT.vedenit;
 import me.DevTec.ServerControlReloaded.SCR.API;
 import me.DevTec.ServerControlReloaded.SCR.API.SeenType;
-import me.DevTec.TheAPI.TheAPI;
-import me.DevTec.TheAPI.TheAPI.SudoType;
-import me.DevTec.TheAPI.APIs.ItemCreatorAPI;
-import me.DevTec.TheAPI.GUIAPI.GUI;
-import me.DevTec.TheAPI.GUIAPI.ItemGUI;
-import me.DevTec.TheAPI.Scheduler.Tasker;
 import me.clip.placeholderapi.PlaceholderAPI;
+import me.devtec.theapi.TheAPI;
+import me.devtec.theapi.TheAPI.SudoType;
+import me.devtec.theapi.apis.ItemCreatorAPI;
+import me.devtec.theapi.guiapi.GUI;
+import me.devtec.theapi.guiapi.ItemGUI;
+import me.devtec.theapi.scheduler.Tasker;
 
 public class AllGuis {
 
@@ -53,8 +53,6 @@ public class AllGuis {
 					}
 				});*/
 				new Tasker() {
-					
-					@Override
 					public void run() {
 						g.setItem(30, new ItemGUI(ItemCreatorAPI.createHead(1, "&6&lT&f&lvůj profil", p.getName(), Arrays.asList(
 								"&c» &ePeněžní stav: &7" + PlaceholderAPI.setPlaceholders(p, "%vault_eco_balance_formatted%"), 

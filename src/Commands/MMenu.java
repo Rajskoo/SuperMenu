@@ -10,7 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
 import org.bukkit.util.StringUtil;
 
-import me.DevTec.TheAPI.TheAPI;
+import me.devtec.theapi.TheAPI;
 
 public class MMenu implements CommandExecutor, TabCompleter {
 	

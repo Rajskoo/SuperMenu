@@ -8,7 +8,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="C:/EclipseUtils/TheAPI.jar"/>
-	<classpathentry kind="lib" path="C:/EclipseUtils/PAPI.jar"/>
-	<classpathentry kind="lib" path="C:/EclipseUtils/ServerControlReloaded.jar"/>
+	<classpathentry kind="lib" path="C:/EclipseUtils/PlaceholderAPI-2.10.9.jar"/>
+	<classpathentry kind="lib" path="C:/DEV_SERVER/plugins/ServerControlReloaded.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
